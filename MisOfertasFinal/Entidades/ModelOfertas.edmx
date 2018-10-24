@@ -1134,6 +1134,23 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
+          <FunctionImport Name="insertarUsuario">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DIRECCION_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APEPA_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APEMA_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_TICKETDESCUENTO_ID_TICKET" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PASSWORD_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_PRIORIDAD_ID_VISITA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COMUNA_ID_COMUNA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_TIPOUSUARIO_ID_TIPOUSUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIENDA_ID_TIENDA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CORREO_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_PUNTOS_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO_USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1305,6 +1322,7 @@
               <ScalarProperty Name="ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="insertarUsuario" FunctionName="Model.Store.USUARIO_TAPI_INS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MisOfertasFinal.Resources.Template
 {
@@ -11,7 +6,25 @@ namespace MisOfertasFinal.Resources.Template
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            iLogo.ImageUrl = "~/Imagenes/iconoV2.png";
+            if (!IsPostBack)
+            {
+                
+                if (Session["consumidorEmail"] != null)
+                {
+                    lblUsuario.Text = Session["consumidorEmail"].ToString();
+                }
+                else
+                {
+                    Response.Redirect("../../Views/Login/Login.aspx");
+                }
+            }
+        }
 
+        protected void lbSalir_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../Views/Login/Login.aspx");
         }
     }
 }

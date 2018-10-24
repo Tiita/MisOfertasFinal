@@ -7,21 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class REGION
+    public partial class TICKETDESCUENTO
     {
-        public REGION()
+        public TICKETDESCUENTO()
         {
-            this.COMUNA = new HashSet<COMUNA>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
-        public decimal ID_REGION { get; set; }
-        public string NOMBRE_REGION { get; set; }
+        public decimal ID_TICKET { get; set; }
+        public System.DateTime FECHA_INICIO { get; set; }
+        public System.DateTime FECHA_TERMINO { get; set; }
+        public decimal DESCUENTO_OTORGADO { get; set; }
+        public byte[] CODIGOBARRA { get; set; }
+        public decimal TOPE { get; set; }
     
-        public virtual ICollection<COMUNA> COMUNA { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

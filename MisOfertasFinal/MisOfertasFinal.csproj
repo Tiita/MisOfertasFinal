@@ -77,6 +77,8 @@
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="css\sweetalert.css" />
+    <Content Include="Imagenes\Iconocompleto.png" />
+    <Content Include="Imagenes\iconoV2.png" />
     <Content Include="js\sb-admin-charts.js" />
     <Content Include="js\sb-admin-charts.min.js" />
     <Content Include="js\sb-admin-datatables.js" />
@@ -84,12 +86,12 @@
     <Content Include="js\sb-admin.js" />
     <Content Include="js\sb-admin.min.js" />
     <Content Include="js\sweetalert.min.js" />
-    <Content Include="ModelOfertas.Context.tt">
+    <Content Include="Entidades\ModelOfertas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelOfertas.Context.cs</LastGenOutput>
       <DependentUpon>ModelOfertas.edmx</DependentUpon>
     </Content>
-    <Content Include="ModelOfertas.tt">
+    <Content Include="Entidades\ModelOfertas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelOfertas.edmx</DependentUpon>
       <LastGenOutput>ModelOfertas.cs</LastGenOutput>
@@ -129,44 +131,62 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CATGORIAPRODUCTO.cs">
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Entidades\CATGORIAPRODUCTO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="COMUNA.cs">
+    <Compile Include="Entidades\COMUNA.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="EMPRESA.cs">
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Entidades\EMPRESA.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="MARCA.cs">
+    <Compile Include="LogicaNegocio\LnCategoria.cs" />
+    <Compile Include="LogicaNegocio\LnMarca.cs" />
+    <Compile Include="LogicaNegocio\LnProducto.cs" />
+    <Compile Include="LogicaNegocio\LnRubro.cs" />
+    <Compile Include="LogicaNegocio\LnUsuario.cs" />
+    <Compile Include="Entidades\MARCA.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelOfertas.Context.cs">
+    <Compile Include="Entidades\ModelOfertas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelOfertas.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelOfertas.cs">
+    <Compile Include="Entidades\ModelOfertas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelOfertas.Designer.cs">
+    <Compile Include="Entidades\ModelOfertas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelOfertas.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OFERTA.cs">
+    <Compile Include="Entidades\OFERTA.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRIORIDAD.cs">
+    <Compile Include="Entidades\PRIORIDAD.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCTO.cs">
+    <Compile Include="Entidades\PRODUCTO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Categoria.cs" />
+    <Compile Include="Modelo\Comuna.cs" />
+    <Compile Include="Modelo\Marca.cs" />
+    <Compile Include="Modelo\Prioridad.cs" />
+    <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\Rubro.cs" />
+    <Compile Include="Modelo\TicketDescuento.cs" />
+    <Compile Include="Modelo\Tienda.cs" />
+    <Compile Include="Modelo\TipoUsuario.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\Valoracion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="REGION.cs">
+    <Compile Include="Entidades\REGION.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\Template\Template.Master.cs">
@@ -176,22 +196,22 @@
     <Compile Include="Resources\Template\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
     </Compile>
-    <Compile Include="RUBROPRODUCTO.cs">
+    <Compile Include="Entidades\RUBROPRODUCTO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="TICKETDESCUENTO.cs">
+    <Compile Include="Entidades\TICKETDESCUENTO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="TIENDA.cs">
+    <Compile Include="Entidades\TIENDA.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="TIPOUSUARIO.cs">
+    <Compile Include="Entidades\TIPOUSUARIO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="USUARIO.cs">
+    <Compile Include="Entidades\USUARIO.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
-    <Compile Include="VALORACION.cs">
+    <Compile Include="Entidades\VALORACION.cs">
       <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultarPuntos\ConsultarPuntos.aspx.cs">
@@ -231,11 +251,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ModelOfertas.edmx">
+    <EntityDeploy Include="Entidades\ModelOfertas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelOfertas.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelOfertas.edmx.diagram">
+    <Content Include="Entidades\ModelOfertas.edmx.diagram">
       <DependentUpon>ModelOfertas.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
@@ -292,10 +312,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

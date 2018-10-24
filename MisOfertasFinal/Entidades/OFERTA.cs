@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;

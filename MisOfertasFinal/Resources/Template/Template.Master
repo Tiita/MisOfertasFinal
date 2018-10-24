@@ -30,11 +30,14 @@
 </head>
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
     <form runat="server">
+       
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"  id="mainNav">
-            
-            <a class="navbar navbar-light" href="../../Views/Index/Index.aspx"><h2>Mis Ofertas</h2></a>            
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
 
+            <a class="navbar navbar-light" href="../../Views/Index/Index.aspx">
+                <h2>Mis Ofertas</h2><br />               
+             </a>
+             <asp:Image runat="server" Height="35px" Width="40px" ID="iLogo" />
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,18 +60,21 @@
                             <i class="fa fa-home"></i>
                             <span class="nav-link-text">Inicio</span>
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
-                
+
                 <ul class="navbar-nav ml-auto">
                     <!-- /.dropdown -->
                     <li class="dropdown">
+                        <asp:Label runat="server" ID="lblUsuario" CssClass="btn-link">User</asp:Label>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i>
                         </a>       
-                        <ul class="dropdown-menu dropdown-user">  
-                                                 
-                            <li><a href="../../views/login/Login.aspx"><i class="fa fa-sign-out fa-fw"></i>Salir</a>
+                        <ul class="dropdown-menu dropdown-user">                                                                             
+                            <li>
+                                <asp:LinkButton runat="server" ID="lbSalir" OnClick="lbSalir_Click">
+                                    <i class="fa fa-sign-out fa-fw"></i>Salir
+                                </asp:LinkButton>                               
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->

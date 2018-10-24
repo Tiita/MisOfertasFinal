@@ -7,22 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RUBROPRODUCTO
+    public partial class REGION
     {
-        public RUBROPRODUCTO()
+        public REGION()
         {
-            this.PRODUCTO = new HashSet<PRODUCTO>();
+            this.COMUNA = new HashSet<COMUNA>();
         }
     
-        public decimal ID_RUBRO { get; set; }
-        public string NOMBRE_RUBRO { get; set; }
-        public string DESCRIPCION { get; set; }
+        public decimal ID_REGION { get; set; }
+        public string NOMBRE_REGION { get; set; }
     
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual ICollection<COMUNA> COMUNA { get; set; }
     }
 }

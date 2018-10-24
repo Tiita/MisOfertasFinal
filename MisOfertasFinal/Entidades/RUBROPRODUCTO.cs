@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TIPOUSUARIO
+    public partial class RUBROPRODUCTO
     {
-        public TIPOUSUARIO()
+        public RUBROPRODUCTO()
         {
-            this.USUARIO = new HashSet<USUARIO>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public decimal ID_TIPOUSUARIO { get; set; }
-        public string NOMBRE_TIPOUSUARIO { get; set; }
+        public decimal ID_RUBRO { get; set; }
+        public string NOMBRE_RUBRO { get; set; }
         public string DESCRIPCION { get; set; }
     
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

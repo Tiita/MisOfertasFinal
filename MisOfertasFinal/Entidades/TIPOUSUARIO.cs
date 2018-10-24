@@ -7,21 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class VALORACION
+    public partial class TIPOUSUARIO
     {
-        public decimal ID_VALORACION { get; set; }
-        public decimal CALIFICACION { get; set; }
-        public byte[] IMAGENBOLETA { get; set; }
-        public decimal NUMERO_BOLETA { get; set; }
-        public Nullable<decimal> USUARIO_ID_USUARIO { get; set; }
-        public Nullable<decimal> OFERTA_ID_OFERTA { get; set; }
+        public TIPOUSUARIO()
+        {
+            this.USUARIO = new HashSet<USUARIO>();
+        }
     
-        public virtual OFERTA OFERTA { get; set; }
-        public virtual USUARIO USUARIO { get; set; }
+        public decimal ID_TIPOUSUARIO { get; set; }
+        public string NOMBRE_TIPOUSUARIO { get; set; }
+        public string DESCRIPCION { get; set; }
+    
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

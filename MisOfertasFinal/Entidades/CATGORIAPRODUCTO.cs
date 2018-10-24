@@ -7,23 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class EMPRESA
+    public partial class CATGORIAPRODUCTO
     {
-        public EMPRESA()
+        public CATGORIAPRODUCTO()
         {
-            this.TIENDA = new HashSet<TIENDA>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public decimal ID_EMPRESA { get; set; }
-        public string NOMBRE_EMPRESA { get; set; }
-        public string RUT_EMPRESA { get; set; }
-        public string GIRO { get; set; }
+        public decimal ID_CATEGORIAPRODUCTO { get; set; }
+        public string NOMBRE_CATEGORIAPROD { get; set; }
     
-        public virtual ICollection<TIENDA> TIENDA { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

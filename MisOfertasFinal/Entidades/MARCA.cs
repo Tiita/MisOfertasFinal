@@ -7,22 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PRIORIDAD
+    public partial class MARCA
     {
-        public PRIORIDAD()
+        public MARCA()
         {
-            this.USUARIO = new HashSet<USUARIO>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public decimal ID_VISITA { get; set; }
-        public decimal PRODUCTO_1 { get; set; }
-        public decimal PRODUCTO_2 { get; set; }
+        public decimal ID_MARCA { get; set; }
+        public string NOMBRE_MARCA { get; set; }
     
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

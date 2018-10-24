@@ -7,25 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MisOfertasFinal
+namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TICKETDESCUENTO
+    public partial class EMPRESA
     {
-        public TICKETDESCUENTO()
+        public EMPRESA()
         {
-            this.USUARIO = new HashSet<USUARIO>();
+            this.TIENDA = new HashSet<TIENDA>();
         }
     
-        public decimal ID_TICKET { get; set; }
-        public System.DateTime FECHA_INICIO { get; set; }
-        public System.DateTime FECHA_TERMINO { get; set; }
-        public decimal DESCUENTO_OTORGADO { get; set; }
-        public byte[] CODIGOBARRA { get; set; }
-        public decimal TOPE { get; set; }
+        public decimal ID_EMPRESA { get; set; }
+        public string NOMBRE_EMPRESA { get; set; }
+        public string RUT_EMPRESA { get; set; }
+        public string GIRO { get; set; }
     
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<TIENDA> TIENDA { get; set; }
     }
 }
