@@ -1,8 +1,6 @@
 ﻿using MisOfertasFinal.Entidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MisOfertasFinal.LogicaNegocio
 {
@@ -14,10 +12,10 @@ namespace MisOfertasFinal.LogicaNegocio
         /// <returns>LISTADO CON RUBROS</returns>
         public List<Modelo.Rubro> GetListadoRubros()
         {
-            using (EntitiesOfertas obEntitiesOfertas = new EntitiesOfertas())
+            using (Entities obEntitiesOfertas = new Entities())
             {
 
-                var query = (from q in obEntitiesOfertas.RUBROPRODUCTO
+                var query = (from q in obEntitiesOfertas.RUBRO
                              select new Modelo.Rubro
                              {
                                  DECIdRubro = q.ID_RUBRO,

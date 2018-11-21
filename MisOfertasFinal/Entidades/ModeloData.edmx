@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="CATGORIAPRODUCTO">
+      <Schema Namespace="ModelMO.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
           <Key>
-            <PropertyRef Name="ID_CATEGORIAPRODUCTO" />
+            <PropertyRef Name="ID_CATEGORIA" />
           </Key>
-          <Property Name="ID_CATEGORIAPRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE_CATEGORIAPROD" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_CATEGORIA" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="COMUNA">
           <Key>
@@ -46,15 +47,16 @@
           <Property Name="FECHA_LIMITE" Type="date" Nullable="false" />
           <Property Name="FECHA_REGISTRO" Type="date" Nullable="false" />
           <Property Name="PORCENTAJE_DESCUENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PRIORIDAD">
           <Key>
-            <PropertyRef Name="ID_VISITA" />
+            <PropertyRef Name="ID_PRIORIDAD" />
           </Key>
-          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRIORIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_1" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_2" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -66,10 +68,9 @@
           <Property Name="STOCK_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION_PRODUCTO" Type="varchar2" MaxLength="150" />
           <Property Name="IMAGEN_PRODUCTO" Type="blob" Nullable="false" />
-          <Property Name="RUBROPRODUCTO_ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="MARCA_ID_MARCA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CATPROD_ID_CATPROD" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="OFERTA_ID_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_MARCA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_OFERTA" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="REGION">
           <Key>
@@ -78,7 +79,7 @@
           <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_REGION" Type="varchar2" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="RUBROPRODUCTO">
+        <EntityType Name="RUBRO">
           <Key>
             <PropertyRef Name="ID_RUBRO" />
           </Key>
@@ -96,6 +97,7 @@
           <Property Name="DESCUENTO_OTORGADO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CODIGOBARRA" Type="blob" Nullable="false" />
           <Property Name="TOPE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" Nullable="false" />
         </EntityType>
         <EntityType Name="TIENDA">
           <Key>
@@ -105,8 +107,9 @@
           <Property Name="NOMBRE_TIENDA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="DIRECCION_TIENDA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="TELEFONO_TIENDA" Type="varchar2" MaxLength="12" Nullable="false" />
-          <Property Name="COMUNA_ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="EMPRESA_ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" />
         </EntityType>
         <EntityType Name="TIENDA_PRODUCO">
           <Key>
@@ -126,23 +129,20 @@
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
-            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="RUT_USUARIO" />
           </Key>
-          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" Nullable="false" />
           <Property Name="NOMBRE_USUARIO" Type="varchar2" MaxLength="25" Nullable="false" />
           <Property Name="APEPA_USUARIO" Type="varchar2" MaxLength="30" Nullable="false" />
           <Property Name="APEMA_USUARIO" Type="varchar2" MaxLength="30" Nullable="false" />
           <Property Name="CORREO_USUARIO" Type="varchar2" MaxLength="50" Nullable="false" />
-          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" Nullable="false" />
           <Property Name="DIRECCION_USUARIO" Type="varchar2" MaxLength="150" Nullable="false" />
-          <Property Name="TELEFONO_USUARIO" Type="varchar2" MaxLength="15" />
+          <Property Name="TELEFONO_USUARIO" Type="varchar2" MaxLength="15" Nullable="false" />
           <Property Name="PASSWORD_USUARIO" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="CORREOACTIVO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="PUNTOS_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="TIPOUSUARIO_ID_TIPOUSUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="COMUNA_ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRIORIDAD_ID_VISITA" Type="number" Precision="38" Scale="0" />
-          <Property Name="TIENDA_ID_TIENDA" Type="number" Precision="38" Scale="0" />
-          <Property Name="TICKETDESCUENTO_ID_TICKET" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_TIPOUSUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="VALORACION">
           <Key>
@@ -152,9 +152,21 @@
           <Property Name="CALIFICACION" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IMAGENBOLETA" Type="blob" Nullable="false" />
           <Property Name="NUMERO_BOLETA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USUARIO_ID_USUARIO" Type="number" Precision="38" Scale="0" />
-          <Property Name="OFERTA_ID_OFERTA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="varchar2" MaxLength="11" Nullable="false" />
         </EntityType>
+        <Association Name="CATGORIAPRODUCTO_FK">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="COMUNA_REGION_FK">
           <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
           <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
@@ -175,19 +187,31 @@
               <PropertyRef Name="ID_PRODUCTO" />
             </Principal>
             <Dependent Role="OFERTA">
-              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+              <PropertyRef Name="ID_PRODUCTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PRODUCTO_CATGORIAPRODUCTO_FK">
-          <End Role="CATGORIAPRODUCTO" Type="Self.CATGORIAPRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+        <Association Name="PRIORIDAD_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PRIORIDAD" Type="Self.PRIORIDAD" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CATGORIAPRODUCTO">
-              <PropertyRef Name="ID_CATEGORIAPRODUCTO" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="CATPROD_ID_CATPROD" />
+            <Dependent Role="PRIORIDAD">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="TIENDA_PRODUCO" Type="Self.TIENDA_PRODUCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TIENDA_PRODUCO">
+              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -199,31 +223,43 @@
               <PropertyRef Name="ID_MARCA" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="MARCA_ID_MARCA" />
+              <PropertyRef Name="ID_MARCA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="PRODUCTO_OFERTA_FK">
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OFERTA">
               <PropertyRef Name="ID_OFERTA" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="OFERTA_ID_OFERTA" />
+              <PropertyRef Name="ID_OFERTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PRODUCTO_RUBROPRODUCTO_FK">
-          <End Role="RUBROPRODUCTO" Type="Self.RUBROPRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+        <Association Name="RUBRO_FK">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RUBROPRODUCTO">
+            <Principal Role="RUBRO">
               <PropertyRef Name="ID_RUBRO" />
             </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="RUBROPRODUCTO_ID_RUBRO" />
+            <Dependent Role="CATEGORIA">
+              <PropertyRef Name="ID_RUBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TICKETDESCUENTO_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TICKETDESCUENTO" Type="Self.TICKETDESCUENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TICKETDESCUENTO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -235,7 +271,7 @@
               <PropertyRef Name="ID_COMUNA" />
             </Principal>
             <Dependent Role="TIENDA">
-              <PropertyRef Name="COMUNA_ID_COMUNA" />
+              <PropertyRef Name="ID_COMUNA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -247,19 +283,7 @@
               <PropertyRef Name="ID_EMPRESA" />
             </Principal>
             <Dependent Role="TIENDA">
-              <PropertyRef Name="EMPRESA_ID_EMPRESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TIENDA_PRODUCO_PRODUCTO_FK">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
-          <End Role="TIENDA_PRODUCO" Type="Self.TIENDA_PRODUCO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Principal>
-            <Dependent Role="TIENDA_PRODUCO">
-              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+              <PropertyRef Name="ID_EMPRESA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -275,6 +299,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="TIENDA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="USUARIO_COMUNA_FK">
           <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
@@ -283,43 +319,7 @@
               <PropertyRef Name="ID_COMUNA" />
             </Principal>
             <Dependent Role="USUARIO">
-              <PropertyRef Name="COMUNA_ID_COMUNA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="USUARIO_PRIORIDAD_FK">
-          <End Role="PRIORIDAD" Type="Self.PRIORIDAD" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRIORIDAD">
-              <PropertyRef Name="ID_VISITA" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="PRIORIDAD_ID_VISITA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="USUARIO_TICKETDESCUENTO_FK">
-          <End Role="TICKETDESCUENTO" Type="Self.TICKETDESCUENTO" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TICKETDESCUENTO">
-              <PropertyRef Name="ID_TICKET" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="TICKETDESCUENTO_ID_TICKET" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="USUARIO_TIENDA_FK">
-          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIENDA">
-              <PropertyRef Name="ID_TIENDA" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="TIENDA_ID_TIENDA" />
+              <PropertyRef Name="ID_COMUNA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -331,44 +331,46 @@
               <PropertyRef Name="ID_TIPOUSUARIO" />
             </Principal>
             <Dependent Role="USUARIO">
-              <PropertyRef Name="TIPOUSUARIO_ID_TIPOUSUARIO" />
+              <PropertyRef Name="ID_TIPOUSUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="VALORACION_OFERTA_FK">
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="0..1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
           <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OFERTA">
               <PropertyRef Name="ID_OFERTA" />
             </Principal>
             <Dependent Role="VALORACION">
-              <PropertyRef Name="OFERTA_ID_OFERTA" />
+              <PropertyRef Name="ID_OFERTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="VALORACION_USUARIO_FK">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
-              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
             <Dependent Role="VALORACION">
-              <PropertyRef Name="USUARIO_ID_USUARIO" />
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="CATGORIAPRODUCTO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATGORIAPRODUCTO_TAPI.DEL">
-          <Parameter Name="P_ID_CATEGORIAPRODUCTO" Type="number" Mode="In" />
+        <Function Name="CATEGORIA_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATEGORIA_TAPI.DEL">
+          <Parameter Name="P_ID_CATEGORIA" Type="number" Mode="In" />
         </Function>
-        <Function Name="CATGORIAPRODUCTO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATGORIAPRODUCTO_TAPI.INS">
-          <Parameter Name="P_ID_CATEGORIAPRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_NOMBRE_CATEGORIAPROD" Type="varchar2" Mode="In" />
+        <Function Name="CATEGORIA_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATEGORIA_TAPI.INS">
+          <Parameter Name="P_NOMBRE_CATEGORIA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_CATEGORIA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
         </Function>
-        <Function Name="CATGORIAPRODUCTO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATGORIAPRODUCTO_TAPI.UPD">
-          <Parameter Name="P_ID_CATEGORIAPRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_NOMBRE_CATEGORIAPROD" Type="varchar2" Mode="In" />
+        <Function Name="CATEGORIA_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="CATEGORIA_TAPI.UPD">
+          <Parameter Name="P_NOMBRE_CATEGORIA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_CATEGORIA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
         </Function>
         <Function Name="COMUNA_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="COMUNA_TAPI.DEL">
           <Parameter Name="P_ID_COMUNA" Type="number" Mode="In" />
@@ -398,12 +400,6 @@
           <Parameter Name="P_NOMBRE_EMPRESA" Type="varchar2" Mode="In" />
           <Parameter Name="P_GIRO" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="FN_CANTIDAD_PUNTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" ReturnType="number">
-          <Parameter Name="ID_USUARIO_PTO" Type="number" Mode="In" />
-        </Function>
-        <Function Name="FN_EXISTE_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" ReturnType="number">
-          <Parameter Name="ID_USUARIO_NEW" Type="number" Mode="In" />
-        </Function>
         <Function Name="MARCA_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="MARCA_TAPI.DEL">
           <Parameter Name="P_ID_MARCA" Type="number" Mode="In" />
         </Function>
@@ -419,35 +415,37 @@
           <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
         </Function>
         <Function Name="OFERTA_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="OFERTA_TAPI.INS">
-          <Parameter Name="P_PRODUCTO_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_MAXIMO_PRO" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_REGISTRO" Type="date" Mode="In" />
           <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_LIMITE" Type="date" Mode="In" />
           <Parameter Name="P_PORCENTAJE_DESCUENTO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_MINIMO_PRO" Type="number" Mode="In" />
         </Function>
         <Function Name="OFERTA_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="OFERTA_TAPI.UPD">
-          <Parameter Name="P_PRODUCTO_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_MAXIMO_PRO" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_REGISTRO" Type="date" Mode="In" />
           <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_LIMITE" Type="date" Mode="In" />
           <Parameter Name="P_PORCENTAJE_DESCUENTO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_MINIMO_PRO" Type="number" Mode="In" />
         </Function>
         <Function Name="PRIORIDAD_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="PRIORIDAD_TAPI.DEL">
-          <Parameter Name="P_ID_VISITA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PRIORIDAD" Type="number" Mode="In" />
         </Function>
         <Function Name="PRIORIDAD_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="PRIORIDAD_TAPI.INS">
+          <Parameter Name="P_ID_PRIORIDAD" Type="number" Mode="In" />
           <Parameter Name="P_PRODUCTO_1" Type="number" Mode="In" />
-          <Parameter Name="P_ID_VISITA" Type="number" Mode="In" />
           <Parameter Name="P_PRODUCTO_2" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="PRIORIDAD_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="PRIORIDAD_TAPI.UPD">
+          <Parameter Name="P_ID_PRIORIDAD" Type="number" Mode="In" />
           <Parameter Name="P_PRODUCTO_1" Type="number" Mode="In" />
-          <Parameter Name="P_ID_VISITA" Type="number" Mode="In" />
           <Parameter Name="P_PRODUCTO_2" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="PRODUCTO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="PRODUCTO_TAPI.DEL">
           <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
@@ -457,24 +455,22 @@
           <Parameter Name="P_NOMBRE_PRODUCTO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION_PRODUCTO" Type="varchar2" Mode="In" />
           <Parameter Name="P_STOCK_PRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_RUBROPRODUCTO_ID_RUBRO" Type="number" Mode="In" />
-          <Parameter Name="P_MARCA_ID_MARCA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_CATEGORIA" Type="number" Mode="In" />
           <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_PRECIO_PRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_OFERTA_ID_OFERTA" Type="number" Mode="In" />
-          <Parameter Name="P_CATPROD_ID_CATPROD" Type="number" Mode="In" />
+          <Parameter Name="P_ID_MARCA" Type="number" Mode="In" />
         </Function>
         <Function Name="PRODUCTO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="PRODUCTO_TAPI.UPD">
           <Parameter Name="P_IMAGEN_PRODUCTO" Type="blob" Mode="In" />
           <Parameter Name="P_NOMBRE_PRODUCTO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION_PRODUCTO" Type="varchar2" Mode="In" />
           <Parameter Name="P_STOCK_PRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_RUBROPRODUCTO_ID_RUBRO" Type="number" Mode="In" />
-          <Parameter Name="P_MARCA_ID_MARCA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_CATEGORIA" Type="number" Mode="In" />
           <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
           <Parameter Name="P_PRECIO_PRODUCTO" Type="number" Mode="In" />
-          <Parameter Name="P_OFERTA_ID_OFERTA" Type="number" Mode="In" />
-          <Parameter Name="P_CATPROD_ID_CATPROD" Type="number" Mode="In" />
+          <Parameter Name="P_ID_MARCA" Type="number" Mode="In" />
         </Function>
         <Function Name="REGION_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="REGION_TAPI.DEL">
           <Parameter Name="P_ID_REGION" Type="number" Mode="In" />
@@ -487,15 +483,15 @@
           <Parameter Name="P_NOMBRE_REGION" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_REGION" Type="number" Mode="In" />
         </Function>
-        <Function Name="RUBROPRODUCTO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBROPRODUCTO_TAPI.DEL">
+        <Function Name="RUBRO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBRO_TAPI.DEL">
           <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
         </Function>
-        <Function Name="RUBROPRODUCTO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBROPRODUCTO_TAPI.INS">
+        <Function Name="RUBRO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBRO_TAPI.INS">
           <Parameter Name="P_NOMBRE_RUBRO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
         </Function>
-        <Function Name="RUBROPRODUCTO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBROPRODUCTO_TAPI.UPD">
+        <Function Name="RUBRO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="RUBRO_TAPI.UPD">
           <Parameter Name="P_NOMBRE_RUBRO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_RUBRO" Type="number" Mode="In" />
@@ -506,6 +502,7 @@
         <Function Name="TICKETDESCUENTO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TICKETDESCUENTO_TAPI.INS">
           <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
           <Parameter Name="P_TOPE" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CODIGOBARRA" Type="blob" Mode="In" />
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_ID_TICKET" Type="number" Mode="In" />
@@ -514,29 +511,44 @@
         <Function Name="TICKETDESCUENTO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TICKETDESCUENTO_TAPI.UPD">
           <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
           <Parameter Name="P_TOPE" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CODIGOBARRA" Type="blob" Mode="In" />
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_ID_TICKET" Type="number" Mode="In" />
           <Parameter Name="P_DESCUENTO_OTORGADO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIENDA_PRODUCO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_PRODUCO_TAPI.DEL">
+          <Parameter Name="P_TIENDA_ID_TIENDA" Type="number" Mode="In" />
+          <Parameter Name="P_PRODUCTO_ID_PRODUCTO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIENDA_PRODUCO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_PRODUCO_TAPI.INS">
+          <Parameter Name="P_PRODUCTO_ID_PRODUCTO" Type="number" Mode="In" />
+          <Parameter Name="P_TIENDA_ID_TIENDA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="TIENDA_PRODUCO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_PRODUCO_TAPI.UPD">
+          <Parameter Name="P_PRODUCTO_ID_PRODUCTO" Type="number" Mode="In" />
+          <Parameter Name="P_TIENDA_ID_TIENDA" Type="number" Mode="In" />
         </Function>
         <Function Name="TIENDA_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_TAPI.DEL">
           <Parameter Name="P_ID_TIENDA" Type="number" Mode="In" />
         </Function>
         <Function Name="TIENDA_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_TAPI.INS">
           <Parameter Name="P_ID_TIENDA" Type="number" Mode="In" />
-          <Parameter Name="P_COMUNA_ID_COMUNA" Type="number" Mode="In" />
           <Parameter Name="P_TELEFONO_TIENDA" Type="varchar2" Mode="In" />
           <Parameter Name="P_DIRECCION_TIENDA" Type="varchar2" Mode="In" />
-          <Parameter Name="P_EMPRESA_ID_EMPRESA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_TIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_COMUNA" Type="number" Mode="In" />
         </Function>
         <Function Name="TIENDA_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIENDA_TAPI.UPD">
           <Parameter Name="P_ID_TIENDA" Type="number" Mode="In" />
-          <Parameter Name="P_COMUNA_ID_COMUNA" Type="number" Mode="In" />
           <Parameter Name="P_TELEFONO_TIENDA" Type="varchar2" Mode="In" />
           <Parameter Name="P_DIRECCION_TIENDA" Type="varchar2" Mode="In" />
-          <Parameter Name="P_EMPRESA_ID_EMPRESA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_EMPRESA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_TIENDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_COMUNA" Type="number" Mode="In" />
         </Function>
         <Function Name="TIPOUSUARIO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="TIPOUSUARIO_TAPI.DEL">
           <Parameter Name="P_ID_TIPOUSUARIO" Type="number" Mode="In" />
@@ -552,41 +564,35 @@
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="USUARIO_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="USUARIO_TAPI.DEL">
-          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="USUARIO_TAPI_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="USUARIO_TAPI.INS">
-          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_TIPOUSUARIO" Type="number" Mode="In" />
           <Parameter Name="P_DIRECCION_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREOACTIVO" Type="char" Mode="In" />
           <Parameter Name="P_APEPA_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_APEMA_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_TICKETDESCUENTO_ID_TICKET" Type="number" Mode="In" />
-          <Parameter Name="P_PASSWORD_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_PRIORIDAD_ID_VISITA" Type="number" Mode="In" />
-          <Parameter Name="P_COMUNA_ID_COMUNA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_TIPOUSUARIO_ID_TIPOUSUARIO" Type="number" Mode="In" />
-          <Parameter Name="P_TIENDA_ID_TIENDA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APEMA_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_PUNTOS_USUARIO" Type="number" Mode="In" />
           <Parameter Name="P_TELEFONO_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_COMUNA" Type="number" Mode="In" />
+          <Parameter Name="P_PASSWORD_USUARIO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="USUARIO_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="USUARIO_TAPI.UPD">
-          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_TIPOUSUARIO" Type="number" Mode="In" />
           <Parameter Name="P_DIRECCION_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREOACTIVO" Type="char" Mode="In" />
           <Parameter Name="P_APEPA_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_APEMA_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_TICKETDESCUENTO_ID_TICKET" Type="number" Mode="In" />
-          <Parameter Name="P_PASSWORD_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_PRIORIDAD_ID_VISITA" Type="number" Mode="In" />
-          <Parameter Name="P_COMUNA_ID_COMUNA" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_TIPOUSUARIO_ID_TIPOUSUARIO" Type="number" Mode="In" />
-          <Parameter Name="P_TIENDA_ID_TIENDA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APEMA_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_PUNTOS_USUARIO" Type="number" Mode="In" />
           <Parameter Name="P_TELEFONO_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_COMUNA" Type="number" Mode="In" />
+          <Parameter Name="P_PASSWORD_USUARIO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="VALORACION_TAPI_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="VALORACION_TAPI.DEL">
           <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
@@ -595,20 +601,20 @@
           <Parameter Name="P_IMAGENBOLETA" Type="blob" Mode="In" />
           <Parameter Name="P_CALIFICACION" Type="number" Mode="In" />
           <Parameter Name="P_NUMERO_BOLETA" Type="number" Mode="In" />
-          <Parameter Name="P_USUARIO_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
-          <Parameter Name="P_OFERTA_ID_OFERTA" Type="number" Mode="In" />
         </Function>
         <Function Name="VALORACION_TAPI_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MO2" StoreFunctionName="VALORACION_TAPI.UPD">
           <Parameter Name="P_IMAGENBOLETA" Type="blob" Mode="In" />
           <Parameter Name="P_CALIFICACION" Type="number" Mode="In" />
           <Parameter Name="P_NUMERO_BOLETA" Type="number" Mode="In" />
-          <Parameter Name="P_USUARIO_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_OFERTA" Type="number" Mode="In" />
+          <Parameter Name="P_RUT_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_VALORACION" Type="number" Mode="In" />
-          <Parameter Name="P_OFERTA_ID_OFERTA" Type="number" Mode="In" />
         </Function>
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="CATGORIAPRODUCTO" EntityType="Self.CATGORIAPRODUCTO" Schema="MO2" store:Type="Tables" />
+        <EntityContainer Name="ModelMOStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="MO2" store:Type="Tables" />
@@ -616,13 +622,17 @@
           <EntitySet Name="PRIORIDAD" EntityType="Self.PRIORIDAD" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="REGION" EntityType="Self.REGION" Schema="MO2" store:Type="Tables" />
-          <EntitySet Name="RUBROPRODUCTO" EntityType="Self.RUBROPRODUCTO" Schema="MO2" store:Type="Tables" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="TICKETDESCUENTO" EntityType="Self.TICKETDESCUENTO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="TIENDA" EntityType="Self.TIENDA" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="TIENDA_PRODUCO" EntityType="Self.TIENDA_PRODUCO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="TIPOUSUARIO" EntityType="Self.TIPOUSUARIO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="MO2" store:Type="Tables" />
           <EntitySet Name="VALORACION" EntityType="Self.VALORACION" Schema="MO2" store:Type="Tables" />
+          <AssociationSet Name="CATGORIAPRODUCTO_FK" Association="Self.CATGORIAPRODUCTO_FK">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
           <AssociationSet Name="COMUNA_REGION_FK" Association="Self.COMUNA_REGION_FK">
             <End Role="REGION" EntitySet="REGION" />
             <End Role="COMUNA" EntitySet="COMUNA" />
@@ -631,9 +641,13 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="OFERTA" EntitySet="OFERTA" />
           </AssociationSet>
-          <AssociationSet Name="PRODUCTO_CATGORIAPRODUCTO_FK" Association="Self.PRODUCTO_CATGORIAPRODUCTO_FK">
-            <End Role="CATGORIAPRODUCTO" EntitySet="CATGORIAPRODUCTO" />
+          <AssociationSet Name="PRIORIDAD_USUARIO_FK" Association="Self.PRIORIDAD_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_FK" Association="Self.PRODUCTO_FK">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="TIENDA_PRODUCO" EntitySet="TIENDA_PRODUCO" />
           </AssociationSet>
           <AssociationSet Name="PRODUCTO_MARCA_FK" Association="Self.PRODUCTO_MARCA_FK">
             <End Role="MARCA" EntitySet="MARCA" />
@@ -643,9 +657,13 @@
             <End Role="OFERTA" EntitySet="OFERTA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="PRODUCTO_RUBROPRODUCTO_FK" Association="Self.PRODUCTO_RUBROPRODUCTO_FK">
-            <End Role="RUBROPRODUCTO" EntitySet="RUBROPRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          <AssociationSet Name="RUBRO_FK" Association="Self.RUBRO_FK">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="TICKETDESCUENTO_USUARIO_FK" Association="Self.TICKETDESCUENTO_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TICKETDESCUENTO" EntitySet="TICKETDESCUENTO" />
           </AssociationSet>
           <AssociationSet Name="TIENDA_COMUNA_FK" Association="Self.TIENDA_COMUNA_FK">
             <End Role="COMUNA" EntitySet="COMUNA" />
@@ -655,28 +673,16 @@
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
-          <AssociationSet Name="TIENDA_PRODUCO_PRODUCTO_FK" Association="Self.TIENDA_PRODUCO_PRODUCTO_FK">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="TIENDA_PRODUCO" EntitySet="TIENDA_PRODUCO" />
-          </AssociationSet>
           <AssociationSet Name="TIENDA_PRODUCO_TIENDA_FK" Association="Self.TIENDA_PRODUCO_TIENDA_FK">
             <End Role="TIENDA" EntitySet="TIENDA" />
             <End Role="TIENDA_PRODUCO" EntitySet="TIENDA_PRODUCO" />
           </AssociationSet>
+          <AssociationSet Name="TIENDA_USUARIO_FK" Association="Self.TIENDA_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
+          </AssociationSet>
           <AssociationSet Name="USUARIO_COMUNA_FK" Association="Self.USUARIO_COMUNA_FK">
             <End Role="COMUNA" EntitySet="COMUNA" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="USUARIO_PRIORIDAD_FK" Association="Self.USUARIO_PRIORIDAD_FK">
-            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="USUARIO_TICKETDESCUENTO_FK" Association="Self.USUARIO_TICKETDESCUENTO_FK">
-            <End Role="TICKETDESCUENTO" EntitySet="TICKETDESCUENTO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="USUARIO_TIENDA_FK" Association="Self.USUARIO_TIENDA_FK">
-            <End Role="TIENDA" EntitySet="TIENDA" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_TIPOUSUARIO_FK" Association="Self.USUARIO_TIPOUSUARIO_FK">
@@ -696,14 +702,16 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CATGORIAPRODUCTO">
+      <Schema Namespace="ModelMO" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIA">
           <Key>
-            <PropertyRef Name="ID_CATEGORIAPRODUCTO" />
+            <PropertyRef Name="ID_CATEGORIA" />
           </Key>
-          <Property Name="ID_CATEGORIAPRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE_CATEGORIAPROD" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_CATGORIAPRODUCTO_FK" FromRole="CATGORIAPRODUCTO" ToRole="PRODUCTO" />
+          <Property Name="ID_CATEGORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_CATEGORIA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.CATGORIAPRODUCTO_FK" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="RUBRO" Relationship="Self.RUBRO_FK" FromRole="CATEGORIA" ToRole="RUBRO" />
         </EntityType>
         <EntityType Name="COMUNA">
           <Key>
@@ -744,19 +752,20 @@
           <Property Name="FECHA_LIMITE" Type="DateTime" Nullable="false" />
           <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" />
           <Property Name="PORCENTAJE_DESCUENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="PRODUCTO" Relationship="Self.OFERTA_PRODUCTO_FK" FromRole="OFERTA" ToRole="PRODUCTO" />
           <NavigationProperty Name="PRODUCTO1" Relationship="Self.PRODUCTO_OFERTA_FK" FromRole="OFERTA" ToRole="PRODUCTO" />
           <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_OFERTA_FK" FromRole="OFERTA" ToRole="VALORACION" />
         </EntityType>
         <EntityType Name="PRIORIDAD">
           <Key>
-            <PropertyRef Name="ID_VISITA" />
+            <PropertyRef Name="ID_PRIORIDAD" />
           </Key>
-          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRIORIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_1" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_2" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_PRIORIDAD_FK" FromRole="PRIORIDAD" ToRole="USUARIO" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.PRIORIDAD_USUARIO_FK" FromRole="PRIORIDAD" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -768,15 +777,13 @@
           <Property Name="STOCK_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION_PRODUCTO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="IMAGEN_PRODUCTO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="RUBROPRODUCTO_ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="MARCA_ID_MARCA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CATPROD_ID_CATPROD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="OFERTA_ID_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CATGORIAPRODUCTO" Relationship="Self.PRODUCTO_CATGORIAPRODUCTO_FK" FromRole="PRODUCTO" ToRole="CATGORIAPRODUCTO" />
+          <Property Name="ID_MARCA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_OFERTA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.CATGORIAPRODUCTO_FK" FromRole="PRODUCTO" ToRole="CATEGORIA" />
           <NavigationProperty Name="MARCA" Relationship="Self.PRODUCTO_MARCA_FK" FromRole="PRODUCTO" ToRole="MARCA" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="OFERTA" />
           <NavigationProperty Name="OFERTA1" Relationship="Self.PRODUCTO_OFERTA_FK" FromRole="PRODUCTO" ToRole="OFERTA" />
-          <NavigationProperty Name="RUBROPRODUCTO" Relationship="Self.PRODUCTO_RUBROPRODUCTO_FK" FromRole="PRODUCTO" ToRole="RUBROPRODUCTO" />
           <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_PRODUCO" FromRole="PRODUCTO" ToRole="TIENDA" />
         </EntityType>
         <EntityType Name="REGION">
@@ -787,14 +794,14 @@
           <Property Name="NOMBRE_REGION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_REGION_FK" FromRole="REGION" ToRole="COMUNA" />
         </EntityType>
-        <EntityType Name="RUBROPRODUCTO">
+        <EntityType Name="RUBRO">
           <Key>
             <PropertyRef Name="ID_RUBRO" />
           </Key>
           <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_RUBRO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_RUBROPRODUCTO_FK" FromRole="RUBROPRODUCTO" ToRole="PRODUCTO" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.RUBRO_FK" FromRole="RUBRO" ToRole="CATEGORIA" />
         </EntityType>
         <EntityType Name="TICKETDESCUENTO">
           <Key>
@@ -806,7 +813,8 @@
           <Property Name="DESCUENTO_OTORGADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CODIGOBARRA" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="TOPE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_TICKETDESCUENTO_FK" FromRole="TICKETDESCUENTO" ToRole="USUARIO" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.TICKETDESCUENTO_USUARIO_FK" FromRole="TICKETDESCUENTO" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="TIENDA">
           <Key>
@@ -816,11 +824,12 @@
           <Property Name="NOMBRE_TIENDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DIRECCION_TIENDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TELEFONO_TIENDA" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="COMUNA_ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="EMPRESA_ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.TIENDA_COMUNA_FK" FromRole="TIENDA" ToRole="COMUNA" />
           <NavigationProperty Name="EMPRESA" Relationship="Self.TIENDA_EMPRESA_FK" FromRole="TIENDA" ToRole="EMPRESA" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_TIENDA_FK" FromRole="TIENDA" ToRole="USUARIO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.TIENDA_USUARIO_FK" FromRole="TIENDA" ToRole="USUARIO" />
           <NavigationProperty Name="PRODUCTO" Relationship="Self.TIENDA_PRODUCO" FromRole="TIENDA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="TIPOUSUARIO">
@@ -834,27 +843,24 @@
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
-            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="RUT_USUARIO" />
           </Key>
-          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APEPA_USUARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APEMA_USUARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CORREO_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DIRECCION_USUARIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TELEFONO_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PASSWORD_USUARIO" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREOACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PUNTOS_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="TIPOUSUARIO_ID_TIPOUSUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="COMUNA_ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRIORIDAD_ID_VISITA" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="TIENDA_ID_TIENDA" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="TICKETDESCUENTO_ID_TICKET" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_TIPOUSUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.USUARIO_COMUNA_FK" FromRole="USUARIO" ToRole="COMUNA" />
-          <NavigationProperty Name="PRIORIDAD" Relationship="Self.USUARIO_PRIORIDAD_FK" FromRole="USUARIO" ToRole="PRIORIDAD" />
-          <NavigationProperty Name="TICKETDESCUENTO" Relationship="Self.USUARIO_TICKETDESCUENTO_FK" FromRole="USUARIO" ToRole="TICKETDESCUENTO" />
-          <NavigationProperty Name="TIENDA" Relationship="Self.USUARIO_TIENDA_FK" FromRole="USUARIO" ToRole="TIENDA" />
+          <NavigationProperty Name="PRIORIDAD" Relationship="Self.PRIORIDAD_USUARIO_FK" FromRole="USUARIO" ToRole="PRIORIDAD" />
+          <NavigationProperty Name="TICKETDESCUENTO" Relationship="Self.TICKETDESCUENTO_USUARIO_FK" FromRole="USUARIO" ToRole="TICKETDESCUENTO" />
+          <NavigationProperty Name="TIENDA" Relationship="Self.TIENDA_USUARIO_FK" FromRole="USUARIO" ToRole="TIENDA" />
           <NavigationProperty Name="TIPOUSUARIO" Relationship="Self.USUARIO_TIPOUSUARIO_FK" FromRole="USUARIO" ToRole="TIPOUSUARIO" />
           <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_USUARIO_FK" FromRole="USUARIO" ToRole="VALORACION" />
         </EntityType>
@@ -866,20 +872,32 @@
           <Property Name="CALIFICACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IMAGENBOLETA" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="NUMERO_BOLETA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USUARIO_ID_USUARIO" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="OFERTA_ID_OFERTA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="OFERTA" Relationship="Self.VALORACION_OFERTA_FK" FromRole="VALORACION" ToRole="OFERTA" />
           <NavigationProperty Name="USUARIO" Relationship="Self.VALORACION_USUARIO_FK" FromRole="VALORACION" ToRole="USUARIO" />
         </EntityType>
-        <Association Name="PRODUCTO_CATGORIAPRODUCTO_FK">
-          <End Role="CATGORIAPRODUCTO" Type="Self.CATGORIAPRODUCTO" Multiplicity="1" />
+        <Association Name="CATGORIAPRODUCTO_FK">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CATGORIAPRODUCTO">
-              <PropertyRef Name="ID_CATEGORIAPRODUCTO" />
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="ID_CATEGORIA" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="CATPROD_ID_CATPROD" />
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RUBRO_FK">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="ID_RUBRO" />
+            </Principal>
+            <Dependent Role="CATEGORIA">
+              <PropertyRef Name="ID_RUBRO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -903,7 +921,7 @@
               <PropertyRef Name="ID_COMUNA" />
             </Principal>
             <Dependent Role="TIENDA">
-              <PropertyRef Name="COMUNA_ID_COMUNA" />
+              <PropertyRef Name="ID_COMUNA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -915,7 +933,7 @@
               <PropertyRef Name="ID_COMUNA" />
             </Principal>
             <Dependent Role="USUARIO">
-              <PropertyRef Name="COMUNA_ID_COMUNA" />
+              <PropertyRef Name="ID_COMUNA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -927,7 +945,7 @@
               <PropertyRef Name="ID_EMPRESA" />
             </Principal>
             <Dependent Role="TIENDA">
-              <PropertyRef Name="EMPRESA_ID_EMPRESA" />
+              <PropertyRef Name="ID_EMPRESA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -939,7 +957,7 @@
               <PropertyRef Name="ID_MARCA" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="MARCA_ID_MARCA" />
+              <PropertyRef Name="ID_MARCA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -951,79 +969,67 @@
               <PropertyRef Name="ID_PRODUCTO" />
             </Principal>
             <Dependent Role="OFERTA">
-              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+              <PropertyRef Name="ID_PRODUCTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="PRODUCTO_OFERTA_FK">
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="0..1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OFERTA">
               <PropertyRef Name="ID_OFERTA" />
             </Principal>
             <Dependent Role="PRODUCTO">
-              <PropertyRef Name="OFERTA_ID_OFERTA" />
+              <PropertyRef Name="ID_OFERTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="VALORACION_OFERTA_FK">
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="0..1" />
+          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
           <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OFERTA">
               <PropertyRef Name="ID_OFERTA" />
             </Principal>
             <Dependent Role="VALORACION">
-              <PropertyRef Name="OFERTA_ID_OFERTA" />
+              <PropertyRef Name="ID_OFERTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="USUARIO_PRIORIDAD_FK">
-          <End Role="PRIORIDAD" Type="Self.PRIORIDAD" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+        <Association Name="PRIORIDAD_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PRIORIDAD" Type="Self.PRIORIDAD" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRIORIDAD">
-              <PropertyRef Name="ID_VISITA" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="PRIORIDAD_ID_VISITA" />
+            <Dependent Role="PRIORIDAD">
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PRODUCTO_RUBROPRODUCTO_FK">
-          <End Role="RUBROPRODUCTO" Type="Self.RUBROPRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+        <Association Name="TICKETDESCUENTO_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TICKETDESCUENTO" Type="Self.TICKETDESCUENTO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RUBROPRODUCTO">
-              <PropertyRef Name="ID_RUBRO" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="RUBROPRODUCTO_ID_RUBRO" />
+            <Dependent Role="TICKETDESCUENTO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="USUARIO_TICKETDESCUENTO_FK">
-          <End Role="TICKETDESCUENTO" Type="Self.TICKETDESCUENTO" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+        <Association Name="TIENDA_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TICKETDESCUENTO">
-              <PropertyRef Name="ID_TICKET" />
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="TICKETDESCUENTO_ID_TICKET" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="USUARIO_TIENDA_FK">
-          <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIENDA">
-              <PropertyRef Name="ID_TIENDA" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="TIENDA_ID_TIENDA" />
+            <Dependent Role="TIENDA">
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1035,19 +1041,19 @@
               <PropertyRef Name="ID_TIPOUSUARIO" />
             </Principal>
             <Dependent Role="USUARIO">
-              <PropertyRef Name="TIPOUSUARIO_ID_TIPOUSUARIO" />
+              <PropertyRef Name="ID_TIPOUSUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="VALORACION_USUARIO_FK">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
-              <PropertyRef Name="ID_USUARIO" />
+              <PropertyRef Name="RUT_USUARIO" />
             </Principal>
             <Dependent Role="VALORACION">
-              <PropertyRef Name="USUARIO_ID_USUARIO" />
+              <PropertyRef Name="RUT_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1055,8 +1061,8 @@
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <End Role="TIENDA" Type="Self.TIENDA" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="EntitiesOfertas" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CATGORIAPRODUCTO" EntityType="Self.CATGORIAPRODUCTO" />
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
           <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
           <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" />
           <EntitySet Name="MARCA" EntityType="Self.MARCA" />
@@ -1064,15 +1070,19 @@
           <EntitySet Name="PRIORIDAD" EntityType="Self.PRIORIDAD" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
           <EntitySet Name="REGION" EntityType="Self.REGION" />
-          <EntitySet Name="RUBROPRODUCTO" EntityType="Self.RUBROPRODUCTO" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" />
           <EntitySet Name="TICKETDESCUENTO" EntityType="Self.TICKETDESCUENTO" />
           <EntitySet Name="TIENDA" EntityType="Self.TIENDA" />
           <EntitySet Name="TIPOUSUARIO" EntityType="Self.TIPOUSUARIO" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <EntitySet Name="VALORACION" EntityType="Self.VALORACION" />
-          <AssociationSet Name="PRODUCTO_CATGORIAPRODUCTO_FK" Association="Self.PRODUCTO_CATGORIAPRODUCTO_FK">
-            <End Role="CATGORIAPRODUCTO" EntitySet="CATGORIAPRODUCTO" />
+          <AssociationSet Name="CATGORIAPRODUCTO_FK" Association="Self.CATGORIAPRODUCTO_FK">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="RUBRO_FK" Association="Self.RUBRO_FK">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
           </AssociationSet>
           <AssociationSet Name="COMUNA_REGION_FK" Association="Self.COMUNA_REGION_FK">
             <End Role="REGION" EntitySet="REGION" />
@@ -1106,21 +1116,17 @@
             <End Role="OFERTA" EntitySet="OFERTA" />
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
-          <AssociationSet Name="USUARIO_PRIORIDAD_FK" Association="Self.USUARIO_PRIORIDAD_FK">
+          <AssociationSet Name="PRIORIDAD_USUARIO_FK" Association="Self.PRIORIDAD_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="TICKETDESCUENTO_USUARIO_FK" Association="Self.TICKETDESCUENTO_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="PRODUCTO_RUBROPRODUCTO_FK" Association="Self.PRODUCTO_RUBROPRODUCTO_FK">
-            <End Role="RUBROPRODUCTO" EntitySet="RUBROPRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="USUARIO_TICKETDESCUENTO_FK" Association="Self.USUARIO_TICKETDESCUENTO_FK">
             <End Role="TICKETDESCUENTO" EntitySet="TICKETDESCUENTO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="USUARIO_TIENDA_FK" Association="Self.USUARIO_TIENDA_FK">
-            <End Role="TIENDA" EntitySet="TIENDA" />
+          <AssociationSet Name="TIENDA_USUARIO_FK" Association="Self.TIENDA_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_TIPOUSUARIO_FK" Association="Self.USUARIO_TIPOUSUARIO_FK">
             <End Role="TIPOUSUARIO" EntitySet="TIPOUSUARIO" />
@@ -1134,22 +1140,19 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="TIENDA" EntitySet="TIENDA" />
           </AssociationSet>
-          <FunctionImport Name="insertarUsuario">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          <FunctionImport Name="USUARIO_TAPI_INS">
+            <Parameter Name="P_ID_TIPOUSUARIO" Mode="In" Type="Decimal" />
             <Parameter Name="P_DIRECCION_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREOACTIVO" Mode="In" Type="String" />
             <Parameter Name="P_APEPA_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_APEMA_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_TICKETDESCUENTO_ID_TICKET" Mode="In" Type="Decimal" />
-            <Parameter Name="P_PASSWORD_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_PRIORIDAD_ID_VISITA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_COMUNA_ID_COMUNA" Mode="In" Type="Decimal" />
             <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_TIPOUSUARIO_ID_TIPOUSUARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIENDA_ID_TIENDA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
             <Parameter Name="P_CORREO_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APEMA_USUARIO" Mode="In" Type="String" />
             <Parameter Name="P_PUNTOS_USUARIO" Mode="In" Type="Decimal" />
             <Parameter Name="P_TELEFONO_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_COMUNA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PASSWORD_USUARIO" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1157,17 +1160,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesOfertas">
-          <EntitySetMapping Name="CATGORIAPRODUCTO">
-            <EntityTypeMapping TypeName="Model.CATGORIAPRODUCTO">
-              <MappingFragment StoreEntitySet="CATGORIAPRODUCTO">
-                <ScalarProperty Name="ID_CATEGORIAPRODUCTO" ColumnName="ID_CATEGORIAPRODUCTO" />
-                <ScalarProperty Name="NOMBRE_CATEGORIAPROD" ColumnName="NOMBRE_CATEGORIAPROD" />
+        <EntityContainerMapping StorageEntityContainer="ModelMOStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CATEGORIA">
+            <EntityTypeMapping TypeName="ModelMO.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIA">
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="NOMBRE_CATEGORIA" ColumnName="NOMBRE_CATEGORIA" />
+                <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMUNA">
-            <EntityTypeMapping TypeName="Model.COMUNA">
+            <EntityTypeMapping TypeName="ModelMO.COMUNA">
               <MappingFragment StoreEntitySet="COMUNA">
                 <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
                 <ScalarProperty Name="NOMBRE_COMUNA" ColumnName="NOMBRE_COMUNA" />
@@ -1176,7 +1180,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPRESA">
-            <EntityTypeMapping TypeName="Model.EMPRESA">
+            <EntityTypeMapping TypeName="ModelMO.EMPRESA">
               <MappingFragment StoreEntitySet="EMPRESA">
                 <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
                 <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
@@ -1186,7 +1190,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MARCA">
-            <EntityTypeMapping TypeName="Model.MARCA">
+            <EntityTypeMapping TypeName="ModelMO.MARCA">
               <MappingFragment StoreEntitySet="MARCA">
                 <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
                 <ScalarProperty Name="NOMBRE_MARCA" ColumnName="NOMBRE_MARCA" />
@@ -1194,7 +1198,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OFERTA">
-            <EntityTypeMapping TypeName="Model.OFERTA">
+            <EntityTypeMapping TypeName="ModelMO.OFERTA">
               <MappingFragment StoreEntitySet="OFERTA">
                 <ScalarProperty Name="ID_OFERTA" ColumnName="ID_OFERTA" />
                 <ScalarProperty Name="MAXIMO_PRO" ColumnName="MAXIMO_PRO" />
@@ -1202,21 +1206,22 @@
                 <ScalarProperty Name="FECHA_LIMITE" ColumnName="FECHA_LIMITE" />
                 <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
                 <ScalarProperty Name="PORCENTAJE_DESCUENTO" ColumnName="PORCENTAJE_DESCUENTO" />
-                <ScalarProperty Name="PRODUCTO_ID_PRODUCTO" ColumnName="PRODUCTO_ID_PRODUCTO" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRIORIDAD">
-            <EntityTypeMapping TypeName="Model.PRIORIDAD">
+            <EntityTypeMapping TypeName="ModelMO.PRIORIDAD">
               <MappingFragment StoreEntitySet="PRIORIDAD">
-                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+                <ScalarProperty Name="ID_PRIORIDAD" ColumnName="ID_PRIORIDAD" />
                 <ScalarProperty Name="PRODUCTO_1" ColumnName="PRODUCTO_1" />
                 <ScalarProperty Name="PRODUCTO_2" ColumnName="PRODUCTO_2" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="Model.PRODUCTO">
+            <EntityTypeMapping TypeName="ModelMO.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
                 <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
                 <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
@@ -1224,24 +1229,23 @@
                 <ScalarProperty Name="STOCK_PRODUCTO" ColumnName="STOCK_PRODUCTO" />
                 <ScalarProperty Name="DESCRIPCION_PRODUCTO" ColumnName="DESCRIPCION_PRODUCTO" />
                 <ScalarProperty Name="IMAGEN_PRODUCTO" ColumnName="IMAGEN_PRODUCTO" />
-                <ScalarProperty Name="RUBROPRODUCTO_ID_RUBRO" ColumnName="RUBROPRODUCTO_ID_RUBRO" />
-                <ScalarProperty Name="MARCA_ID_MARCA" ColumnName="MARCA_ID_MARCA" />
-                <ScalarProperty Name="CATPROD_ID_CATPROD" ColumnName="CATPROD_ID_CATPROD" />
-                <ScalarProperty Name="OFERTA_ID_OFERTA" ColumnName="OFERTA_ID_OFERTA" />
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="ID_OFERTA" ColumnName="ID_OFERTA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REGION">
-            <EntityTypeMapping TypeName="Model.REGION">
+            <EntityTypeMapping TypeName="ModelMO.REGION">
               <MappingFragment StoreEntitySet="REGION">
                 <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
                 <ScalarProperty Name="NOMBRE_REGION" ColumnName="NOMBRE_REGION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RUBROPRODUCTO">
-            <EntityTypeMapping TypeName="Model.RUBROPRODUCTO">
-              <MappingFragment StoreEntitySet="RUBROPRODUCTO">
+          <EntitySetMapping Name="RUBRO">
+            <EntityTypeMapping TypeName="ModelMO.RUBRO">
+              <MappingFragment StoreEntitySet="RUBRO">
                 <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
                 <ScalarProperty Name="NOMBRE_RUBRO" ColumnName="NOMBRE_RUBRO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
@@ -1249,7 +1253,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TICKETDESCUENTO">
-            <EntityTypeMapping TypeName="Model.TICKETDESCUENTO">
+            <EntityTypeMapping TypeName="ModelMO.TICKETDESCUENTO">
               <MappingFragment StoreEntitySet="TICKETDESCUENTO">
                 <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
@@ -1257,23 +1261,25 @@
                 <ScalarProperty Name="DESCUENTO_OTORGADO" ColumnName="DESCUENTO_OTORGADO" />
                 <ScalarProperty Name="CODIGOBARRA" ColumnName="CODIGOBARRA" />
                 <ScalarProperty Name="TOPE" ColumnName="TOPE" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIENDA">
-            <EntityTypeMapping TypeName="Model.TIENDA">
+            <EntityTypeMapping TypeName="ModelMO.TIENDA">
               <MappingFragment StoreEntitySet="TIENDA">
                 <ScalarProperty Name="ID_TIENDA" ColumnName="ID_TIENDA" />
                 <ScalarProperty Name="NOMBRE_TIENDA" ColumnName="NOMBRE_TIENDA" />
                 <ScalarProperty Name="DIRECCION_TIENDA" ColumnName="DIRECCION_TIENDA" />
                 <ScalarProperty Name="TELEFONO_TIENDA" ColumnName="TELEFONO_TIENDA" />
-                <ScalarProperty Name="COMUNA_ID_COMUNA" ColumnName="COMUNA_ID_COMUNA" />
-                <ScalarProperty Name="EMPRESA_ID_EMPRESA" ColumnName="EMPRESA_ID_EMPRESA" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPOUSUARIO">
-            <EntityTypeMapping TypeName="Model.TIPOUSUARIO">
+            <EntityTypeMapping TypeName="ModelMO.TIPOUSUARIO">
               <MappingFragment StoreEntitySet="TIPOUSUARIO">
                 <ScalarProperty Name="ID_TIPOUSUARIO" ColumnName="ID_TIPOUSUARIO" />
                 <ScalarProperty Name="NOMBRE_TIPOUSUARIO" ColumnName="NOMBRE_TIPOUSUARIO" />
@@ -1282,39 +1288,36 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
-            <EntityTypeMapping TypeName="Model.USUARIO">
+            <EntityTypeMapping TypeName="ModelMO.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
-                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
                 <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
                 <ScalarProperty Name="APEPA_USUARIO" ColumnName="APEPA_USUARIO" />
                 <ScalarProperty Name="APEMA_USUARIO" ColumnName="APEMA_USUARIO" />
                 <ScalarProperty Name="CORREO_USUARIO" ColumnName="CORREO_USUARIO" />
-                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
                 <ScalarProperty Name="DIRECCION_USUARIO" ColumnName="DIRECCION_USUARIO" />
                 <ScalarProperty Name="TELEFONO_USUARIO" ColumnName="TELEFONO_USUARIO" />
                 <ScalarProperty Name="PASSWORD_USUARIO" ColumnName="PASSWORD_USUARIO" />
+                <ScalarProperty Name="CORREOACTIVO" ColumnName="CORREOACTIVO" />
                 <ScalarProperty Name="PUNTOS_USUARIO" ColumnName="PUNTOS_USUARIO" />
-                <ScalarProperty Name="TIPOUSUARIO_ID_TIPOUSUARIO" ColumnName="TIPOUSUARIO_ID_TIPOUSUARIO" />
-                <ScalarProperty Name="COMUNA_ID_COMUNA" ColumnName="COMUNA_ID_COMUNA" />
-                <ScalarProperty Name="PRIORIDAD_ID_VISITA" ColumnName="PRIORIDAD_ID_VISITA" />
-                <ScalarProperty Name="TIENDA_ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
-                <ScalarProperty Name="TICKETDESCUENTO_ID_TICKET" ColumnName="TICKETDESCUENTO_ID_TICKET" />
+                <ScalarProperty Name="ID_TIPOUSUARIO" ColumnName="ID_TIPOUSUARIO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VALORACION">
-            <EntityTypeMapping TypeName="Model.VALORACION">
+            <EntityTypeMapping TypeName="ModelMO.VALORACION">
               <MappingFragment StoreEntitySet="VALORACION">
                 <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
                 <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
                 <ScalarProperty Name="IMAGENBOLETA" ColumnName="IMAGENBOLETA" />
                 <ScalarProperty Name="NUMERO_BOLETA" ColumnName="NUMERO_BOLETA" />
-                <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
-                <ScalarProperty Name="OFERTA_ID_OFERTA" ColumnName="OFERTA_ID_OFERTA" />
+                <ScalarProperty Name="ID_OFERTA" ColumnName="ID_OFERTA" />
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="TIENDA_PRODUCO" TypeName="Model.TIENDA_PRODUCO" StoreEntitySet="TIENDA_PRODUCO">
+          <AssociationSetMapping Name="TIENDA_PRODUCO" TypeName="ModelMO.TIENDA_PRODUCO" StoreEntitySet="TIENDA_PRODUCO">
             <EndProperty Name="PRODUCTO">
               <ScalarProperty Name="ID_PRODUCTO" ColumnName="PRODUCTO_ID_PRODUCTO" />
             </EndProperty>
@@ -1322,7 +1325,7 @@
               <ScalarProperty Name="ID_TIENDA" ColumnName="TIENDA_ID_TIENDA" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="insertarUsuario" FunctionName="Model.Store.USUARIO_TAPI_INS" />
+          <FunctionImportMapping FunctionImportName="USUARIO_TAPI_INS" FunctionName="ModelMO.Store.USUARIO_TAPI_INS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

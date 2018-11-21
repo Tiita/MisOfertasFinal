@@ -18,8 +18,8 @@ namespace MisOfertasFinal.Entidades
         public decimal CALIFICACION { get; set; }
         public byte[] IMAGENBOLETA { get; set; }
         public decimal NUMERO_BOLETA { get; set; }
-        public Nullable<decimal> USUARIO_ID_USUARIO { get; set; }
-        public Nullable<decimal> OFERTA_ID_OFERTA { get; set; }
+        public decimal ID_OFERTA { get; set; }
+        public string RUT_USUARIO { get; set; }
     
         public virtual OFERTA OFERTA { get; set; }
         public virtual USUARIO USUARIO { get; set; }

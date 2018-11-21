@@ -44,11 +44,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.18.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -77,6 +85,16 @@
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="css\sweetalert.css" />
+    <Content Include="Entidades\ModeloData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloData.edmx</DependentUpon>
+      <LastGenOutput>ModeloData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entidades\ModeloData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloData.edmx</DependentUpon>
+      <LastGenOutput>ModeloData.cs</LastGenOutput>
+    </Content>
     <Content Include="Imagenes\Iconocompleto.png" />
     <Content Include="Imagenes\iconoV2.png" />
     <Content Include="js\sb-admin-charts.js" />
@@ -86,43 +104,56 @@
     <Content Include="js\sb-admin.js" />
     <Content Include="js\sb-admin.min.js" />
     <Content Include="js\sweetalert.min.js" />
-    <Content Include="Entidades\ModelOfertas.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelOfertas.Context.cs</LastGenOutput>
-      <DependentUpon>ModelOfertas.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entidades\ModelOfertas.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelOfertas.edmx</DependentUpon>
-      <LastGenOutput>ModelOfertas.cs</LastGenOutput>
-    </Content>
-    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
-    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
-    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
-    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
-    <Content Include="vendor\bootstrap\css\bootstrap.css" />
-    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
-    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
-    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
-    <Content Include="vendor\bootstrap\js\bootstrap.js" />
-    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.min.js" />
-    <Content Include="vendor\chart.js\Chart.js" />
-    <Content Include="vendor\chart.js\Chart.min.js" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.js" />
-    <Content Include="vendor\datatables\jquery.dataTables.js" />
-    <Content Include="vendor\font-awesome\css\font-awesome.css" />
-    <Content Include="vendor\font-awesome\css\font-awesome.min.css" />
-    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="vendor\jquery-easing\jquery.easing.compatibility.js" />
-    <Content Include="vendor\jquery-easing\jquery.easing.js" />
-    <Content Include="vendor\jquery-easing\jquery.easing.min.js" />
-    <Content Include="vendor\jquery\jquery.js" />
-    <Content Include="vendor\jquery\jquery.min.js" />
-    <Content Include="vendor\jquery\jquery.slim.js" />
-    <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Maqueta\css\bootstrap.min.css" />
+    <Content Include="Maqueta\css\font-awesome.min.css" />
+    <Content Include="Maqueta\css\nouislider.min.css" />
+    <Content Include="Maqueta\css\slick-theme.css" />
+    <Content Include="Maqueta\css\slick.css" />
+    <Content Include="Maqueta\css\style.css" />
+    <Content Include="Maqueta\js\bootstrap.min.js" />
+    <Content Include="Maqueta\js\jquery.min.js" />
+    <Content Include="Maqueta\js\jquery.zoom.min.js" />
+    <Content Include="Maqueta\js\main.js" />
+    <Content Include="Maqueta\js\nouislider.min.js" />
+    <Content Include="Maqueta\js\slick.min.js" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap.css" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.js" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Maqueta\visual\chart.js\Chart.bundle.js" />
+    <Content Include="Maqueta\visual\chart.js\Chart.bundle.min.js" />
+    <Content Include="Maqueta\visual\chart.js\Chart.js" />
+    <Content Include="Maqueta\visual\chart.js\Chart.min.js" />
+    <Content Include="Maqueta\visual\css\sb-admin.css" />
+    <Content Include="Maqueta\visual\css\sb-admin.min.css" />
+    <Content Include="Maqueta\visual\css\sweetalert.css" />
+    <Content Include="Maqueta\visual\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Maqueta\visual\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Maqueta\visual\datatables\jquery.dataTables.js" />
+    <Content Include="Maqueta\visual\font-awesome\css\font-awesome.css" />
+    <Content Include="Maqueta\visual\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Maqueta\visual\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Maqueta\visual\jquery-easing\jquery.easing.js" />
+    <Content Include="Maqueta\visual\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Maqueta\visual\jquery\jquery.js" />
+    <Content Include="Maqueta\visual\jquery\jquery.min.js" />
+    <Content Include="Maqueta\visual\jquery\jquery.slim.js" />
+    <Content Include="Maqueta\visual\jquery\jquery.slim.min.js" />
+    <Content Include="Maqueta\visual\js\sb-admin-charts.js" />
+    <Content Include="Maqueta\visual\js\sb-admin-charts.min.js" />
+    <Content Include="Maqueta\visual\js\sb-admin-datatables.js" />
+    <Content Include="Maqueta\visual\js\sb-admin-datatables.min.js" />
+    <Content Include="Maqueta\visual\js\sb-admin.js" />
+    <Content Include="Maqueta\visual\js\sb-admin.min.js" />
+    <Content Include="Maqueta\visual\js\sweetalert.min.js" />
+    <Content Include="Pruebas\frmPrueba.aspx" />
     <Content Include="Views\ConsultarPuntos\ConsultarPuntos.aspx" />
     <Content Include="Views\GenerarTicketDscto\GenerarTicketDscto.aspx" />
     <Content Include="Views\Index\Index.aspx" />
@@ -132,53 +163,78 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Entidades\CATGORIAPRODUCTO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrarUsuarioController.cs" />
+    <Compile Include="Entidades\CATEGORIA.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\COMUNA.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Entidades\EMPRESA.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogicaNegocio\LnCategoria.cs" />
-    <Compile Include="LogicaNegocio\LnMarca.cs" />
-    <Compile Include="LogicaNegocio\LnProducto.cs" />
-    <Compile Include="LogicaNegocio\LnRubro.cs" />
-    <Compile Include="LogicaNegocio\LnUsuario.cs" />
     <Compile Include="Entidades\MARCA.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\ModelOfertas.Context.cs">
+    <Compile Include="Entidades\ModeloData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelOfertas.Context.tt</DependentUpon>
+      <DependentUpon>ModeloData.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\ModelOfertas.cs">
+    <Compile Include="Entidades\ModeloData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\ModelOfertas.Designer.cs">
+    <Compile Include="Entidades\ModeloData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelOfertas.edmx</DependentUpon>
+      <DependentUpon>ModeloData.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entidades\OFERTA.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\PRIORIDAD.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\PRODUCTO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+      <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\REGION.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\RUBRO.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\TICKETDESCUENTO.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\TIENDA.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\TIPOUSUARIO.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\USUARIO.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\VALORACION.cs">
+      <DependentUpon>ModeloData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogicaNegocio\LnCategoria.cs" />
+    <Compile Include="LogicaNegocio\LnComuna.cs" />
+    <Compile Include="LogicaNegocio\LnMarca.cs" />
+    <Compile Include="LogicaNegocio\LnProducto.cs" />
+    <Compile Include="LogicaNegocio\LnRegion.cs" />
+    <Compile Include="LogicaNegocio\LnRubro.cs" />
+    <Compile Include="LogicaNegocio\LnUsuario.cs" />
     <Compile Include="Modelo\Categoria.cs" />
     <Compile Include="Modelo\Comuna.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Prioridad.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\Region.cs" />
     <Compile Include="Modelo\Rubro.cs" />
     <Compile Include="Modelo\TicketDescuento.cs" />
     <Compile Include="Modelo\Tienda.cs" />
@@ -186,8 +242,12 @@
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Valoracion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entidades\REGION.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
+    <Compile Include="Pruebas\frmPrueba.aspx.cs">
+      <DependentUpon>frmPrueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pruebas\frmPrueba.aspx.designer.cs">
+      <DependentUpon>frmPrueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Template\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
@@ -195,24 +255,6 @@
     </Compile>
     <Compile Include="Resources\Template\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\RUBROPRODUCTO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\TICKETDESCUENTO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\TIENDA.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\TIPOUSUARIO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\USUARIO.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entidades\VALORACION.cs">
-      <DependentUpon>ModelOfertas.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultarPuntos\ConsultarPuntos.aspx.cs">
       <DependentUpon>ConsultarPuntos.aspx</DependentUpon>
@@ -251,57 +293,65 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Entidades\ModelOfertas.edmx">
+    <EntityDeploy Include="Entidades\ModeloData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelOfertas.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeloData.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entidades\ModelOfertas.edmx.diagram">
-      <DependentUpon>ModelOfertas.edmx</DependentUpon>
+    <Content Include="Entidades\ModeloData.edmx.diagram">
+      <DependentUpon>ModeloData.edmx</DependentUpon>
     </Content>
+    <Content Include="Maqueta\fonts\fontawesome-webfont.eot" />
+    <Content Include="Maqueta\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Maqueta\fonts\fontawesome-webfont.woff" />
+    <Content Include="Maqueta\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Maqueta\fonts\FontAwesome.otf" />
+    <Content Include="Maqueta\fonts\slick.eot" />
+    <Content Include="Maqueta\fonts\slick.ttf" />
+    <Content Include="Maqueta\fonts\slick.woff" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Maqueta\visual\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Maqueta\visual\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Maqueta\visual\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Maqueta\visual\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Maqueta\visual\font-awesome\less\animated.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\core.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\fixed-width.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\font-awesome.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\icons.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\larger.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\list.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\mixins.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\path.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\screen-reader.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\stacked.less" />
+    <Content Include="Maqueta\visual\font-awesome\less\variables.less" />
+    <Content Include="Maqueta\visual\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_animated.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_core.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_icons.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_larger.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_list.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_mixins.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_path.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_stacked.scss" />
+    <Content Include="Maqueta\visual\font-awesome\scss\_variables.scss" />
+    <Content Include="Maqueta\visual\jquery\jquery.min.map" />
+    <Content Include="Maqueta\visual\jquery\jquery.slim.min.map" />
     <None Include="packages.config" />
     <Content Include="Resources\Template\Template.Master" />
-    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Include="vendor\bootstrap\js\bootstrap.js.map" />
-    <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
-    <Content Include="vendor\font-awesome\css\font-awesome.css.map" />
-    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="vendor\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="vendor\font-awesome\less\animated.less" />
-    <Content Include="vendor\font-awesome\less\bordered-pulled.less" />
-    <Content Include="vendor\font-awesome\less\core.less" />
-    <Content Include="vendor\font-awesome\less\fixed-width.less" />
-    <Content Include="vendor\font-awesome\less\font-awesome.less" />
-    <Content Include="vendor\font-awesome\less\icons.less" />
-    <Content Include="vendor\font-awesome\less\larger.less" />
-    <Content Include="vendor\font-awesome\less\list.less" />
-    <Content Include="vendor\font-awesome\less\mixins.less" />
-    <Content Include="vendor\font-awesome\less\path.less" />
-    <Content Include="vendor\font-awesome\less\rotated-flipped.less" />
-    <Content Include="vendor\font-awesome\less\screen-reader.less" />
-    <Content Include="vendor\font-awesome\less\stacked.less" />
-    <Content Include="vendor\font-awesome\less\variables.less" />
-    <Content Include="vendor\font-awesome\scss\font-awesome.scss" />
-    <Content Include="vendor\font-awesome\scss\_animated.scss" />
-    <Content Include="vendor\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="vendor\font-awesome\scss\_core.scss" />
-    <Content Include="vendor\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="vendor\font-awesome\scss\_icons.scss" />
-    <Content Include="vendor\font-awesome\scss\_larger.scss" />
-    <Content Include="vendor\font-awesome\scss\_list.scss" />
-    <Content Include="vendor\font-awesome\scss\_mixins.scss" />
-    <Content Include="vendor\font-awesome\scss\_path.scss" />
-    <Content Include="vendor\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
-    <Content Include="vendor\font-awesome\scss\_stacked.scss" />
-    <Content Include="vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="vendor\jquery\jquery.min.map" />
-    <Content Include="vendor\jquery\jquery.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

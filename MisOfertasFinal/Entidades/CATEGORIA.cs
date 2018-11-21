@@ -12,16 +12,18 @@ namespace MisOfertasFinal.Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class CATGORIAPRODUCTO
+    public partial class CATEGORIA
     {
-        public CATGORIAPRODUCTO()
+        public CATEGORIA()
         {
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public decimal ID_CATEGORIAPRODUCTO { get; set; }
-        public string NOMBRE_CATEGORIAPROD { get; set; }
+        public decimal ID_CATEGORIA { get; set; }
+        public string NOMBRE_CATEGORIA { get; set; }
+        public decimal ID_RUBRO { get; set; }
     
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual RUBRO RUBRO { get; set; }
     }
 }

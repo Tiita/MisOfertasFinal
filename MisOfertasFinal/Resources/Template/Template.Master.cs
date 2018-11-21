@@ -6,7 +6,7 @@ namespace MisOfertasFinal.Resources.Template
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            iLogo.ImageUrl = "~/Imagenes/iconoV2.png";
+            //iLogo.ImageUrl = "~/Imagenes/iconoV2.png";
             if (!IsPostBack)
             {
                 

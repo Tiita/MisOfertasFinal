@@ -1,8 +1,6 @@
 ﻿using MisOfertasFinal.Entidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MisOfertasFinal.LogicaNegocio
 {
@@ -15,27 +13,39 @@ namespace MisOfertasFinal.LogicaNegocio
         /// <returns>LISTADO CON DATOS DEL CONSUMIDOR</returns>
         public List<Modelo.Usuario> GetBuscarUsuario(Modelo.Usuario obMoUsuario)
         {
-            using (EntitiesOfertas obEntitiesOfertas = new EntitiesOfertas())
+            using (Entities obEntitiesOfertas = new Entities())
             {
-
                 var usuarios = (from q in obEntitiesOfertas.USUARIO
-                                where q.CORREO_USUARIO == obMoUsuario.STCorreoUsuario && q.PASSWORD_USUARIO == obMoUsuario.STPasswordUsuario
+                                where q.CORREO_USUARIO == obMoUsuario.StCORREO_USUARIO && q.PASSWORD_USUARIO == obMoUsuario.StPASSWORD_USUARIO
                                 select new Modelo.Usuario
                                 {
-                                    DECIdUsuario = q.ID_USUARIO,
-                                    STNombreUsuario = q.NOMBRE_USUARIO,
-                                    STPatUsuario = q.APEPA_USUARIO,
-                                    STMatUsuario = q.APEMA_USUARIO,
-                                    STCorreoUsuario = q.CORREO_USUARIO,
-                                    STRutUsuario = q.RUT_USUARIO,
-                                    STDirUsuario = q.DIRECCION_USUARIO,
-                                    STFonoUsuario = q.TELEFONO_USUARIO,
-                                    STPasswordUsuario = q.PASSWORD_USUARIO,
-                                    DECPuntosUsuario = q.PUNTOS_USUARIO
+                                    StRUT_USUARIO = q.RUT_USUARIO,
+                                    StNOMBRE_USUARIO = q.NOMBRE_USUARIO,
+                                    StAPEPA_USUARIO = q.APEPA_USUARIO,
+                                    StAPEMA_USUARIO = q.APEMA_USUARIO,
+                                    StCORREO_USUARIO = q.CORREO_USUARIO,                                    
+                                    StDIRECCION_USUARIO = q.DIRECCION_USUARIO,
+                                    StTELEFONO_USUARIO = q.TELEFONO_USUARIO,
+                                    StPASSWORD_USUARIO = q.PASSWORD_USUARIO,
+                                    StCORREOACTIVO = q.CORREOACTIVO,
+                                    DecPUNTOS_USUARIO = q.PUNTOS_USUARIO,
+                                    DecID_TIPOUSUARIO = q.ID_TIPOUSUARIO,
+                                    DecID_COMUNA = q.ID_COMUNA
                                 }).ToList();
                 return usuarios;
             }
 
+        }
+
+        public void InsertarUsuarioCliente(Modelo.Usuario obMoUsuario) {
+            using (Entities obEntitiesOfertas = new Entities())
+            {
+                obEntitiesOfertas.USUARIO_TAPI_INS(obMoUsuario.DecID_TIPOUSUARIO, obMoUsuario.StDIRECCION_USUARIO,
+                obMoUsuario.StCORREOACTIVO,obMoUsuario.StAPEPA_USUARIO,obMoUsuario.StNOMBRE_USUARIO,obMoUsuario.StRUT_USUARIO,
+                obMoUsuario.StCORREO_USUARIO,obMoUsuario.StAPEMA_USUARIO,obMoUsuario.DecPUNTOS_USUARIO,obMoUsuario.StTELEFONO_USUARIO,
+                obMoUsuario.DecID_COMUNA,obMoUsuario.StPASSWORD_USUARIO);
+                obEntitiesOfertas.SaveChanges();
+            }
         }
     }
 }

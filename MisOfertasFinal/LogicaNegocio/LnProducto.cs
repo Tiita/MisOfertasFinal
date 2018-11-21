@@ -10,7 +10,7 @@ namespace MisOfertasFinal.LogicaNegocio
     {
         public List<Modelo.Producto> GetListadoProductos()
         {
-            using (EntitiesOfertas obEntitiesOfertas = new EntitiesOfertas())
+            using (Entities obEntitiesOfertas = new Entities())
             {
 
                 var query = (from q in obEntitiesOfertas.PRODUCTO

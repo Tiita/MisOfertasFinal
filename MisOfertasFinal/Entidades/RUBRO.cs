@@ -12,17 +12,17 @@ namespace MisOfertasFinal.Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class RUBROPRODUCTO
+    public partial class RUBRO
     {
-        public RUBROPRODUCTO()
+        public RUBRO()
         {
-            this.PRODUCTO = new HashSet<PRODUCTO>();
+            this.CATEGORIA = new HashSet<CATEGORIA>();
         }
     
         public decimal ID_RUBRO { get; set; }
         public string NOMBRE_RUBRO { get; set; }
         public string DESCRIPCION { get; set; }
     
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual ICollection<CATEGORIA> CATEGORIA { get; set; }
     }
 }

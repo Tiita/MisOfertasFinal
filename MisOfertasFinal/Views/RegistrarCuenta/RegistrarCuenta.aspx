@@ -1,173 +1,193 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarCuenta.aspx.cs" Inherits="MisOfertasFinal.Views.RegistrarCuenta.RegistrarCuenta" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Crear cuenta cliente</title>
-    <!-- Bootstrap core CSS-->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom fonts for this template-->
-    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin.css" rel="stylesheet" />
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <link href="../../css/sweetalert.css" rel="stylesheet" />
-    <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REGISTRAR CLIENTE</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/bootstrap.min.css" />
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/slick-theme.css" />
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/nouislider.min.css" />
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="../../Maqueta/css/font-awesome.min.css" />
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/style.css" />
+    <script src="../../Maqueta/js/jquery.min.js"></script>
+    <script src="../../Maqueta/js/bootstrap.min.js"></script>
+    <script src="../../Maqueta/js/slick.min.js"></script>
+    <script src="../../Maqueta/js/nouislider.min.js"></script>
+    <script src="../../Maqueta/js/jquery.zoom.min.js"></script>
+    <script src="../../Maqueta/js/main.js"></script>
     <script>
         <!-- Funcion para validar el largo de la password y para validar el largo del rut-->
-        function validarLargoClave(src, args) {
-            if (args.Value.length >= 6) {
-                args.IsValid = true;
-            } else {
-                args.IsValid = false;
-            }
+    function validarLargoClave(src, args) {
+        if (args.Value.length >= 6) {
+            args.IsValid = true;
+        } else {
+            args.IsValid = false;
         }
-        function validarLargoRut(src, args) {
-            if (args.Value.length >= 9 ||args.Value.length >= 10) {
-                args.IsValid = true;
-            } else {
-                args.IsValid = false;
-            }
+    }
+    function validarLargoRut(src, args) {
+        if (args.Value.length >= 9 || args.Value.length >= 10) {
+            args.IsValid = true;
+        } else {
+            args.IsValid = false;
         }
-
+    }
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="mx-auto mt-5">
-            <%--PRIMER GRUPO DE CONTROLES--%>
-
-            <div class="card">
-                <div class="card-header">
-                    Bienvenido Mis Ofertas
-                    <!-- Repositorio de los validadores-->
+        <!--CABECERA-->
+        <header>
+            <!--CABECERA PRINCIPAL-->
+            <div id="header">
+                <!--Contenedor-->
+                <div class="container">
+                    <!--Fila-->
                     <div class="row">
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="mensaje-validacion" HeaderText="Por favor solucione los siguientes problemas:" />
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Crear cuenta cliente</h5>                    
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                    <asp:Label runat="server" ID="lblNombreCliente" Text="Nombre:"></asp:Label>
-                                    <asp:TextBox runat="server" ID="txtNombreCliente" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Indique su nombre" ControlToValidate="TxtNombreCliente" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblApePaterno" Text="Apellido Paterno:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtApePaterno" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Indique su apellido paterno" ControlToValidate="TxtApePaterno" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblApeMaterno" Text="Apellido Materno:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtApeMaterno" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Indique su apellido materno" ControlToValidate="TxtApeMaterno" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblDireccion" Text="Dirección:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Indique su dirección" ControlToValidate="TxtDireccion" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="list-group list-group-flush">
-                                        <asp:Label runat="server" ID="LblRegion" Text="Región:"></asp:Label>
-                                        <asp:DropDownList ID="DropDownListRegion" runat="server" DataSourceID="LinqDataSource1" DataTextField="NOMBRE_REGION" DataValueField="ID_REGION" AutoPostBack="True"></asp:DropDownList>
-                                        <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="MisOfertasFinal.Entidades.EntitiesOfertas" EntityTypeName="" Select="new (NOMBRE_CATEGORIAPROD)" TableName="CATGORIAPRODUCTO">
-                                        </asp:LinqDataSource>
-                                    </p>
-                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="list-group list-group-flush">
-                                        <asp:Label runat="server" ID="LblComuna" Text="Comuna:"></asp:Label>
-                                        <asp:DropDownList ID="DropDownListComuna" runat="server" AutoPostBack="True" DataSourceID="LinqDataSource2" DataTextField="NOMBRE_COMUNA" DataValueField="ID_COMUNA"></asp:DropDownList>
-                                        <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="MisOfertasFinal.Entidades.EntitiesOfertas" EntityTypeName="" Select="new (NOMBRE_CATEGORIAPROD)" TableName="CATGORIAPRODUCTO" Where="REGION_ID_REGION == @REGION_ID_REGION" OrderBy="ID_COMUNA">
-                                        <WhereParameters>
-                                        <asp:ControlParameter ControlID="DropDownListRegion" DefaultValue="1" Name="REGION_ID_REGION" PropertyName="SelectedValue" Type="Decimal" />
-                                        </WhereParameters>
-                                        </asp:LinqDataSource>
-                                    </p>
-                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblRut" Text="Rut Cliente:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtRut" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Indique su rut" ControlToValidate="TxtRut" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                        <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Ingrese" ClientValidationFunction="validarLargoRut" ControlToValidate="TxtRut" CssClass="mensaje-validacion" Display="Dynamic">*</asp:CustomValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblFono" Text="Teléfono:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtFono" CssClass="form-control"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Indique su Telefono" ControlToValidate="TxtFono" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblCorreo" Text="Email:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" placeholder="name@example.com" type="email"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Indique su correo" ControlToValidate="TxtCorreo" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                    </p>                                    
-                                </div>
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="lblPassword" Text="Password:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Indique su clave" ControlToValidate="TxtPassword" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="La contraseña debe tener como minimo 6 chars" ClientValidationFunction="validarLargoClave" ControlToValidate="TxtPassword" CssClass="mensaje-validacion" Display="Dynamic">*</asp:CustomValidator>
-                                    </p>                                    
-                                </div> 
-                                <div class="col-md-2">
-                                    <p class="card-text">
-                                        <asp:Label runat="server" ID="LblPassword2" Text="Repetir Password:"></asp:Label>
-                                        <asp:TextBox runat="server" ID="TxtPassword2" CssClass="form-control" placeholder="Repita su Password" TextMode="Password"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Repita su clave" ControlToValidate="TxtPassword2" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
-                                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Clave no coinciden" ControlToCompare="TxtPassword" ControlToValidate="TxtPassword2" CssClass="mensaje-validacion" Display="Dynamic">*</asp:CompareValidator>
-                                    </p>                                    
-                                </div> 
-                                <div class="col-md-2">
-                                    <p class="card-link">
-                                        <asp:CheckBox ID="CbNotificacion" runat="server" /> Acepto recibir ofertas en mi correo
-                                    </p>                                    
-                                </div>
-                                
-                                                        
+                        <!--Logo-->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="#" class="Logo">
+                                    <img src="../../Imagenes/Iconocompleto.png" height="60" alt="" />
+                                </a>
                             </div>
                         </div>
-                    
-                     <%--SEGUNDO GRUPO DE CONTROLES--%>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <p class="card-text">
-                                <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success" OnClick="btnGuardar_Click" />                                
-                            </p>                            
-                        </div>
-                    </div>                            
+                        <!--Logo-->
+                    </div>
+                    <!--Fila-->
                 </div>
+                <!--Contenedor-->
             </div>
+            <!--CABECERA PRINCIPAL-->
+        </header>
+        <!-- CABECERA-->
+        <!-- SECCION -->
+        <div class="section">
+            <!-- CONTENEDOR -->
+            <div class="container">
+                <!-- FILA -->
+                <div class="row">
+                    <div class="col-md-7">
+                        <!-- DETALLE DE REGISTRO -->
+                        <div class="billing-details">
+                            <div class="section-title">
+                                <h3 class="title">Registro de cuenta</h3>
+                                <div class="row">
+                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+                                        CssClass="mensaje-validacion" HeaderText="Por favor solucione los siguientes problemas:" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtRut" CssClass="form-control" placeholder="Ingrese rut sin puntos ni guión"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ErrorMessage="Indique su rut" ControlToValidate="TxtRut" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Ingrese"
+                                    ClientValidationFunction="validarLargoRut" ControlToValidate="TxtRut" CssClass="mensaje-validacion"
+                                    Display="Dynamic">*</asp:CustomValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtNombreCliente" CssClass="form-control" placeholder="Ingrese nombre"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Indique su nombre"
+                                    ControlToValidate="TxtNombreCliente" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtApePaterno" CssClass="form-control" placeholder="Ingrese apellido paterno"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Indique su apellido paterno"
+                                    ControlToValidate="TxtApePaterno" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtApeMaterno" CssClass="form-control" placeholder="Ingrese apellido materno"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Indique su apellido materno"
+                                    ControlToValidate="TxtApeMaterno" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" placeholder="Ingrese dirección"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Indique su dirección"
+                                    ControlToValidate="TxtDireccion" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:DropDownList runat="server" ID="ddlRegion" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="form-group">
+                                <asp:DropDownList runat="server" ID="ddlComuna" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtFono" CssClass="form-control" placeholder="Ingrese teléfono"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
+                                    ErrorMessage="Indique su Telefono" ControlToValidate="TxtFono"
+                                    CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control"
+                                    placeholder="name@example.com" type="email"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                                    runat="server" ErrorMessage="Indique su correo" ControlToValidate="TxtCorreo"
+                                    CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Password"
+                                    TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Indique su clave"
+                                    ControlToValidate="TxtPassword" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="CustomValidator1" runat="server"
+                                    ErrorMessage="La contraseña debe tener como minimo 6 chars" ClientValidationFunction="validarLargoClave"
+                                    ControlToValidate="TxtPassword" CssClass="mensaje-validacion" Display="Dynamic">*</asp:CustomValidator>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="TxtPassword2" CssClass="form-control" placeholder="Repita su Password" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Repita su clave"
+                                    ControlToValidate="TxtPassword2" CssClass="mensaje-validacion">*</asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Clave no coinciden"
+                                    ControlToCompare="TxtPassword" ControlToValidate="TxtPassword2" CssClass="mensaje-validacion"
+                                    Display="Dynamic">*</asp:CompareValidator>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <asp:CheckBox Text="¿Deseas recibir ofertas a su correo electrónico?" runat="server" ID="chkCorreo"/>                                   
+                                </div>
+                            </div>
+                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="primary-btn order-submit" OnClick="btnGuardar_Click" />
+                        </div>
+                        <!-- /DETALLE DE REGISTRO -->
+                    </div>
+                </div>
+                <!-- /FILA -->
+            </div>
+            <!-- /CONTENEDOR -->
         </div>
+        <!-- /SECCION -->
+
+        <!--PIE DE PAGINA-->
+        <footer id="footer">
+            <!-- bottom footer -->
+            <div id="bottom-footer" class="section">
+                <div class="container">
+                    <!-- FILA -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <span class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                Todos los derechos reservados Mis Ofertas
+                            </span>
+                        </div>
+                    </div>
+                    <!-- /FILA -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /bottom footer -->
+        </footer>
+        <!--/PIE DE PAGINA-->
     </form>
 </body>
 </html>

@@ -14,18 +14,14 @@ namespace MisOfertasFinal.Entidades
     
     public partial class TICKETDESCUENTO
     {
-        public TICKETDESCUENTO()
-        {
-            this.USUARIO = new HashSet<USUARIO>();
-        }
-    
         public decimal ID_TICKET { get; set; }
         public System.DateTime FECHA_INICIO { get; set; }
         public System.DateTime FECHA_TERMINO { get; set; }
         public decimal DESCUENTO_OTORGADO { get; set; }
         public byte[] CODIGOBARRA { get; set; }
         public decimal TOPE { get; set; }
+        public string RUT_USUARIO { get; set; }
     
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

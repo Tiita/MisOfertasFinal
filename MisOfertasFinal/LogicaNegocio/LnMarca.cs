@@ -14,7 +14,7 @@ namespace MisOfertasFinal.LogicaNegocio
         /// <returns>lISTADO DE MARCAS</returns>
         public List<Modelo.Marca> GetListadoMarcas()
         {
-            using (EntitiesOfertas obEntitiesOfertas = new EntitiesOfertas())
+            using (Entities obEntitiesOfertas = new Entities())
             {
 
                 var query = (from q in obEntitiesOfertas.MARCA

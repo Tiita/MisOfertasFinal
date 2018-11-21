@@ -1,27 +1,31 @@
-﻿using System;
+﻿using MisOfertasFinal.Entidades;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MisOfertasFinal.Modelo
 {
     public class Usuario
     {
-        public decimal DECIdUsuario { get; set; }
-        public string STNombreUsuario { get; set; }
-        public string STPatUsuario { get; set; }
-        public string STMatUsuario { get; set; }
-        public string STCorreoUsuario { get; set; }
-        public string STRutUsuario { get; set; }
-        public string STDirUsuario { get; set; }
-        public string STFonoUsuario { get; set; }
-        public string STPasswordUsuario { get; set; }
-        public decimal DECPuntosUsuario { get; set; }
-        public Comuna OComuna { get; set; }
-        public Prioridad OPrioridad { get; set; }
-        public TicketDescuento OTicketDescuento { get; set; }
-        public Tienda OTienda { get; set; }
-        public TipoUsuario OTipoUsuario { get; set; }
-        public ICollection<Valoracion> CValoracion { get; set; }
+
+        public string StRUT_USUARIO { get; set; }
+        public string StNOMBRE_USUARIO { get; set; }
+        public string StAPEPA_USUARIO { get; set; }
+        public string StAPEMA_USUARIO { get; set; }
+        public string StCORREO_USUARIO { get; set; }
+        public string StDIRECCION_USUARIO { get; set; }
+        public string StTELEFONO_USUARIO { get; set; }
+        public string StPASSWORD_USUARIO { get; set; }
+        public string StCORREOACTIVO { get; set; }
+        public decimal DecPUNTOS_USUARIO { get; set; }
+        public decimal DecID_TIPOUSUARIO { get; set; }
+        public decimal DecID_COMUNA { get; set; }
+
+
+        public COMUNA COMUNA { get; set; }
+        public ICollection<PRIORIDAD> PRIORIDAD { get; set; }
+        public ICollection<TICKETDESCUENTO> TICKETDESCUENTO { get; set; }
+        public ICollection<TIENDA> TIENDA { get; set; }
+        public TIPOUSUARIO TIPOUSUARIO { get; set; }
+        public ICollection<VALORACION> VALORACION { get; set; }
+        
     }
 }

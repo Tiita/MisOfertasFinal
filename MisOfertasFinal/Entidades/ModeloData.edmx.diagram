@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3a30f99babd42e68be713471e4aa85d" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelMO.CATEGORIA" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.COMUNA" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.EMPRESA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.MARCA" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.OFERTA" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.PRIORIDAD" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.PRODUCTO" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.REGION" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.RUBRO" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.TICKETDESCUENTO" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.TIENDA" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.TIPOUSUARIO" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.USUARIO" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelMO.VALORACION" Width="1.5" PointX="13.5" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="ModelMO.CATGORIAPRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.RUBRO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.COMUNA_REGION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.TIENDA_COMUNA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.USUARIO_COMUNA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.TIENDA_EMPRESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.PRODUCTO_MARCA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.OFERTA_PRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.PRODUCTO_OFERTA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.VALORACION_OFERTA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.PRIORIDAD_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.TICKETDESCUENTO_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.TIENDA_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.USUARIO_TIPOUSUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.VALORACION_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelMO.TIENDA_PRODUCO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,8 +1,6 @@
 ﻿using MisOfertasFinal.Entidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MisOfertasFinal.LogicaNegocio
 {
@@ -14,14 +12,14 @@ namespace MisOfertasFinal.LogicaNegocio
         /// <returns>LISTADO DE CATEGORIAS</returns>
         public List<Modelo.Categoria> GetListadoCategorias()
         {
-            using (EntitiesOfertas obEntitiesOfertas = new EntitiesOfertas())
+            using (Entities obEntitiesOfertas = new Entities())
             {
 
-                var query = (from q in obEntitiesOfertas.CATGORIAPRODUCTO
+                var query = (from q in obEntitiesOfertas.CATEGORIA
                              select new Modelo.Categoria
                              {
-                                 DECIdCategoriaProducto = q.ID_CATEGORIAPRODUCTO,
-                                 STNombreCategoriaProducto = q.NOMBRE_CATEGORIAPROD
+                                 DECIdCategoriaProducto = q.ID_CATEGORIA,
+                                 STNombreCategoriaProducto = q.NOMBRE_CATEGORIA
                              }).ToList();
                 return query;
             }

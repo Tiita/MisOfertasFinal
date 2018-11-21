@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MisOfertasFinal.Views.Login
 {
@@ -22,17 +18,16 @@ namespace MisOfertasFinal.Views.Login
                 if (string.IsNullOrEmpty(txtEmail.Text)) stMensaje += "Ingresar email --";
                 if (string.IsNullOrEmpty(txtPassword.Text)) stMensaje += "Ingresar password,";
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
-
+                //se implementa el hasheo de la password
+                string passwordHash = Hash(txtPassword.Text);
                 //Definir objeto usuario
                 Modelo.Usuario obMoUsuario = new Modelo.Usuario
                 {
-                    STCorreoUsuario = txtEmail.Text,
-                    STPasswordUsuario = txtPassword.Text
+                    StCORREO_USUARIO = txtEmail.Text,
+                    StPASSWORD_USUARIO = passwordHash
                 };
-
-                //se implementa el hasheo de la password
-                string passwordHash = Hash(obMoUsuario.STPasswordUsuario);
-                //Insctaciar controlador Login
+                               
+                //Instanciar controlador Login
                 Controllers.LoginController objLoginController = new Controllers.LoginController();
                 List<Modelo.Usuario> lstUsuario = objLoginController.getUsuarioController(obMoUsuario);
 
@@ -48,7 +43,8 @@ namespace MisOfertasFinal.Views.Login
             }
             catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal('Error!', '" + ex.Message + "!', 'error')</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal('Error!'," +
+                    " '" + ex.Message + "!', 'error')</script>");
             }
         }
         private string Hash(string password)

@@ -26,7 +26,7 @@ namespace MisOfertasFinal.Entidades
         public System.DateTime FECHA_LIMITE { get; set; }
         public System.DateTime FECHA_REGISTRO { get; set; }
         public decimal PORCENTAJE_DESCUENTO { get; set; }
-        public decimal PRODUCTO_ID_PRODUCTO { get; set; }
+        public decimal ID_PRODUCTO { get; set; }
     
         public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual ICollection<PRODUCTO> PRODUCTO1 { get; set; }

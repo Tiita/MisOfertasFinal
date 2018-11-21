@@ -1,105 +1,160 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="MisOfertasFinal.Resources.Template.Template" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Mis Ofertas</title>
-    <!-- Bootstrap core CSS-->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom fonts for this template-->
-    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin.css" rel="stylesheet">
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin.min.js"></script>
-    <asp:ContentPlaceHolder runat="server" ID="header"></asp:ContentPlaceHolder>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ofertas disponibles</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/bootstrap.min.css" />
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/slick-theme.css" />
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/nouislider.min.css" />
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="../../Maqueta/css/font-awesome.min.css" />
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="../../Maqueta/css/style.css" />
+    <script src="../../Maqueta/js/jquery.min.js"></script>
+    <script src="../../Maqueta/js/bootstrap.min.js"></script>
+    <script src="../../Maqueta/js/slick.min.js"></script>
+    <script src="../../Maqueta/js/nouislider.min.js"></script>
+    <script src="../../Maqueta/js/jquery.zoom.min.js"></script>
+    <script src="../../Maqueta/js/main.js"></script>
+    <asp:ContentPlaceHolder runat="server" ID="cabecera"></asp:ContentPlaceHolder>
 </head>
-<body class="fixed-nav sticky-footer bg-light" id="page-top">
+<body>
     <form runat="server">
-       
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
-
-            <a class="navbar navbar-light" href="../../Views/Index/Index.aspx">
-                <h2>Mis Ofertas</h2><br />               
-             </a>
-             <asp:Image runat="server" Height="35px" Width="40px" ID="iLogo" />
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Consultar puntos">
-                        <a class="nav-link" href="../../Views/ConsultarPuntos/ConsultarPuntos.aspx">
-                            <i class="fa fa-question-circle-o"></i>
-                            <span class="nav-link-text">Consultar puntos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generar ticket de descuento">
-                        <a class="nav-link" href="../../Views/GenerarTicketDscto/GenerarTicketDscto.aspx">
-                            <i class="fa fa-download"></i>
-                            <span class="nav-link-text">Generar ticket de descuento</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Inicio">
-                        <a class="nav-link" href="../../Views/Index/Index.aspx">
-                            <i class="fa fa-home"></i>
-                            <span class="nav-link-text">Inicio</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <!-- /.dropdown -->
-                    <li class="dropdown">
-                        <asp:Label runat="server" ID="lblUsuario" CssClass="btn-link">User</asp:Label>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i>
-                        </a>       
-                        <ul class="dropdown-menu dropdown-user">                                                                             
-                            <li>
-                                <asp:LinkButton runat="server" ID="lbSalir" OnClick="lbSalir_Click">
-                                    <i class="fa fa-sign-out fa-fw"></i>Salir
-                                </asp:LinkButton>                               
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-                <!-- /.navbar-top-links -->
-
+        <!--CABECERA-->
+        <header>
+            <!--CABECERA ARRIBA-->
+            <div id="top-header">
+                <div class="container">
+                    <!--Navegación-->
+                    <ul class="header-links pull-right">
+                        <li class="nav-item">
+                            <asp:Label ID="lblUsuario" runat="server" CssClass="nav-link active" ForeColor="White" Text="">Usuario
+                                <i class="fa fa-user fa-fw"></i>
+                        </asp:Label>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salir
+                                <i class="fa fa-sign-out fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--Navegación-->
+                </div>
             </div>
+            <!--CABECERA ARRIBA-->
+            <!--CABECERA PRINCIPAL-->
+            <div id="header">
+                <!--Contenedor-->
+                <div class="container">
+                    <!--Fila-->
+                    <div class="row">
+                        <!--Logo-->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="#" class="Logo">
+                                    <img src="../Imagenes/iconocompleto.png" height="60" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <!--Logo-->
+                    </div>
+                    <!--Fila-->
+                </div>
+                <!--Contenedor-->
+            </div>
+            <!--CABECERA PRINCIPAL-->
+        </header>
+        <!-- CABECERA-->
+        <!-- MENU NAVEGACION -->
+        <nav id="navigation">
+            <!--CONTENEDOR-->
+            <div class="container">
+                <!--COMPONENTE NAV RESPONSIVO-->
+                <div id="responsive-nav">
+                    <!-- COMPONENTE NAV -->
+                    <ul class="main-nav nav navbar-nav">
+                        <li class="active"><a href="#">Inicio</a></li>
+                        <li><a href="#">Consultar puntos</a></li>
+                        <li><a href="#">Generar ticket de descuento</a></li>
+                    </ul>
+                    <!-- COMPONENTE NAV -->
+                </div>
+                <!--COMPONENTE NAV RESPONSIVO-->
+            </div>
+            <!--CONTENEDOR-->
         </nav>
-        <div class="content-wrapper">
-            <div class="container-fluid">
+        <!-- MENU NAVEGACION -->
+        <!-- CONTENIDO CUERPO -->
+        <div class="container-fluid">
                 <asp:ContentPlaceHolder ID="contenedor" runat="server">
                 </asp:ContentPlaceHolder>
-            </div>
-            <!-- /.container-fluid-->
-            <!-- /.content-wrapper-->
-            <footer class="sticky-footer">
-                <div class="container">
-                    <div class="text-center">
-                        <small>Copyright © Mis Ofertas 2018</small>
-                    </div>
-                </div>
-            </footer>
         </div>
+        <!-- /CONTENIDO CUERPO -->
+        <!--PIE DE PAGINA-->
+        <footer id="footer">
+            <!--PIE DE PAGINA ARRIBA-->
+            <div class="section">
+                <!--CONTENEDOR-->
+                <div class="container">
+                    <!--FILA-->
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="footer">
+                                <h3 class="footer-title">Acerca de nosotros</h3>
+                                <p>Plataforma encargada de gestionar ofertas dentro de todo el país.</p>
+                                <ul class="footer-links">
+                                    <li><a href="#"><i class="fa fa-map-marker"></i>Viña del Mar</a></li>
+                                    <li><a href="#"><i class="fa fa-phone"></i>+322-55-55-55</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i>misOfertas@email.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="footer">
+                                <h3 class="footer-title">Categorias</h3>
+                                <ul class="footer-links">
+                                    <li><a href="#">Inicio</a></li>
+                                    <li><a href="#">Consultar puntos</a></li>
+                                    <li><a href="#">Generar ticket de descuento</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-xs"></div>
+                    </div>
+                    <!-- /FILA-->
+                </div>
+                <!-- /CONTENEDOR -->
+            </div>
+            <!-- /PIE DE PAGINA ARRIBA-->
+
+            <!-- bottom footer -->
+            <div id="bottom-footer" class="section">
+                <div class="container">
+                    <!-- FILA -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <span class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                Todos los derechos reservados Mis Ofertas
+							</span>
+                        </div>
+                    </div>
+                    <!-- /FILA -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /bottom footer -->
+        </footer>
+        <!--/PIE DE PAGINA-->
     </form>
 </body>
 </html>

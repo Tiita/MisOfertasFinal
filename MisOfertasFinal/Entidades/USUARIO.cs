@@ -16,29 +16,29 @@ namespace MisOfertasFinal.Entidades
     {
         public USUARIO()
         {
+            this.PRIORIDAD = new HashSet<PRIORIDAD>();
+            this.TICKETDESCUENTO = new HashSet<TICKETDESCUENTO>();
+            this.TIENDA = new HashSet<TIENDA>();
             this.VALORACION = new HashSet<VALORACION>();
         }
     
-        public decimal ID_USUARIO { get; set; }
+        public string RUT_USUARIO { get; set; }
         public string NOMBRE_USUARIO { get; set; }
         public string APEPA_USUARIO { get; set; }
         public string APEMA_USUARIO { get; set; }
         public string CORREO_USUARIO { get; set; }
-        public string RUT_USUARIO { get; set; }
         public string DIRECCION_USUARIO { get; set; }
         public string TELEFONO_USUARIO { get; set; }
         public string PASSWORD_USUARIO { get; set; }
+        public string CORREOACTIVO { get; set; }
         public decimal PUNTOS_USUARIO { get; set; }
-        public decimal TIPOUSUARIO_ID_TIPOUSUARIO { get; set; }
-        public decimal COMUNA_ID_COMUNA { get; set; }
-        public Nullable<decimal> PRIORIDAD_ID_VISITA { get; set; }
-        public Nullable<decimal> TIENDA_ID_TIENDA { get; set; }
-        public Nullable<decimal> TICKETDESCUENTO_ID_TICKET { get; set; }
+        public decimal ID_TIPOUSUARIO { get; set; }
+        public decimal ID_COMUNA { get; set; }
     
         public virtual COMUNA COMUNA { get; set; }
-        public virtual PRIORIDAD PRIORIDAD { get; set; }
-        public virtual TICKETDESCUENTO TICKETDESCUENTO { get; set; }
-        public virtual TIENDA TIENDA { get; set; }
+        public virtual ICollection<PRIORIDAD> PRIORIDAD { get; set; }
+        public virtual ICollection<TICKETDESCUENTO> TICKETDESCUENTO { get; set; }
+        public virtual ICollection<TIENDA> TIENDA { get; set; }
         public virtual TIPOUSUARIO TIPOUSUARIO { get; set; }
         public virtual ICollection<VALORACION> VALORACION { get; set; }
     }

@@ -14,15 +14,11 @@ namespace MisOfertasFinal.Entidades
     
     public partial class PRIORIDAD
     {
-        public PRIORIDAD()
-        {
-            this.USUARIO = new HashSet<USUARIO>();
-        }
-    
-        public decimal ID_VISITA { get; set; }
+        public decimal ID_PRIORIDAD { get; set; }
         public decimal PRODUCTO_1 { get; set; }
         public decimal PRODUCTO_2 { get; set; }
+        public string RUT_USUARIO { get; set; }
     
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }
