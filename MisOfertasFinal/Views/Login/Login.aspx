@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MisOfertasFinal.Views.Login.Login" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8" />
@@ -22,7 +21,7 @@
     <link href="../../Maqueta/visual/css/sweetalert.css" rel="stylesheet" />
     <script src="../../Maqueta/visual/js/sweetalert.min.js" type="text/javascript"></script>
 </head>
-    <body class="bg-secondary">
+    <body style="background-color:#FFFFFF;">
     <div class="container">
         <div class="card card-login mx-auto mt-5">
             <div class="card-header">
@@ -32,7 +31,7 @@
                 <form id="form1" runat="server">
                     <div class="form-group">
                         <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="nombre@ejemplo.com"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
@@ -44,7 +43,7 @@
                             <asp:CheckBox ID="chkRecordar" runat="server" Text="Recordar Email" />
                         </div>
                     </div>
-                    <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-lg btn-success btn-block" Text="Aceptar" OnClick="btnAceptar_Click" />
+                    <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-lg btn-danger btn-block" Text="Aceptar" OnClick="btnAceptar_Click" />
                 </form>
                 <div class="text-center">
                     <a class="d-block small mt-3" href="../RegistrarCuenta/RegistrarCuenta.aspx">Registrar cuenta</a>

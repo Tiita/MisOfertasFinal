@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace MisOfertasFinal.Views.Index
 {
@@ -14,30 +15,54 @@ namespace MisOfertasFinal.Views.Index
                     Response.Redirect("../Login/Login.aspx");
                 }
 
-                Controllers.IndexController obIndexController = new Controllers.IndexController();
+                CargarMarcas();
+                CargarRubros();
+                ddlCategoria.Items.Insert(0, new ListItem("Categoría", "0"));
+                LogicaNegocio.LnProducto objLnProducto = new LogicaNegocio.LnProducto();
+                List<Modelo.Producto> lstProductos = objLnProducto.GetListadoProductos();
+                //dlstProductos.DataSource = lstProductos;
+                //dlstProductos.DataBind();
 
-                List<Modelo.Rubro> lstRubros = obIndexController.GetRubroController();
-                ddlRubro.DataSource = lstRubros;
-                ddlRubro.DataTextField = "STNombreRubro";
-                ddlRubro.DataValueField = "DECIdRubro";
-                ddlRubro.DataBind();
+            }
+        }
 
-                List<Modelo.Categoria> lstCategorias = obIndexController.GetCategoriaController();
-                ddlCategoria.DataSource = lstCategorias;
-                ddlCategoria.DataTextField = "STNombreCategoriaProducto";
-                ddlCategoria.DataValueField = "DECIdCategoriaProducto";
-                ddlCategoria.DataBind();
+        public void CargarMarcas() {
+            LogicaNegocio.LnMarca objLnMarca = new LogicaNegocio.LnMarca();
+            List<Modelo.Marca> lstMarcas = objLnMarca.GetListadoMarcas();
+            ddlMarca.DataSource = lstMarcas;
+            ddlMarca.DataTextField = "STNombreMarca";
+            ddlMarca.DataValueField = "DECIdMarca";
+            ddlMarca.DataBind();
+            ddlMarca.Items.Insert(0, new ListItem("Marca", "0"));
+        }
 
-                List<Modelo.Marca> lstMarcas = obIndexController.GetMarcaController();
-                ddlMarca.DataSource = lstMarcas;
-                ddlMarca.DataTextField = "STNombreMarca";
-                ddlMarca.DataValueField = "DECIdMarca";
-                ddlMarca.DataBind();
+        public void CargarRubros() {
+            LogicaNegocio.LnRubro objLnRubro = new LogicaNegocio.LnRubro();
+            List<Modelo.Rubro> lstRubros = objLnRubro.GetListadoRubros();
+            ddlRubro.DataSource = lstRubros;
+            ddlRubro.DataTextField = "STNombreRubro";
+            ddlRubro.DataBind();
+            ddlRubro.Items.Insert(0,new ListItem("Rubro","0"));
+        }
 
-                List<Modelo.Producto> lstProductos = obIndexController.GetProductoController();
-                dlstProductos.DataSource = lstProductos;
-                dlstProductos.DataBind();
+        public void CargarCategorias(decimal DecIdcategoria) {
+            LogicaNegocio.LnCategoria objLnCategoria = new LogicaNegocio.LnCategoria();
+            List<Modelo.Categoria> lstCategorias = objLnCategoria.GetListadoCategorias(DecIdcategoria);
+            ddlCategoria.DataSource = lstCategorias;
+            ddlCategoria.DataTextField = "STNombreCategoriaProducto";
+            ddlCategoria.DataBind();
+            ddlCategoria.Items.Insert(0, new ListItem("Categoría", "0"));
+        }
 
+        protected void ddlRubro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(ddlRubro.SelectedValue))
+            {
+                CargarCategorias(int.Parse(ddlRubro.SelectedValue));
+            }
+            else
+            {
+                ddlCategoria.Items.Insert(0,new ListItem("Categoría","0"));
             }
         }
     }

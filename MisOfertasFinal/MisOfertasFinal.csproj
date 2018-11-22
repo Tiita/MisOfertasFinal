@@ -82,9 +82,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\sb-admin.css" />
-    <Content Include="css\sb-admin.min.css" />
-    <Content Include="css\sweetalert.css" />
     <Content Include="Entidades\ModeloData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloData.edmx</DependentUpon>
@@ -97,13 +94,6 @@
     </Content>
     <Content Include="Imagenes\Iconocompleto.png" />
     <Content Include="Imagenes\iconoV2.png" />
-    <Content Include="js\sb-admin-charts.js" />
-    <Content Include="js\sb-admin-charts.min.js" />
-    <Content Include="js\sb-admin-datatables.js" />
-    <Content Include="js\sb-admin-datatables.min.js" />
-    <Content Include="js\sb-admin.js" />
-    <Content Include="js\sb-admin.min.js" />
-    <Content Include="js\sweetalert.min.js" />
     <Content Include="Maqueta\css\bootstrap.min.css" />
     <Content Include="Maqueta\css\font-awesome.min.css" />
     <Content Include="Maqueta\css\nouislider.min.css" />
@@ -162,9 +152,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RegistrarUsuarioController.cs" />
     <Compile Include="Entidades\CATEGORIA.cs">
       <DependentUpon>ModeloData.tt</DependentUpon>
     </Compile>

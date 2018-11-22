@@ -10,12 +10,13 @@ namespace MisOfertasFinal.LogicaNegocio
         /// OBTENER TODAS LAS CATEGORÍAS DE PRODUCTOS
         /// </summary>
         /// <returns>LISTADO DE CATEGORIAS</returns>
-        public List<Modelo.Categoria> GetListadoCategorias()
+        public List<Modelo.Categoria> GetListadoCategorias(decimal DecIdcategoria)
         {
             using (Entities obEntitiesOfertas = new Entities())
             {
 
                 var query = (from q in obEntitiesOfertas.CATEGORIA
+                             where q.ID_CATEGORIA == DecIdcategoria
                              select new Modelo.Categoria
                              {
                                  DECIdCategoriaProducto = q.ID_CATEGORIA,

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace MisOfertasFinal.Views.Login
 {
     public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -26,10 +24,10 @@ namespace MisOfertasFinal.Views.Login
                     StCORREO_USUARIO = txtEmail.Text,
                     StPASSWORD_USUARIO = passwordHash
                 };
-                               
-                //Instanciar controlador Login
-                Controllers.LoginController objLoginController = new Controllers.LoginController();
-                List<Modelo.Usuario> lstUsuario = objLoginController.getUsuarioController(obMoUsuario);
+
+                //Instanciar objeto que traerá los datos del usuario que realiza login
+                LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
+                List<Modelo.Usuario> lstUsuario = objLnUsuario.GetBuscarUsuario(obMoUsuario);                
 
                 if (lstUsuario.Count > 0)
                 {

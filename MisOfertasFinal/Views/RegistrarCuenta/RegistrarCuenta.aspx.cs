@@ -6,11 +6,11 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
 {
     public partial class RegistrarCuenta : System.Web.UI.Page
     {
-        private Controllers.RegistrarUsuarioController objRegistrarUsuario = null;
+        LogicaNegocio.LnRegion objLnRegion = null;
+        LogicaNegocio.LnComuna objLnComuna = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            objRegistrarUsuario = new Controllers.RegistrarUsuarioController();
-                       
+                                  
             if (!IsPostBack) {
                 cargarRegiones();
                 ddlComuna.Items.Insert(0, new ListItem("Comunas", "0"));
@@ -38,8 +38,8 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                 DecID_COMUNA = int.Parse(comuna),
                 StPASSWORD_USUARIO = passwordHash
         };
-            Controllers.RegistrarUsuarioController objRegistrarC = new Controllers.RegistrarUsuarioController();
-            objRegistrarC.RegistrarClienteController(obMoUsuario);
+            LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
+            objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
             Response.Redirect("../Login/Login.aspx");
 
         }        
@@ -54,8 +54,9 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
 
         public void cargarRegiones()
         {
+            objLnRegion = new LogicaNegocio.LnRegion();
             //Se obtiene listado de las regiones de la base de datos
-            List<Modelo.Region> lstRegiones = objRegistrarUsuario.GetRegionesController();
+            List<Modelo.Region> lstRegiones = objLnRegion.GetListadoRegiones();
             //Se carga el DropDownList con todas las regiones
             ddlRegion.DataSource = lstRegiones;
             ddlRegion.DataTextField = "StNOMBRE_REGION";
@@ -65,7 +66,8 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         }
 
         public void cargarComunas(decimal decIdRegion) {
-            List<Modelo.Comuna> lstComunas = objRegistrarUsuario.GetComunasController(decIdRegion);
+            objLnComuna = new LogicaNegocio.LnComuna();
+            List<Modelo.Comuna> lstComunas = objLnComuna.GetListadoComunas(decIdRegion);
             //Se cargan las comunas de acuerdo a la región
             ddlComuna.DataSource = lstComunas;
             ddlComuna.DataTextField = "StNOMBRE_COMUNA";

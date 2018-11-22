@@ -42,9 +42,7 @@
                         </asp:Label>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Salir
-                                <i class="fa fa-sign-out fa-fw"></i>
-                            </a>
+                            <asp:LinkButton Text="Salir" runat="server" CssClass="nav-link" id="btnLkSalir" OnClick="lbSalir_Click"/><i class="fa fa-sign-out fa-fw"></i>                                                       
                         </li>
                     </ul>
                     <!--Navegación-->
@@ -61,7 +59,7 @@
                         <div class="col-md-3">
                             <div class="header-logo">
                                 <a href="#" class="Logo">
-                                    <img src="../Imagenes/iconocompleto.png" height="60" alt="" />
+                                    <img src="../../Imagenes/Iconocompleto.png" height="60" alt="" />
                                 </a>
                             </div>
                         </div>
@@ -83,8 +81,7 @@
                     <!-- COMPONENTE NAV -->
                     <ul class="main-nav nav navbar-nav">
                         <li class="active"><a href="#">Inicio</a></li>
-                        <li><a href="#">Consultar puntos</a></li>
-                        <li><a href="#">Generar ticket de descuento</a></li>
+                        <li><a href="#">Consultar puntos</a></li>                        
                     </ul>
                     <!-- COMPONENTE NAV -->
                 </div>
@@ -124,8 +121,7 @@
                                 <h3 class="footer-title">Categorias</h3>
                                 <ul class="footer-links">
                                     <li><a href="#">Inicio</a></li>
-                                    <li><a href="#">Consultar puntos</a></li>
-                                    <li><a href="#">Generar ticket de descuento</a></li>
+                                    <li><a href="#">Consultar puntos</a></li>                                    
                                 </ul>
                             </div>
                         </div>
