@@ -21,35 +21,45 @@
     <link href="../../Maqueta/visual/css/sweetalert.css" rel="stylesheet" />
     <script src="../../Maqueta/visual/js/sweetalert.min.js" type="text/javascript"></script>
 </head>
-    <body style="background-color:#FFFFFF;">
-    <div class="container">
-        <div class="card card-login mx-auto mt-5">
-            <div class="card-header">
-                <h5>LOGIN</h5>
-            </div>
-            <div class="card-body">
-                <form id="form1" runat="server">
-                    <div class="form-group">
-                        <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="nombre@ejemplo.com"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label class="form-check-label" />
-                            <asp:CheckBox ID="chkRecordar" runat="server" Text="Recordar Email" />
-                        </div>
-                    </div>
-                    <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-lg btn-danger btn-block" Text="Aceptar" OnClick="btnAceptar_Click" />
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="../RegistrarCuenta/RegistrarCuenta.aspx">Registrar cuenta</a>
-                    <a class="d-block small" href="#">Olvidaste la contraseña?</a>
+<body style="background-color: #FFFFFF;">
+    <div>
+        <header>
+            <div class="row" style="width: 1200px; padding: 0px; background-color: transparent;">
+                <div class="col-xl-4 offset-xl-1">
+                    <img class="img-fluid" src="../../Imagenes/Iconocompleto.png" />
                 </div>
             </div>
+        </header>
+        <div class="container ">
+            <div class="card text-center text-white card-login mx-auto mt-5">
+                <div class="card-header border bg-danger">
+                    <h5>LOGIN</h5>
+                </div>
+                <div class="card-body text-dark">
+                    <form id="form1" runat="server">
+                        <div class="form-group">
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="nombre@ejemplo.com"></asp:TextBox>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Ingrese password" TextMode="Password"></asp:TextBox>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-lg btn-danger btn-block" Text="Aceptar" OnClick="btnAceptar_Click" />
+                        </div>
+                        <br />
+                    </form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="../RegistrarCuenta/RegistrarCuenta.aspx">Registrar cuenta</a>
+                        <a class="d-block small" href="#">Olvidaste la contraseña?</a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <br />
+        </div>
+        <div style="height: 150px; background-color: #f9f9f9; background-repeat: repeat; background-image: url(&quot;../../Imagenes/descuentos4.jpg&quot;);">
         </div>
     </div>
 </body>

@@ -33,13 +33,14 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-4">
+                            <div class="col-md-4">
+                                <asp:Label ID="lblCategoria" Text="Categoria:" runat="server"></asp:Label>
+                                <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control"
+                                    OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
+                                </asp:DropDownList>
+                            </div>
                             <asp:Label ID="lblRubro" Text="Rubro:" runat="server"></asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlRubro" CssClass="form-control" OnSelectedIndexChanged="ddlRubro_SelectedIndexChanged" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-md-4">
-                            <asp:Label ID="lblCategoria" Text="Categoria:" runat="server"></asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control">
+                            <asp:DropDownList runat="server" ID="ddlRubro" CssClass="form-control">
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-4">
@@ -104,7 +105,7 @@
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>VALORAR OFERTA</button>
                                         </div>
                                     </div>
-                                    <!-- /PRODUCTO -->                                    
+                                    <!-- /PRODUCTO -->
                                 </div>
                                 <div id="slick-nav-2" class="products-slick-nav"></div>
                             </div>

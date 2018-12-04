@@ -13,7 +13,7 @@ namespace MisOfertasFinal.Views.Login
             try
             {
                 string stMensaje = string.Empty;
-                if (string.IsNullOrEmpty(txtEmail.Text)) stMensaje += "Ingresar email --";
+                if (string.IsNullOrEmpty(txtEmail.Text)) stMensaje += "Ingresar email -";
                 if (string.IsNullOrEmpty(txtPassword.Text)) stMensaje += "Ingresar password,";
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
                 //se implementa el hasheo de la password

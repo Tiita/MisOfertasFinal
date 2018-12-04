@@ -15,9 +15,9 @@ namespace MisOfertasFinal.Views.Index
                     Response.Redirect("../Login/Login.aspx");
                 }
 
-                CargarMarcas();
-                CargarRubros();
+                CargarMarcas();                
                 ddlCategoria.Items.Insert(0, new ListItem("Categoría", "0"));
+                ddlRubro.Items.Insert(0, new ListItem("Rubro", "0"));
                 LogicaNegocio.LnProducto objLnProducto = new LogicaNegocio.LnProducto();
                 List<Modelo.Producto> lstProductos = objLnProducto.GetListadoProductos();
                 //dlstProductos.DataSource = lstProductos;
@@ -36,13 +36,13 @@ namespace MisOfertasFinal.Views.Index
             ddlMarca.Items.Insert(0, new ListItem("Marca", "0"));
         }
 
-        public void CargarRubros() {
+        public void CargarRubros(decimal DecIdRubro) {
             LogicaNegocio.LnRubro objLnRubro = new LogicaNegocio.LnRubro();
             List<Modelo.Rubro> lstRubros = objLnRubro.GetListadoRubros();
             ddlRubro.DataSource = lstRubros;
             ddlRubro.DataTextField = "STNombreRubro";
-            ddlRubro.DataBind();
-            ddlRubro.Items.Insert(0,new ListItem("Rubro","0"));
+            ddlRubro.DataValueField = "DECIdRubro";
+            ddlRubro.DataBind();            
         }
 
         public void CargarCategorias(decimal DecIdcategoria) {
@@ -50,6 +50,7 @@ namespace MisOfertasFinal.Views.Index
             List<Modelo.Categoria> lstCategorias = objLnCategoria.GetListadoCategorias(DecIdcategoria);
             ddlCategoria.DataSource = lstCategorias;
             ddlCategoria.DataTextField = "STNombreCategoriaProducto";
+            ddlCategoria.DataValueField = "DECIdCategoriaProducto";
             ddlCategoria.DataBind();
             ddlCategoria.Items.Insert(0, new ListItem("Categoría", "0"));
         }
@@ -63,6 +64,13 @@ namespace MisOfertasFinal.Views.Index
             else
             {
                 ddlCategoria.Items.Insert(0,new ListItem("Categoría","0"));
+            }
+        }
+
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(ddlCategoria.SelectedValue)) {
+                
             }
         }
     }
