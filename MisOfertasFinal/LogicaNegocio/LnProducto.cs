@@ -12,16 +12,15 @@ namespace MisOfertasFinal.LogicaNegocio
         {
             using (Entities obEntitiesOfertas = new Entities())
             {
-
                 var query = (from q in obEntitiesOfertas.PRODUCTO
                              select new Modelo.Producto
                              {
-                                 DecIdProducto = q.ID_PRODUCTO,
-                                 StNombreProducto = q.NOMBRE_PRODUCTO,
-                                 StPrecioProducto = q.PRECIO_PRODUCTO,
-                                 StStockProducto = q.STOCK_PRODUCTO,
-                                 StDescripcionProducto = q.DESCRIPCION_PRODUCTO,
-                                 BytImagenProducto = q.IMAGEN_PRODUCTO
+                                 id_producto = q.ID_PRODUCTO,
+                                 nombre_producto = q.NOMBRE_PRODUCTO,
+                                 precio_producto = q.PRECIO_PRODUCTO,
+                                 stock_producto = q.STOCK_PRODUCTO,
+                                 descripcion_producto = q.DESCRIPCION_PRODUCTO,
+                                 imagen_producto = q.IMAGEN_PRODUCTO
                              }).ToList();
                 return query;
             }

@@ -13,6 +13,7 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                                   
             if (!IsPostBack) {
                 cargarRegiones();
+                ddlRegion.Items.Insert(0, new ListItem("Región", "0"));
                 ddlComuna.Items.Insert(0, new ListItem("Comunas", "0"));
             }
         }        
@@ -25,18 +26,18 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
             //Definir objeto usuario
             Modelo.Usuario obMoUsuario = new Modelo.Usuario
             {
-                DecID_TIPOUSUARIO = 3,
-                StDIRECCION_USUARIO = txtDireccion.Text,
-                StCORREOACTIVO = activo,
-                StAPEPA_USUARIO = txtApePaterno.Text,
-                StNOMBRE_USUARIO = txtNombreCliente.Text,
-                StRUT_USUARIO = txtRut.Text,
-                StCORREO_USUARIO = txtCorreo.Text,
-                StAPEMA_USUARIO = txtApeMaterno.Text,
-                DecPUNTOS_USUARIO = 0,
-                StTELEFONO_USUARIO = txtFono.Text,                
-                DecID_COMUNA = int.Parse(comuna),
-                StPASSWORD_USUARIO = passwordHash
+                id_tipoUsuario = 3,
+                direccion_usuario = txtDireccion.Text,
+                correoactivo = activo,
+                apepa_usuario = txtApePaterno.Text,
+                nombre_usuario = txtNombreCliente.Text,
+                rut_usuario = txtRut.Text,
+                correo_usuario = txtCorreo.Text,
+                apema_usuario = txtApeMaterno.Text,
+                puntos_usuario = 0,
+                telefono_usuario = txtFono.Text,                
+                id_comuna = int.Parse(comuna),
+                password_usuario = passwordHash
         };
             LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
             objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
@@ -59,19 +60,18 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
             List<Modelo.Region> lstRegiones = objLnRegion.GetListadoRegiones();
             //Se carga el DropDownList con todas las regiones
             ddlRegion.DataSource = lstRegiones;
-            ddlRegion.DataTextField = "StNOMBRE_REGION";
-            ddlRegion.DataValueField = "DecID_REGION";
-            ddlRegion.DataBind();
-            ddlRegion.Items.Insert(0, new ListItem("Región", "0"));
+            ddlRegion.DataTextField = "nombre_region";
+            ddlRegion.DataValueField = "id_region";
+            ddlRegion.DataBind();            
         }
 
-        public void cargarComunas(decimal decIdRegion) {
+        public void cargarComunas(decimal id_region) {
             objLnComuna = new LogicaNegocio.LnComuna();
-            List<Modelo.Comuna> lstComunas = objLnComuna.GetListadoComunas(decIdRegion);
+            List<Modelo.Comuna> lstComunas = objLnComuna.GetListadoComunas(id_region);
             //Se cargan las comunas de acuerdo a la región
             ddlComuna.DataSource = lstComunas;
-            ddlComuna.DataTextField = "StNOMBRE_COMUNA";
-            ddlComuna.DataValueField = "DecID_COMUNA";
+            ddlComuna.DataTextField = "nombre_comuna";
+            ddlComuna.DataValueField = "id_comuna";
             ddlComuna.DataBind();
         }
 

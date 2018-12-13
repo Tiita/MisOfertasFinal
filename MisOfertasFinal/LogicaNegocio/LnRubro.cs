@@ -18,9 +18,9 @@ namespace MisOfertasFinal.LogicaNegocio
                 var query = (from q in obEntitiesOfertas.RUBRO
                              select new Modelo.Rubro
                              {
-                                 DECIdRubro = q.ID_RUBRO,
-                                 STNombreRubro = q.NOMBRE_RUBRO,
-                                 STDescripcion = q.DESCRIPCION
+                                 id_rubro = q.ID_RUBRO,
+                                 nombre_rubro = q.NOMBRE_RUBRO,
+                                 descripcion = q.DESCRIPCION
                              }).ToList();
                 return query;
             }

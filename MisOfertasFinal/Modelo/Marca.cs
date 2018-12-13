@@ -7,9 +7,14 @@ namespace MisOfertasFinal.Modelo
 {
     public class Marca
     {
-        public Marca() { }
+        public Marca()
+        {
+            this.coleccion_productos = new HashSet<Producto>();
+        }
 
-        public decimal DECIdMarca { get; set; }
-        public string STNombreMarca { get; set; }
+        public decimal id_marca { get; set; }
+        public string nombre_marca { get; set; }
+
+        public virtual ICollection<Producto> coleccion_productos { get; set; }
     }
 }

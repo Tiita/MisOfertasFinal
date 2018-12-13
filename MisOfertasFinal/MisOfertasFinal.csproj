@@ -212,13 +212,16 @@
     <Compile Include="LogicaNegocio\LnCategoria.cs" />
     <Compile Include="LogicaNegocio\LnComuna.cs" />
     <Compile Include="LogicaNegocio\LnMarca.cs" />
+    <Compile Include="LogicaNegocio\LnOferta.cs" />
     <Compile Include="LogicaNegocio\LnProducto.cs" />
     <Compile Include="LogicaNegocio\LnRegion.cs" />
     <Compile Include="LogicaNegocio\LnRubro.cs" />
     <Compile Include="LogicaNegocio\LnUsuario.cs" />
     <Compile Include="Modelo\Categoria.cs" />
     <Compile Include="Modelo\Comuna.cs" />
+    <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Marca.cs" />
+    <Compile Include="Modelo\Oferta.cs" />
     <Compile Include="Modelo\Prioridad.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Region.cs" />

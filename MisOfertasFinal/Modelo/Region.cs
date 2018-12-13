@@ -1,13 +1,17 @@
-﻿using MisOfertasFinal.Entidades;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MisOfertasFinal.Modelo
 {
     public class Region
     {
-        public decimal DecID_REGION { get; set; }
-        public string StNOMBRE_REGION { get; set; }
+        public Region()
+        {
+            this.coleccion_comunas = new HashSet<Comuna>();
+        }
 
-        public ICollection<COMUNA> COMUNA { get; set; }
+        public decimal id_region { get; set; }
+        public string nombre_region { get; set; }
+
+        public virtual ICollection<Comuna> coleccion_comunas { get; set; }
     }
 }

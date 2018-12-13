@@ -20,8 +20,8 @@ namespace MisOfertasFinal.LogicaNegocio
                 var query = (from q in obEntitiesOfertas.MARCA
                              select new Modelo.Marca
                              {
-                                 DECIdMarca = q.ID_MARCA,
-                                 STNombreMarca = q.NOMBRE_MARCA
+                                 id_marca = q.ID_MARCA,
+                                 nombre_marca = q.NOMBRE_MARCA
                              }).ToList();
                 return query;
             }

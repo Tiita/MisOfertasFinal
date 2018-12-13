@@ -7,10 +7,15 @@ namespace MisOfertasFinal.Modelo
 {
     public class Rubro
     {
-        public Rubro() { }
+        public Rubro()
+        {
+            this.coleccion_categorias = new HashSet<Categoria>();
+        }
 
-        public decimal DECIdRubro { get; set; }
-        public string STNombreRubro { get; set; }
-        public string STDescripcion { get; set; }
+        public decimal id_rubro { get; set; }
+        public string nombre_rubro { get; set; }
+        public string descripcion { get; set; }
+
+        public virtual ICollection<Categoria> coleccion_categorias { get; set; }
     }
 }

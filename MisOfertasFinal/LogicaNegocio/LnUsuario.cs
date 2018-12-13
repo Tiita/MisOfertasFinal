@@ -16,36 +16,37 @@ namespace MisOfertasFinal.LogicaNegocio
             using (Entities obEntitiesOfertas = new Entities())
             {
                 var usuarios = (from q in obEntitiesOfertas.USUARIO
-                                where q.CORREO_USUARIO == obMoUsuario.StCORREO_USUARIO && q.PASSWORD_USUARIO == obMoUsuario.StPASSWORD_USUARIO
+                                where q.CORREO_USUARIO == obMoUsuario.correo_usuario && q.PASSWORD_USUARIO == obMoUsuario.password_usuario
                                 select new Modelo.Usuario
                                 {
-                                    StRUT_USUARIO = q.RUT_USUARIO,
-                                    StNOMBRE_USUARIO = q.NOMBRE_USUARIO,
-                                    StAPEPA_USUARIO = q.APEPA_USUARIO,
-                                    StAPEMA_USUARIO = q.APEMA_USUARIO,
-                                    StCORREO_USUARIO = q.CORREO_USUARIO,                                    
-                                    StDIRECCION_USUARIO = q.DIRECCION_USUARIO,
-                                    StTELEFONO_USUARIO = q.TELEFONO_USUARIO,
-                                    StPASSWORD_USUARIO = q.PASSWORD_USUARIO,
-                                    StCORREOACTIVO = q.CORREOACTIVO,
-                                    DecPUNTOS_USUARIO = q.PUNTOS_USUARIO,
-                                    DecID_TIPOUSUARIO = q.ID_TIPOUSUARIO,
-                                    DecID_COMUNA = q.ID_COMUNA
+                                    rut_usuario = q.RUT_USUARIO,
+                                    nombre_usuario = q.NOMBRE_USUARIO,
+                                    apepa_usuario = q.APEPA_USUARIO,
+                                    apema_usuario = q.APEMA_USUARIO,
+                                    correo_usuario = q.CORREO_USUARIO,                                    
+                                    direccion_usuario = q.DIRECCION_USUARIO,
+                                    telefono_usuario = q.TELEFONO_USUARIO,
+                                    password_usuario = q.PASSWORD_USUARIO,
+                                    correoactivo = q.CORREOACTIVO,
+                                    puntos_usuario = q.PUNTOS_USUARIO,
+                                    id_tipoUsuario = q.ID_TIPOUSUARIO,
+                                    id_comuna = q.ID_COMUNA
                                 }).ToList();
                 return usuarios;
             }
 
         }
-
+        #region Insertar_cliente
         public void InsertarUsuarioCliente(Modelo.Usuario obMoUsuario) {
             using (Entities obEntitiesOfertas = new Entities())
             {
-                obEntitiesOfertas.USUARIO_TAPI_INS(obMoUsuario.DecID_TIPOUSUARIO, obMoUsuario.StDIRECCION_USUARIO,
-                obMoUsuario.StCORREOACTIVO,obMoUsuario.StAPEPA_USUARIO,obMoUsuario.StNOMBRE_USUARIO,obMoUsuario.StRUT_USUARIO,
-                obMoUsuario.StCORREO_USUARIO,obMoUsuario.StAPEMA_USUARIO,obMoUsuario.DecPUNTOS_USUARIO,obMoUsuario.StTELEFONO_USUARIO,
-                obMoUsuario.DecID_COMUNA,obMoUsuario.StPASSWORD_USUARIO);
+                obEntitiesOfertas.USUARIO_TAPI_INS(obMoUsuario.id_tipoUsuario, obMoUsuario.direccion_usuario,
+                obMoUsuario.correoactivo,obMoUsuario.apepa_usuario,obMoUsuario.nombre_usuario,obMoUsuario.rut_usuario,
+                obMoUsuario.correo_usuario,obMoUsuario.apema_usuario,obMoUsuario.puntos_usuario,obMoUsuario.telefono_usuario,
+                obMoUsuario.id_comuna,obMoUsuario.password_usuario);
                 obEntitiesOfertas.SaveChanges();
             }
         }
+        #endregion
     }
 }

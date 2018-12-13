@@ -93,49 +93,42 @@
                                 <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Ingrese un Rut mínimo 9 caracteres"
                                     ClientValidationFunction="validarLargoRut" ControlToValidate="TxtRut" CssClass="mensaje-validacion"
                                     Display="Dynamic" ForeColor="Red">*</asp:CustomValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
+
                                 <asp:TextBox runat="server" ID="txtNombreCliente" CssClass="form-control" placeholder="Ingrese nombre"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Indique su nombre"
                                     ControlToValidate="TxtNombreCliente" CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="txtApePaterno" CssClass="form-control" placeholder="Ingrese apellido paterno"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Indique su apellido paterno"
                                     ControlToValidate="TxtApePaterno" CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
+
                                 <asp:TextBox runat="server" ID="txtApeMaterno" CssClass="form-control" placeholder="Ingrese apellido materno"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Indique su apellido materno"
                                     ControlToValidate="TxtApeMaterno" CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" placeholder="Ingrese dirección"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Indique su dirección"
                                     ControlToValidate="TxtDireccion" CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:DropDownList runat="server" ID="ddlRegion" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged">
                                 </asp:DropDownList>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList runat="server" ID="ddlComuna" CssClass="form-control">
+                                <br />
+                                <asp:DropDownList runat="server" ID="ddlComuna" CssClass="form-control" AutoPostBack="false">
                                 </asp:DropDownList>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="txtFono" CssClass="form-control" placeholder="Ingrese teléfono"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
                                     ErrorMessage="Indique su Telefono" ControlToValidate="TxtFono"
                                     CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control"
                                     placeholder="name@example.com" type="email"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                     runat="server" ErrorMessage="Indique su correo" ControlToValidate="TxtCorreo"
                                     CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Password"
                                     TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Indique su clave"
@@ -143,18 +136,16 @@
                                 <asp:CustomValidator ID="CustomValidator1" runat="server"
                                     ErrorMessage="La contraseña debe tener como minimo 6 chars" ClientValidationFunction="validarLargoClave"
                                     ControlToValidate="TxtPassword" CssClass="mensaje-validacion" Display="Dynamic" ForeColor="Red">*</asp:CustomValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <asp:TextBox runat="server" ID="TxtPassword2" CssClass="form-control" placeholder="Repita su Password" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Repita su clave"
                                     ControlToValidate="TxtPassword2" CssClass="mensaje-validacion" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Clave no coinciden"
                                     ControlToCompare="TxtPassword" ControlToValidate="TxtPassword2" CssClass="mensaje-validacion"
                                     Display="Dynamic" ForeColor="Red">*</asp:CompareValidator>
-                            </div>
-                            <div class="form-group">
+                                <br />
                                 <div>
-                                    <asp:CheckBox Text="¿Deseas recibir ofertas a su correo electrónico?" runat="server" ID="chkCorreo"/>                                   
+                                    <asp:CheckBox Text="¿Deseas recibir ofertas a su correo electrónico?" runat="server" ID="chkCorreo" />
                                 </div>
                             </div>
                             <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="primary-btn order-submit" OnClick="btnGuardar_Click" />

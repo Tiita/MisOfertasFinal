@@ -29,6 +29,7 @@ namespace MisOfertasFinal.Entidades
         public decimal ID_MARCA { get; set; }
         public decimal ID_CATEGORIA { get; set; }
         public Nullable<decimal> ID_OFERTA { get; set; }
+        public decimal ID_TIENDA { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
         public virtual MARCA MARCA { get; set; }

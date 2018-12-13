@@ -21,8 +21,8 @@ namespace MisOfertasFinal.Views.Login
                 //Definir objeto usuario
                 Modelo.Usuario obMoUsuario = new Modelo.Usuario
                 {
-                    StCORREO_USUARIO = txtEmail.Text,
-                    StPASSWORD_USUARIO = passwordHash
+                    correo_usuario = txtEmail.Text,
+                    password_usuario = passwordHash
                 };
 
                 //Instanciar objeto que traerá los datos del usuario que realiza login

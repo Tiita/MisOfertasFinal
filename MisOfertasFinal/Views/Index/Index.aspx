@@ -25,27 +25,26 @@
     <script src="../../Maqueta/js/main.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenedor" runat="server">
-
     <div class="container">
         <div class="card mx-auto mt-5">
-            <div class="card-header">Ofertas vigentes</div>
+            <!--<div class="card-header">Ofertas vigentes</div>-->
             <div class="card-body">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <div class="col-md-4">
-                                <asp:Label ID="lblCategoria" Text="Categoria:" runat="server"></asp:Label>
-                                <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control"
-                                    OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
-                                </asp:DropDownList>
-                            </div>
                             <asp:Label ID="lblRubro" Text="Rubro:" runat="server"></asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlRubro" CssClass="form-control">
+                            <asp:DropDownList runat="server" ID="ddlRubro" CssClass="form-control" OnSelectedIndexChanged="ddlRubro_SelectedIndexChanged"
+                                AutoPostBack="true" Width="313px">
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-4">
+                            <asp:Label ID="lblCategoria" Text="Categoria:" runat="server"></asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control" AutoPostBack="false" Width="311px">
+                            </asp:DropDownList>    
+                        </div>                       
+                        <div class="col-md-4">
                             <asp:Label ID="lblMarca" Text="Marca:" runat="server"></asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control">
+                            <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control" Width="311px">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -53,7 +52,6 @@
             </div>
         </div>
     </div>
-
     <!-- SECCION -->
     <div class="section">
         <!-- CONTENEDOR -->
@@ -66,8 +64,17 @@
                         <h3 class="title">Ofertas</h3>
                     </div>
                 </div>
-                <!-- /SECCIÓN DEL TÍTULO -->
 
+                <div id="pruebadiv" runat="server">
+
+                </div>
+
+
+
+
+
+
+                <!-- /SECCIÓN DEL TÍTULO -->
                 <!-- Products tab & slick -->
                 <div class="col-md-4">
                     <div class="row">
@@ -102,7 +109,7 @@
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>VALORAR OFERTA</button>
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>VER OFERTAS</button>
                                         </div>
                                     </div>
                                     <!-- /PRODUCTO -->
@@ -120,6 +127,4 @@
         <!-- /CONTENEDOR -->
     </div>
     <!-- /SECCIÓN -->
-
-
 </asp:Content>

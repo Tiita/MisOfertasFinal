@@ -15,8 +15,8 @@ namespace MisOfertasFinal.LogicaNegocio
                 var query = (from q in objEntitiesOfertas.REGION
                              select new Modelo.Region
                              {
-                                 DecID_REGION = q.ID_REGION,
-                                 StNOMBRE_REGION = q.NOMBRE_REGION
+                                 id_region = q.ID_REGION,
+                                 nombre_region = q.NOMBRE_REGION
 
                              }).ToList();
                 return query;
