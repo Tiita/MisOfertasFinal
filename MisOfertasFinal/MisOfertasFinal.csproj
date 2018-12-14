@@ -149,6 +149,7 @@
     <Content Include="Views\Index\Index.aspx" />
     <Content Include="Views\Login\Login.aspx" />
     <Content Include="Views\RegistrarCuenta\RegistrarCuenta.aspx" />
+    <Content Include="Views\VerOferta\VerOferta.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +282,13 @@
     <Compile Include="Views\RegistrarCuenta\RegistrarCuenta.aspx.designer.cs">
       <DependentUpon>RegistrarCuenta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\VerOferta\VerOferta.aspx.cs">
+      <DependentUpon>VerOferta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\VerOferta\VerOferta.aspx.designer.cs">
+      <DependentUpon>VerOferta.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Entidades\ModeloData.edmx">
@@ -369,6 +377,8 @@
           <DevelopmentServerPort>53739</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:53739/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:53739/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
