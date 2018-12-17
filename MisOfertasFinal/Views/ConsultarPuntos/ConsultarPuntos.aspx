@@ -2,4 +2,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cabecera" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenedor" runat="server">
+    <p style="text-align:center">Estimado Señor(a) <asp:Label ID="lblNombre" runat="server" Font-Bold="True" ></asp:Label>, usted tiene <asp:Label ID="lblPuntos" runat="server" Font-Bold="True"></asp:Label> acumalos a la fecha.</p>
 </asp:Content>

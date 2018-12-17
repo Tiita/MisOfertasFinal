@@ -48,5 +48,15 @@ namespace MisOfertasFinal.LogicaNegocio
             }
         }
         #endregion
+
+        public USUARIO BuscarUsuarioMail(string consumidorEmail)
+        {
+            using (Entities obEntitiesOfertas = new Entities())
+            {
+                var usu = obEntitiesOfertas.USUARIO.FirstOrDefault(x => x.CORREO_USUARIO == consumidorEmail);
+                return usu;
+            }
+
+        }
     }
 }

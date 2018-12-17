@@ -11,7 +11,20 @@ namespace MisOfertasFinal.Views.ConsultarPuntos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["consumidorEmail"] == null)
+            {
+                Response.Redirect("../Login/Login.aspx");
+            }
+            else
+            {
+                string consumidorEmail = (string)(Session["consumidorEmail"]);
+                LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
+                var usuario = objLnUsuario.BuscarUsuarioMail(consumidorEmail);
+                string nombre = usuario.NOMBRE_USUARIO + " " + usuario.APEPA_USUARIO;
+                decimal puntos = usuario.PUNTOS_USUARIO;
+                lblNombre.Text = nombre;
+                lblPuntos.Text = puntos.ToString();
+            }
         }
     }
 }
