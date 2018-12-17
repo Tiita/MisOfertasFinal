@@ -223,6 +223,7 @@
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Oferta.cs" />
+    <Compile Include="Modelo\Ofertas.cs" />
     <Compile Include="Modelo\Prioridad.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Region.cs" />

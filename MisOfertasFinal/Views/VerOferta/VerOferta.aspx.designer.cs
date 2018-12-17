@@ -13,57 +13,21 @@ namespace MisOfertasFinal.Views.VerOferta {
     public partial class VerOferta {
         
         /// <summary>
-        /// Control nombreCategoria.
+        /// Control dtlOferta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreCategoria;
+        protected global::System.Web.UI.WebControls.DataList dtlOferta;
         
         /// <summary>
-        /// Control nombreproducto.
+        /// Control dtlProRelacionados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreproducto;
-        
-        /// <summary>
-        /// Control preciofinal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label preciofinal;
-        
-        /// <summary>
-        /// Control precioviejo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label precioviejo;
-        
-        /// <summary>
-        /// Control porcentajeDescuento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label porcentajeDescuento;
-        
-        /// <summary>
-        /// Control pruebadiv.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pruebadiv;
+        protected global::System.Web.UI.WebControls.DataList dtlProRelacionados;
     }
 }

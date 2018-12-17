@@ -67,12 +67,12 @@ namespace MisOfertasFinal.Views.Index {
         protected global::System.Web.UI.WebControls.DropDownList ddlMarca;
         
         /// <summary>
-        /// Control pruebadiv.
+        /// Control dtlOfertas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pruebadiv;
+        protected global::System.Web.UI.WebControls.DataList dtlOfertas;
     }
 }

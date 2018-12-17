@@ -32,7 +32,7 @@ namespace MisOfertasFinal.Views.Login
                 if (lstUsuario.Count > 0)
                 {
                     Session["consumidorEmail"] = txtEmail.Text;
-                    Response.Redirect("../Index/Index.aspx");
+                    Response.Redirect("../Index/Index.aspx");                    
                 }
                 else
                 {

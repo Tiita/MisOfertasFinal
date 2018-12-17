@@ -40,8 +40,8 @@
                         <div class="col-md-4">
                             <asp:Label ID="lblCategoria" Text="Categoria:" runat="server"></asp:Label>
                             <asp:DropDownList runat="server" ID="ddlCategoria" CssClass="form-control" AutoPostBack="false" Width="311px">
-                            </asp:DropDownList>    
-                        </div>                       
+                            </asp:DropDownList>
+                        </div>
                         <div class="col-md-4">
                             <asp:Label ID="lblMarca" Text="Marca:" runat="server"></asp:Label>
                             <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control" Width="311px">
@@ -52,17 +52,77 @@
             </div>
         </div>
     </div>
-   
+    <div class="col-md-12">
+        <div class="section-title">
+            <h3 class="title">OFERTAS</h3>
+        </div>
+    </div>
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="section-title">
-                        <h3 class="title">Ofertas</h3>
+                    <div class="row">
+                        <div class="products-tabs">
+                            <!-- tab -->
+                            <asp:DataList ID="dtlOfertas" DataKeyField="id_producto" runat="server" RepeatColumns="4" OnItemCommand="dtlOfertas_ItemCommand">
+                                <ItemTemplate>
+                                    <div id="tab2" class="tab-pane fade in active">
+                                        <div class="products-slick" data-nav="#slick-nav-2">
+                                            <!-- PRODUCTO -->
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    <asp:Image ID="imgOferta" Width="200px" Height="200px"
+                                                        runat="server" ImageUrl='<%#"data:Image/jpg;base64," + Convert.ToBase64String((byte[])Eval("imagen_producto"))%>' />
+                                                    <br />
+                                                    <div class="product-label">
+                                                        <span class="sale">-%<asp:Label ID="lblPorcentajeDescuento" runat="server" Text='<%# Eval("porcentaje_descuento") %>'></asp:Label></span>
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                                <div class="product-body">
+                                                    <asp:Label ID="lblCodigoProducto" Visible="false" Text='<%# Eval("id_producto") %> ' runat="server" />
+                                                    <asp:Label ID="lblCodigoOferta" Visible="false" Text='<%# Eval("id_oferta") %> ' runat="server" />
+                                                    <h3 class="product-name">
+                                                        <a href="#">
+                                                            <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> ' />
+                                                        </a>
+                                                    </h3>
+                                                    <h4 class="product-price">Precio oferta $
+                                                        <asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
+                                                        <del class="product-old-price">$
+                                                            <asp:Label ID="lblPrecioViejo" runat="server" Text='<%# Eval("precio_producto") %>'></asp:Label>
+                                                        </del></h4>
+                                                    <div class="product-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <asp:Button ID="btnVerOfertas" runat="server" CssClass="add-to-cart-btn" CommandName="Seleccionar" Text="VER OFERTAS" OnClick="btnVerOfertas_Click" />
+                                                </div>
+                                                <!-- /PRODUCTO -->
+                                            </div>
+                                            <div id="slick-nav-2" class="products-slick-nav"></div>
+                                        </div>
+                                        <!-- /tab -->
+                                    </div>
+                                    <br />
+                                </ItemTemplate>
+                            </asp:DataList>
+                        </div>
                     </div>
                 </div>
-
-                <div id="pruebadiv" runat="server">
-
-                </div>
-
-
-            
+                <!-- /Products tab & slick -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
 </asp:Content>
