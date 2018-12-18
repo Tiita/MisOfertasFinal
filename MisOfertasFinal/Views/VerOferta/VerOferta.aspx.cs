@@ -50,6 +50,16 @@ namespace MisOfertasFinal.Views.VerOferta
                 Response.Redirect("../VerOferta/VerOferta.aspx");
             }
         }
-        
+
+        protected void dtlOferta_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName== "RegistrarValoracion")
+            {
+
+            }
+        }
+       
+
+
     }
 }

@@ -9,7 +9,7 @@
         <div class="container">
             <!-- Fila -->
             <div class="row">
-                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="1">
+                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="1" OnItemCommand="dtlOferta_ItemCommand" >
                     <ItemTemplate>
                         <!--Imagen producto principal lado central-->
                         <div class="col-md-7 col-md-push-2">
@@ -30,6 +30,7 @@
                                     <li>
                                         <asp:Label ID="lblCategoriaProducto" runat="server" Text='<%# Eval("nombre_categoria") %> '></asp:Label></li>
                                 </ul>
+                                <br>
                                 </br>
                                 <h2 class="product-name">
                                     <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
@@ -54,6 +55,7 @@
                                     <p class="product-name">
                                     Descripción:
                                     <asp:Label ID="lblDescripcionProducto" runat="server" Text='<%# Eval("descripcion_producto") %>'></asp:Label></p>
+                                     <br>
                                      </br>
                                     <p>Se debe considerar que el precio oferta es respetado dentro de las cantidades permitidas, 
                                     en caso contrario debe pagar el precio normal del producto.</p>
@@ -98,7 +100,9 @@
                                                 <div class="col-md-3">
                                                     <div id="review-form">                                                 
                                                             <asp:Image Width="150px" Height="150px" ImageUrl="~/Imagenes/Nohay.png" runat="server"></asp:Image>
+                                                            <br>
                                                             </br>
+                                                            <br>
                                                             </br>
                                                             <span>Adjuntar boleta: </span>
                                                             <br></br>
@@ -106,12 +110,15 @@
                                                             <br></br>
                                                             <asp:TextBox runat="server" ID="txtNumeroBoleta" CssClass="form-control" Width="370px"
                                                                 placeholder="Ingrese código de boleta "></asp:TextBox>
+                                                            <br>
                                                             </br>
                                                             <div class="input-rating">
                                                                 <span>Realiza tu valoración: </span>
+                                                                <br>
                                                                 </br>
+                                                                <br>
                                                                 </br>
-                                                                <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="true">
+                                                                <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="false">
                                                                     <asp:ListItem Text="Califica el producto" />
                                                                     <asp:ListItem Text="5. Fantastico" />
                                                                     <asp:ListItem Text="4. Grandioso" />
@@ -120,8 +127,9 @@
                                                                     <asp:ListItem Text="1. Terrible" />
                                                                 </asp:DropDownList>                                                   
                                                             </div>
+                                                            <br>
                                                             </br>
-                                                            <asp:Button ID="btnValorar" runat="server" CssClass="primary-btn" Text="VALORAR OFERTA" />
+                                                            <asp:Button ID="btnValorar" runat="server" CssClass="primary-btn" Text="VALORAR OFERTA" CommandName="RegistrarValoracion" />
                                                          </div>                                         
                                                 </div>
                                                 <!-- /Review Form -->

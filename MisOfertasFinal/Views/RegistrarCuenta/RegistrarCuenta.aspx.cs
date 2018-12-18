@@ -37,7 +37,7 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                 telefono_usuario = txtFono.Text,                
                 id_comuna = int.Parse(comuna),
                 password_usuario = passwordHash
-        };
+        }; 
             LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
             objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
             Response.Redirect("../Login/Login.aspx");
