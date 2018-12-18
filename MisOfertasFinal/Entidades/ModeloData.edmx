@@ -1155,6 +1155,14 @@
             <Parameter Name="P_ID_COMUNA" Mode="In" Type="Decimal" />
             <Parameter Name="P_PASSWORD_USUARIO" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="VALORACION_TAPI_INS" EntitySet="VALORACION" ReturnType="Collection(ModelMO.VALORACION)">
+            <Parameter Name="P_IMAGENBOLETA" Mode="In" Type="Binary" />
+            <Parameter Name="P_CALIFICACION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NUMERO_BOLETA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_OFERTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1328,6 +1336,7 @@
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="USUARIO_TAPI_INS" FunctionName="ModelMO.Store.USUARIO_TAPI_INS" />
+          <FunctionImportMapping FunctionImportName="VALORACION_TAPI_INS" FunctionName="ModelMO.Store.VALORACION_TAPI_INS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
