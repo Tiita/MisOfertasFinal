@@ -6,7 +6,7 @@ namespace MisOfertasFinal.LogicaNegocio
 {
     public class LnOferta
     {
-       
+
         public List<Modelo.Ofertas> getOfertasProductos()
         {
             using (Entities objOfertas = new Entities())

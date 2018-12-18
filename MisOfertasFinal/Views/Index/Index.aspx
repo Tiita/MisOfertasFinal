@@ -104,7 +104,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="add-to-cart">
-                                                    <asp:Button ID="btnVerOfertas" runat="server" CssClass="add-to-cart-btn" CommandName="Seleccionar" Text="VER OFERTAS" OnClick="btnVerOfertas_Click" />
+                                                    <asp:Button ID="btnVerOfertas" runat="server" CssClass="add-to-cart-btn" CommandName="Seleccionar" Text="VER OFERTAS"  />
                                                 </div>
                                                 <!-- /PRODUCTO -->
                                             </div>
