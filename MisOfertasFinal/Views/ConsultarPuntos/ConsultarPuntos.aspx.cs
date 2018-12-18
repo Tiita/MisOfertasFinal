@@ -26,5 +26,10 @@ namespace MisOfertasFinal.Views.ConsultarPuntos
                 lblPuntos.Text = puntos.ToString();
             }
         }
+
+        protected void btnDescargar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
