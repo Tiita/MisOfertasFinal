@@ -9,7 +9,7 @@
         <div class="container">
             <!-- Fila -->
             <div class="row">
-                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="3">
+                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="1">
                     <ItemTemplate>
                         <!--Imagen producto principal lado central-->
                         <div class="col-md-7 col-md-push-2">
@@ -25,6 +25,12 @@
                         <!-- Detalle de producto -->
                         <div class="col-md-5">
                             <div class="product-details">
+                                <ul class="product-links">
+                                    <li>Categoría:</li>
+                                    <li>
+                                        <asp:Label ID="lblCategoriaProducto" runat="server" Text='<%# Eval("nombre_categoria") %> '></asp:Label></li>
+                                </ul>
+                                </br>
                                 <h2 class="product-name">
                                     <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
                                 <div>
@@ -43,27 +49,25 @@
                                     <span class="product-available">En Stock
                                         <asp:Label ID="lblStockProducto" runat="server" Text='<%# Eval("stock_producto") %>'></asp:Label></span>
                                 </div>
-                                <p>Se debe considerar que el precio oferta es respetado dentro de las cantidades permitidas, en caso contrario debe pagar el precio normal del producto.</p>
+                                
                                 <div class="product-options">
+                                    <p class="product-name">
+                                    Descripción:
+                                    <asp:Label ID="lblDescripcionProducto" runat="server" Text='<%# Eval("descripcion_producto") %>'></asp:Label></p>
+                                     </br>
+                                    <p>Se debe considerar que el precio oferta es respetado dentro de las cantidades permitidas, 
+                                    en caso contrario debe pagar el precio normal del producto.</p>
+
                                     Cantidad mínima a comprar:
                                     <asp:Label ID="lblMinimoOferta" runat="server" Text='<%# Eval("minimo_pro") %>'></asp:Label>
                                     <br />
-                                    <br />
                                     Cantidad máxima a comprar:
                                     <asp:Label ID="lblMaximoOferta" runat="server" Text='<%# Eval("maximo_pro") %>'></asp:Label>
-                                </div>
-
-                                <ul class="product-links">
-                                    <li>Categoría:</li>
-                                    <li>
-                                        <asp:Label ID="lblCategoriaProducto" runat="server" Text='<%# Eval("nombre_categoria") %> '></asp:Label></li>
-                                </ul>
-                                <br />
+                                </div>                                
                                 <br />
                                 <div class="add-to-cart">
                                     <asp:Button ID="btnVerTiendas" runat="server" CssClass="add-to-cart-btn" Text="VER TIENDAS" />
                                 </div>
-                                <br />
                                 <ul class="product-links">
                                     <li>Compartir:</li>
                                     <li><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a></li>
@@ -78,27 +82,58 @@
                             <div id="product-tab">
                                 <!-- product tab nav -->
                                 <ul class="tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab1">Descripción producto</a></li>
-                                    <li><a data-toggle="tab" href="#tab3">Resumen de valoraciones</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#tab1">VALORAR OFERTA</a></li>
+                                    <li><a data-toggle="tab" href="#tab3">RESUMEN VALORACIONES</a></li>
                                 </ul>
                                 <!-- /product tab nav -->
+
                                 <!-- product tab content -->
                                 <div class="tab-content">
                                     <!-- tab1  -->
                                     <div id="tab1" class="tab-pane fade in active">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p>
-                                                    <asp:Label ID="lblDescProducto" runat="server" Text='<%# Eval("descripcion_producto") %> '></asp:Label>
-                                                </p>
+                                                <p>Danos tu opinión acerca de este producto.</p>
+                                                <!-- Review Form -->
+                                                <div class="col-md-3">
+                                                    <div id="review-form">                                                 
+                                                            <asp:Image Width="150px" Height="150px" ImageUrl="~/Imagenes/Nohay.png" runat="server"></asp:Image>
+                                                            </br>
+                                                            </br>
+                                                            <span>Adjuntar boleta: </span>
+                                                            <br></br>
+                                                            <asp:FileUpload CssClass="form-control" ID="flSubir" accept=".jpg" runat="server" />
+                                                            <br></br>
+                                                            <asp:TextBox runat="server" ID="txtNumeroBoleta" CssClass="form-control" Width="370px"
+                                                                placeholder="Ingrese código de boleta "></asp:TextBox>
+                                                            </br>
+                                                            <div class="input-rating">
+                                                                <span>Realiza tu valoración: </span>
+                                                                </br>
+                                                                </br>
+                                                                <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Califica el producto" />
+                                                                    <asp:ListItem Text="5. Fantastico" />
+                                                                    <asp:ListItem Text="4. Grandioso" />
+                                                                    <asp:ListItem Text="3. Bueno" />
+                                                                    <asp:ListItem Text="2. Pobre" />
+                                                                    <asp:ListItem Text="1. Terrible" />
+                                                                </asp:DropDownList>                                                   
+                                                            </div>
+                                                            </br>
+                                                            <asp:Button ID="btnValorar" runat="server" CssClass="primary-btn" Text="VALORAR OFERTA" />
+                                                         </div>                                         
+                                                </div>
+                                                <!-- /Review Form -->
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /tab1  -->
+
                                     <!-- tab3  -->
                                     <div id="tab3" class="tab-pane fade in">
                                         <div class="row">
-                                            <!-- Valoración -->
+                                            <!-- Rating -->
                                             <div class="col-md-3">
                                                 <div id="rating">
                                                     <div class="rating-avg">
@@ -180,8 +215,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <!-- /Valoración -->
-                                            <!-- Resumen valoraciones -->
+                                            <!-- /Rating -->
+
+                                            <!-- Reviews -->
                                             <div class="col-md-6">
                                                 <div id="reviews">
                                                     <ul class="reviews">
@@ -243,29 +279,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <!-- /Resumen valoraciones -->
-                                            <!-- Review Form -->
-                                            <div class="col-md-3">
-                                                <div id="review-form">
-                                                    <form class="review-form">
-                                                        <input class="input" type="text" placeholder="Your Name">
-                                                        <input class="input" type="email" placeholder="Your Email">
-                                                        <textarea class="input" placeholder="Your Review"></textarea>
-                                                        <div class="input-rating">
-                                                            <span>Your Rating: </span>
-                                                            <div class="stars">
-                                                                <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-                                                                <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                                                                <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                                                                <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                                                                <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-                                                            </div>
-                                                        </div>
-                                                        <button class="primary-btn">VALORAR OFERTA</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <!-- /Review Form -->
+                                            <!-- /Reviews -->
+
+
                                         </div>
                                     </div>
                                     <!-- /tab3  -->
@@ -273,6 +289,7 @@
                                 <!-- /product tab content  -->
                             </div>
                         </div>
+                        <!-- /product tab -->
                     </ItemTemplate>
                 </asp:DataList>
                 <!-- /product tab -->

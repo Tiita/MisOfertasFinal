@@ -103,12 +103,21 @@
     </Content>
     <Content Include="Imagenes\Iconocompleto.png" />
     <Content Include="Imagenes\iconoV2.png" />
+    <Content Include="Imagenes\Nohay.png" />
     <Content Include="Maqueta\css\bootstrap.min.css" />
     <Content Include="Maqueta\css\font-awesome.min.css" />
     <Content Include="Maqueta\css\nouislider.min.css" />
     <Content Include="Maqueta\css\slick-theme.css" />
     <Content Include="Maqueta\css\slick.css" />
     <Content Include="Maqueta\css\style.css" />
+    <Content Include="Maqueta\estrella\demo\styles.css" />
+    <Content Include="Maqueta\estrella\dist\star-rating.css" />
+    <Content Include="Maqueta\estrella\dist\star-rating.min.css" />
+    <Content Include="Maqueta\estrella\dist\star-rating.min.js" />
+    <Content Include="Maqueta\estrella\img\star-empty.svg" />
+    <Content Include="Maqueta\estrella\img\star-full.svg" />
+    <Content Include="Maqueta\estrella\img\star-half.svg" />
+    <Content Include="Maqueta\estrella\src\star-rating.js" />
     <Content Include="Maqueta\js\bootstrap.min.js" />
     <Content Include="Maqueta\js\jquery.min.js" />
     <Content Include="Maqueta\js\jquery.zoom.min.js" />
@@ -358,6 +367,8 @@
     <Content Include="Maqueta\visual\font-awesome\scss\_variables.scss" />
     <Content Include="Maqueta\visual\jquery\jquery.min.map" />
     <Content Include="Maqueta\visual\jquery\jquery.slim.min.map" />
+    <Content Include="Maqueta\estrella\demo\styles.scss" />
+    <Content Include="Maqueta\estrella\src\star-rating.scss" />
     <None Include="packages.config" />
     <Content Include="Resources\Template\Template.Master" />
     <None Include="Web.Debug.config">

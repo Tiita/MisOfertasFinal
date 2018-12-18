@@ -13,12 +13,12 @@ namespace MisOfertasFinal.Pruebas {
     public partial class frmPrueba {
         
         /// <summary>
-        /// Control lblUsuario.
+        /// Control Head1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
     }
 }

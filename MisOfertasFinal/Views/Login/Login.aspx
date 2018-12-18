@@ -39,6 +39,9 @@
                     <form id="form1" runat="server">
                         <div class="form-group">
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="nombre@ejemplo.com"></asp:TextBox>
+                               <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                                    runat="server" ErrorMessage="Indique su correo" ControlToValidate="txtEmail"
+                                    CssClass="mensaje-validacion" ForeColor="Red">Indique su correo</asp:RequiredFieldValidator>
                         </div>
                         <br />
                         <div class="form-group">
