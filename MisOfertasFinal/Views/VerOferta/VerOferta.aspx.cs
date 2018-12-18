@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-
+using MisOfertasFinal.Modelo;
 namespace MisOfertasFinal.Views.VerOferta
 {
     public partial class VerOferta : System.Web.UI.Page
@@ -53,9 +53,28 @@ namespace MisOfertasFinal.Views.VerOferta
 
         protected void dtlOferta_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            if (e.CommandName== "RegistrarValoracion")
+            List<Modelo.Ofertas> oferta = (List<Modelo.Ofertas>)Session["Oferta"];
+            LnValoracion lnValoracion = new LnValoracion();
+            LnUsuario lnUsuario = new LnUsuario();
+            var usuario = lnUsuario.BuscarUsuarioMail((string)(Session["consumidorEmail"]));
+            if (e.CommandName == "RegistrarValoracion")
             {
+                foreach (var item in oferta)
+                {
+                    Valoracion valoracion = new Valoracion();
+                    {
+                        valoracion.id_oferta = item.id_oferta ;
+                        valoracion.id_valoracion = Convert.ToDecimal(1);
+                        valoracion.imagen_boleta = null;//this.dtlOferta.SelectedItem.FindControl("flSubir");
+                        valoracion.numero_boleta = Convert.ToDecimal(((TextBox)e.Item.FindControl("txtNumeroBoleta")).Text);
+                        valoracion.rut_usuario = usuario.RUT_USUARIO;
+                        valoracion.calificacion = Convert.ToDecimal(((DropDownList)e.Item.FindControl("ddlValoracion")).SelectedValue.ToString());
+                    }
 
+                    lnValoracion.InsertarValoracionOferta(valoracion);
+                }
+
+                
             }
         }
        

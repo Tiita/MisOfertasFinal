@@ -37,7 +37,7 @@ namespace MisOfertasFinal.LogicaNegocio
         }
 
         public List<Modelo.Ofertas> GetOfertaEspecifica(decimal idOferta, decimal idProducto)
-        {
+        { LnValoracion valoracion = new LnValoracion();
             using (Entities objOfertas = new Entities())
             {
 
@@ -47,8 +47,8 @@ namespace MisOfertasFinal.LogicaNegocio
                              join cat in objOfertas.CATEGORIA on prod.ID_CATEGORIA equals cat.ID_CATEGORIA
                              where prod.ID_PRODUCTO == idProducto & ofer.ID_OFERTA == idOferta
                              orderby cat.ID_CATEGORIA
-                             select new Modelo.Ofertas
-                             {
+                             select new Modelo.Ofertas {
+                                 id_oferta = ofer.ID_OFERTA,
                                  nombre_categoria = cat.NOMBRE_CATEGORIA,
                                  id_producto = prod.ID_PRODUCTO,
                                  nombre_producto = prod.NOMBRE_PRODUCTO,
@@ -61,8 +61,13 @@ namespace MisOfertasFinal.LogicaNegocio
                                  porcentaje_descuento = ofer.PORCENTAJE_DESCUENTO,
                                  nombre_marca = mrc.NOMBRE_MARCA,
                                  fecha_limite = ofer.FECHA_LIMITE,
-                                 imagen_producto = prod.IMAGEN_PRODUCTO                                
+                                 imagen_producto = prod.IMAGEN_PRODUCTO
                              }).ToList();
+
+                foreach (var item in query)
+                {
+                    item.calificacion = valoracion.GetValoraciones(item.id_oferta);
+                }
                 return query;
             }//fin del using            
         }

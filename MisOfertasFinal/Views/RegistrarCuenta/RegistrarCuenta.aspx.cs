@@ -55,7 +55,6 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         public void cargarRegiones()
         {
             LogicaNegocio.LnRegion objLnRegion = null;
-            LogicaNegocio.LnComuna objLnComuna = null;
             objLnRegion = new LogicaNegocio.LnRegion();
             //Se obtiene listado de las regiones de la base de datos
             List<Modelo.Region> lstRegiones = objLnRegion.GetListadoRegiones();
@@ -67,7 +66,6 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         }
 
         public void cargarComunas(decimal id_region) {
-            LogicaNegocio.LnRegion objLnRegion = null;
             LogicaNegocio.LnComuna objLnComuna = null;
             objLnComuna = new LogicaNegocio.LnComuna();
             List<Modelo.Comuna> lstComunas = objLnComuna.GetListadoComunas(id_region);
