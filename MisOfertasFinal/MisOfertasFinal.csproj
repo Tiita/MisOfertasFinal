@@ -238,6 +238,7 @@
     <Compile Include="LogicaNegocio\LnRubro.cs" />
     <Compile Include="LogicaNegocio\LnTicket.cs" />
     <Compile Include="LogicaNegocio\LnUsuario.cs" />
+    <Compile Include="LogicaNegocio\LnValoracion.cs" />
     <Compile Include="Modelo\Categoria.cs" />
     <Compile Include="Modelo\Comuna.cs" />
     <Compile Include="Modelo\Empresa.cs" />
