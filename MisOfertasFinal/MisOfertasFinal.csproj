@@ -162,6 +162,7 @@
     <Content Include="Maqueta\visual\js\sb-admin.min.js" />
     <Content Include="Maqueta\visual\js\sweetalert.min.js" />
     <Content Include="Pruebas\frmPrueba.aspx" />
+    <Content Include="Views\ConsultarPuntos\codigo.png" />
     <Content Include="Views\ConsultarPuntos\ConsultarPuntos.aspx" />
     <Content Include="Views\GenerarTicketDscto\GenerarTicketDscto.aspx" />
     <Content Include="Views\Index\Index.aspx" />
@@ -235,6 +236,7 @@
     <Compile Include="LogicaNegocio\LnProducto.cs" />
     <Compile Include="LogicaNegocio\LnRegion.cs" />
     <Compile Include="LogicaNegocio\LnRubro.cs" />
+    <Compile Include="LogicaNegocio\LnTicket.cs" />
     <Compile Include="LogicaNegocio\LnUsuario.cs" />
     <Compile Include="LogicaNegocio\LnValoracion.cs" />
     <Compile Include="Modelo\Categoria.cs" />
