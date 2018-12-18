@@ -23,6 +23,7 @@ namespace MisOfertasFinal.Views.VerOferta
                 dtlOferta.DataSource = data;
                 dtlOferta.DataBind();
                 ObtenerProductosRelacionados();
+                
             }
         }
 
@@ -49,5 +50,6 @@ namespace MisOfertasFinal.Views.VerOferta
                 Response.Redirect("../VerOferta/VerOferta.aspx");
             }
         }
+        
     }
 }

@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="MisOfertasFinal.Resources.Template.Template" %>
-
 <!DOCTYPE html>
 <html>
 <head runat="server">
@@ -19,12 +18,14 @@
     <link rel="stylesheet" href="../../Maqueta/css/font-awesome.min.css" />
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="../../Maqueta/css/style.css" />
+
     <script src="../../Maqueta/js/jquery.min.js"></script>
     <script src="../../Maqueta/js/bootstrap.min.js"></script>
     <script src="../../Maqueta/js/slick.min.js"></script>
     <script src="../../Maqueta/js/nouislider.min.js"></script>
     <script src="../../Maqueta/js/jquery.zoom.min.js"></script>
     <script src="../../Maqueta/js/main.js"></script>
+    
     <asp:ContentPlaceHolder runat="server" ID="cabecera"></asp:ContentPlaceHolder>
 </head>
 <body>

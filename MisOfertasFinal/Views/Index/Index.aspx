@@ -27,8 +27,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contenedor" runat="server">
     <div class="container">
         <div class="card mx-auto mt-5">
-            <!--<div class="card-header">Ofertas vigentes</div>-->
-            <div class="card-body">
+               <div class="card-body">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-4">
