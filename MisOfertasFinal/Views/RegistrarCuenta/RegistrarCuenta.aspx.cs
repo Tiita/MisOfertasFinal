@@ -11,6 +11,8 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         {
                                   
             if (!IsPostBack) {
+                lblErrorRut.Visible = (false);
+                LblErroCorreo.Visible=(false);
                 cargarRegiones();
                 ddlRegion.Items.Insert(0, new ListItem("Región", "0"));
                 ddlComuna.Items.Insert(0, new ListItem("Comunas", "0"));
@@ -19,6 +21,8 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            lblErrorRut.Visible = false;
+            LblErroCorreo.Visible = false;
             String activo = ObtenerCheck();
             string passwordHash = Hash(txtPassword.Text);
             String comuna = ddlComuna.SelectedValue;
@@ -37,10 +41,28 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                 telefono_usuario = txtFono.Text,                
                 id_comuna = int.Parse(comuna),
                 password_usuario = passwordHash
-        }; 
+        };
+
             LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
-            objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
-            Response.Redirect("../Login/Login.aspx");
+            List<Modelo.Usuario> lstUsuariocorreo = objLnUsuario.GetBuscarUsuarioCorreo(obMoUsuario);
+            List<Modelo.Usuario> lstUsuarorut = objLnUsuario.GetBuscarUsuarioRut(obMoUsuario);
+            if (lstUsuariocorreo.Count > 1)
+            {
+                LblErroCorreo.Text = "El correo ya existe en el sistema";
+                LblErroCorreo.Visible = true;
+            }
+            if (lstUsuarorut.Count > 1)
+            {
+                lblErrorRut.Text = "El rut usuario ya existe en el sistema";
+                lblErrorRut.Visible = true;
+            }
+            if (lstUsuarorut.Count < 1 && lstUsuariocorreo.Count < 1)
+            {
+                List<Modelo.Usuario> lstUsuario = objLnUsuario.GetBuscarUsuario(obMoUsuario);
+                objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
+                Response.Redirect("../Login/Login.aspx");
+            }
+           
 
         }        
         
@@ -55,7 +77,6 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         public void cargarRegiones()
         {
             LogicaNegocio.LnRegion objLnRegion = null;
-            LogicaNegocio.LnComuna objLnComuna = null;
             objLnRegion = new LogicaNegocio.LnRegion();
             //Se obtiene listado de las regiones de la base de datos
             List<Modelo.Region> lstRegiones = objLnRegion.GetListadoRegiones();
@@ -67,7 +88,6 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
         }
 
         public void cargarComunas(decimal id_region) {
-            LogicaNegocio.LnRegion objLnRegion = null;
             LogicaNegocio.LnComuna objLnComuna = null;
             objLnComuna = new LogicaNegocio.LnComuna();
             List<Modelo.Comuna> lstComunas = objLnComuna.GetListadoComunas(id_region);

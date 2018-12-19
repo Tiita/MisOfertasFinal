@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cabecera" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenedor" runat="server">
+     
     <!-- Sección -->
     <div class="section">
         <!-- Contenedor -->
@@ -36,13 +37,14 @@
                                     <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
                                 <div>
                                     <p>Valoración oferta: </p>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
+                                    <div class="product-rating" id="<%# Eval("nombre_producto") %>">  
+                                           <i class="fa fa-star"></i>
+                                           <i class="fa fa-star"></i>
+                                           <i class="fa fa-star"></i>
+                                           <i class="fa fa-star-o"></i>
+                                           <i class="fa fa-star-o"></i>
                                     </div>
+                                  <p>  Promedio: <%# Eval("calificacion") %></p>
                                 </div>
                                 <div>
                                     <h3 class="product-price">$<asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
@@ -120,11 +122,11 @@
                                                                 </br>
                                                                 <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="false">
                                                                     <asp:ListItem Text="Califica el producto" />
-                                                                    <asp:ListItem Text="5. Fantastico" />
-                                                                    <asp:ListItem Text="4. Grandioso" />
-                                                                    <asp:ListItem Text="3. Bueno" />
-                                                                    <asp:ListItem Text="2. Pobre" />
-                                                                    <asp:ListItem Text="1. Terrible" />
+                                                                    <asp:ListItem Text="5. Muy bueno" Value=5/>
+                                                                    <asp:ListItem Text="4. Bueno" Value=4 />
+                                                                    <asp:ListItem Text="3. Normal" Value=3/>
+                                                                    <asp:ListItem Text="2. Malo" Value=2/>
+                                                                    <asp:ListItem Text="1. Muy malo" Value=1/>
                                                                 </asp:DropDownList>                                                   
                                                             </div>
                                                             <br>

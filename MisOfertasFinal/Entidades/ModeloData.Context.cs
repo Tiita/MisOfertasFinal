@@ -11,9 +11,8 @@ namespace MisOfertasFinal.Entidades
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
     using System.Linq;
     
     public partial class Entities : DbContext
@@ -152,6 +151,35 @@ namespace MisOfertasFinal.Entidades
                 new ObjectParameter("P_ID_VALORACION", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VALORACION>("VALORACION_TAPI_INS", mergeOption, p_IMAGENBOLETAParameter, p_CALIFICACIONParameter, p_NUMERO_BOLETAParameter, p_ID_OFERTAParameter, p_RUT_USUARIOParameter, p_ID_VALORACIONParameter);
+        }
+    
+        public virtual int VALORACION_TAPI_INS1(byte[] p_IMAGENBOLETA, Nullable<decimal> p_CALIFICACION, Nullable<decimal> p_NUMERO_BOLETA, Nullable<decimal> p_ID_OFERTA, string p_RUT_USUARIO, Nullable<decimal> p_ID_VALORACION)
+        {
+            var p_IMAGENBOLETAParameter = p_IMAGENBOLETA != null ?
+                new ObjectParameter("P_IMAGENBOLETA", p_IMAGENBOLETA) :
+                new ObjectParameter("P_IMAGENBOLETA", typeof(byte[]));
+    
+            var p_CALIFICACIONParameter = p_CALIFICACION.HasValue ?
+                new ObjectParameter("P_CALIFICACION", p_CALIFICACION) :
+                new ObjectParameter("P_CALIFICACION", typeof(decimal));
+    
+            var p_NUMERO_BOLETAParameter = p_NUMERO_BOLETA.HasValue ?
+                new ObjectParameter("P_NUMERO_BOLETA", p_NUMERO_BOLETA) :
+                new ObjectParameter("P_NUMERO_BOLETA", typeof(decimal));
+    
+            var p_ID_OFERTAParameter = p_ID_OFERTA.HasValue ?
+                new ObjectParameter("P_ID_OFERTA", p_ID_OFERTA) :
+                new ObjectParameter("P_ID_OFERTA", typeof(decimal));
+    
+            var p_RUT_USUARIOParameter = p_RUT_USUARIO != null ?
+                new ObjectParameter("P_RUT_USUARIO", p_RUT_USUARIO) :
+                new ObjectParameter("P_RUT_USUARIO", typeof(string));
+    
+            var p_ID_VALORACIONParameter = p_ID_VALORACION.HasValue ?
+                new ObjectParameter("P_ID_VALORACION", p_ID_VALORACION) :
+                new ObjectParameter("P_ID_VALORACION", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VALORACION_TAPI_INS1", p_IMAGENBOLETAParameter, p_CALIFICACIONParameter, p_NUMERO_BOLETAParameter, p_ID_OFERTAParameter, p_RUT_USUARIOParameter, p_ID_VALORACIONParameter);
         }
     }
 }

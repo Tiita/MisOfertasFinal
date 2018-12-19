@@ -49,6 +49,15 @@ namespace MisOfertasFinal.Views.RegistrarCuenta {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
+        /// Control lblErrorRut.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorRut;
+        
+        /// <summary>
         /// Control txtNombreCliente.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace MisOfertasFinal.Views.RegistrarCuenta {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        
+        /// <summary>
+        /// Control LblErroCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblErroCorreo;
         
         /// <summary>
         /// Control txtPassword.
