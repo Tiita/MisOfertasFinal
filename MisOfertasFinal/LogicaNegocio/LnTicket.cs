@@ -11,17 +11,17 @@ namespace MisOfertasFinal.LogicaNegocio
     {
         public decimal Descuento(decimal puntos)
         {
-            decimal dest=5;
-            
+            decimal dest = 5;
+
             if (puntos >= 101 && puntos <= 500)
             {
                 dest = 10;
-                
+
             }
             if (puntos >= 501 && puntos <= 1000)
             {
                 dest = 15;
-               
+
             }
             return dest;
         }
@@ -45,15 +45,15 @@ namespace MisOfertasFinal.LogicaNegocio
         public decimal MaxDect(decimal puntos)
         {
             decimal max = 100000;
-            
+
             if (puntos >= 101 && puntos <= 500)
             {
-              
+
                 max = 150000;
             }
             if (puntos >= 501 && puntos <= 1000)
             {
-                
+
                 max = 300000;
             }
             return max;
@@ -75,6 +75,11 @@ namespace MisOfertasFinal.LogicaNegocio
             return glosa;
         }
 
+        public void IngresarTicket()
+        {
+            Entities db = new Entities();
+            TICKETDESCUENTO ticket = new TICKETDESCUENTO();
+        }
        
     }
 }

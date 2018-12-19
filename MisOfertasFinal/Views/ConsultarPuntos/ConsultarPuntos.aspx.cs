@@ -115,6 +115,7 @@ namespace MisOfertasFinal.Views.ConsultarPuntos
             tablaPdf.AddCell("$"+datosTicket.MaxDect(puntos).ToString());
             tablaPdf.AddCell("Fecha Expiración:");
             tablaPdf.AddCell(fechaFinal.ToString("dd/MM/yyyy"));
+            
 
             document.Add(tablaPdf);
             //cerrar Documento
