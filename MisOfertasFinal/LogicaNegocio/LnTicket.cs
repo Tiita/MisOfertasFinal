@@ -74,12 +74,14 @@ namespace MisOfertasFinal.LogicaNegocio
             glosa = nombre + " " + rut + " " + puntos + " " + descuento + " " + rubro + " " + max + " " + fecha;
             return glosa;
         }
-
-        public void IngresarTicket()
+        
+        public decimal BuscarUltimoIDTicket()
         {
-            Entities db = new Entities();
-            TICKETDESCUENTO ticket = new TICKETDESCUENTO();
-        }
-       
+            using (Entities obEntitiesOfertas = new Entities())
+            {
+                decimal idTicket=obEntitiesOfertas.TICKETDESCUENTO.OrderByDescending(x => x.ID_TICKET).First().ID_TICKET;
+                return idTicket;
+            }
+        }       
     }
 }

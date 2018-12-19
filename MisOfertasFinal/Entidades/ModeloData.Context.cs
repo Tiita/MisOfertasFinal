@@ -13,8 +13,7 @@ namespace MisOfertasFinal.Entidades
     using System.Data.Entity;
     using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
-    using System.Linq;
-    
+
     public partial class Entities : DbContext
     {
         public Entities()
@@ -180,6 +179,39 @@ namespace MisOfertasFinal.Entidades
                 new ObjectParameter("P_ID_VALORACION", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VALORACION_TAPI_INS1", p_IMAGENBOLETAParameter, p_CALIFICACIONParameter, p_NUMERO_BOLETAParameter, p_ID_OFERTAParameter, p_RUT_USUARIOParameter, p_ID_VALORACIONParameter);
+        }
+    
+        public virtual int InsertarTicket(Nullable<System.DateTime> p_FECHA_TERMINO, Nullable<decimal> p_TOPE, string p_RUT_USUARIO, byte[] p_CODIGOBARRA, Nullable<System.DateTime> p_FECHA_INICIO, Nullable<decimal> p_ID_TICKET, Nullable<decimal> p_DESCUENTO_OTORGADO)
+        {
+            var p_FECHA_TERMINOParameter = p_FECHA_TERMINO.HasValue ?
+                new ObjectParameter("P_FECHA_TERMINO", p_FECHA_TERMINO) :
+                new ObjectParameter("P_FECHA_TERMINO", typeof(System.DateTime));
+    
+            var p_TOPEParameter = p_TOPE.HasValue ?
+                new ObjectParameter("P_TOPE", p_TOPE) :
+                new ObjectParameter("P_TOPE", typeof(decimal));
+    
+            var p_RUT_USUARIOParameter = p_RUT_USUARIO != null ?
+                new ObjectParameter("P_RUT_USUARIO", p_RUT_USUARIO) :
+                new ObjectParameter("P_RUT_USUARIO", typeof(string));
+    
+            var p_CODIGOBARRAParameter = p_CODIGOBARRA != null ?
+                new ObjectParameter("P_CODIGOBARRA", p_CODIGOBARRA) :
+                new ObjectParameter("P_CODIGOBARRA", typeof(byte[]));
+    
+            var p_FECHA_INICIOParameter = p_FECHA_INICIO.HasValue ?
+                new ObjectParameter("P_FECHA_INICIO", p_FECHA_INICIO) :
+                new ObjectParameter("P_FECHA_INICIO", typeof(System.DateTime));
+    
+            var p_ID_TICKETParameter = p_ID_TICKET.HasValue ?
+                new ObjectParameter("P_ID_TICKET", p_ID_TICKET) :
+                new ObjectParameter("P_ID_TICKET", typeof(decimal));
+    
+            var p_DESCUENTO_OTORGADOParameter = p_DESCUENTO_OTORGADO.HasValue ?
+                new ObjectParameter("P_DESCUENTO_OTORGADO", p_DESCUENTO_OTORGADO) :
+                new ObjectParameter("P_DESCUENTO_OTORGADO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarTicket", p_FECHA_TERMINOParameter, p_TOPEParameter, p_RUT_USUARIOParameter, p_CODIGOBARRAParameter, p_FECHA_INICIOParameter, p_ID_TICKETParameter, p_DESCUENTO_OTORGADOParameter);
         }
     }
 }

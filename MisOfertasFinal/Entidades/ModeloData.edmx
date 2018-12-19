@@ -1171,6 +1171,15 @@
             <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
             <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="InsertarTicket">
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TOPE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CODIGOBARRA" Mode="In" Type="Binary" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ID_TICKET" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCUENTO_OTORGADO" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1346,6 +1355,7 @@
           <FunctionImportMapping FunctionImportName="USUARIO_TAPI_INS" FunctionName="ModelMO.Store.USUARIO_TAPI_INS" />
           <FunctionImportMapping FunctionImportName="VALORACION_TAPI_INS" FunctionName="ModelMO.Store.VALORACION_TAPI_INS" />
           <FunctionImportMapping FunctionImportName="VALORACION_TAPI_INS1" FunctionName="ModelMO.Store.VALORACION_TAPI_INS" />
+          <FunctionImportMapping FunctionImportName="InsertarTicket" FunctionName="ModelMO.Store.TICKETDESCUENTO_TAPI_INS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

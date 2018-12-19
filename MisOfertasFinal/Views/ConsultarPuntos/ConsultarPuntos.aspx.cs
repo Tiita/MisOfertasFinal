@@ -14,6 +14,7 @@ using iTextSharp.text.html;
 using iTextSharp.text.html.simpleparser;
 using System.IO;
 using System.Text.RegularExpressions;
+using MisOfertasFinal.Entidades;
 
 namespace MisOfertasFinal.Views.ConsultarPuntos
 {
@@ -115,8 +116,35 @@ namespace MisOfertasFinal.Views.ConsultarPuntos
             tablaPdf.AddCell("$"+datosTicket.MaxDect(puntos).ToString());
             tablaPdf.AddCell("Fecha Expiración:");
             tablaPdf.AddCell(fechaFinal.ToString("dd/MM/yyyy"));
-            
 
+
+            Entities obEntitiesOfertas = new Entities();
+            TICKETDESCUENTO ticket = new TICKETDESCUENTO();
+
+            //convertir imagen a byte[] para gardarlo en la base de datos
+            FileStream stream = File.OpenRead(Server.MapPath("./codigo.png"));
+            byte[] fileBytes = new byte[stream.Length];
+            stream.Read(fileBytes, 0, fileBytes.Length);
+            stream.Close();
+            /*proceso inverso
+             * using (Stream file = File.OpenWrite(Server.MapPath("./codigo.png")))
+             *   {
+             *       file.Write(fileBytes, 0, fileBytes.Length);
+             *   }
+             */
+            
+            /*
+            ticket.ID_TICKET = datosTicket.BuscarUltimoIDTicket() + 1;
+            ticket.CODIGOBARRA = fileBytes;
+            ticket.DESCUENTO_OTORGADO = datosTicket.Descuento(puntos);
+            ticket.FECHA_INICIO = fechaInicio;
+            ticket.FECHA_TERMINO = fechaFinal;
+            ticket.RUT_USUARIO = usuario.RUT_USUARIO;
+            ticket.TOPE = datosTicket.MaxDect(puntos);
+            */
+            obEntitiesOfertas.InsertarTicket(fechaFinal, datosTicket.MaxDect(puntos), usuario.RUT_USUARIO, fileBytes, fechaInicio, datosTicket.BuscarUltimoIDTicket() + 1, datosTicket.Descuento(puntos));
+            obEntitiesOfertas.SaveChanges();
+                     
             document.Add(tablaPdf);
             //cerrar Documento
             document.Close();
