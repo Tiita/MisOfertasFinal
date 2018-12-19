@@ -92,7 +92,7 @@
                                 <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Ingrese un Rut mínimo 9 caracteres"
                                     ClientValidationFunction="validarLargoRut" ControlToValidate="TxtRut" CssClass="mensaje-validacion"
                                     Display="Dynamic" ForeColor="Red">Ingrese un rut mínimo 9 caracteres </asp:CustomValidator>
-
+                                        <asp:Label ID="lblErrorRut" runat="server" ForeColor="Red"></asp:Label>
                                     </span>
                                 </div>
                                 <br />
@@ -152,7 +152,8 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                     runat="server" ErrorMessage="Indique su correo" ControlToValidate="TxtCorreo"
                                     CssClass="mensaje-validacion" ForeColor="Red">Indique su correo</asp:RequiredFieldValidator>
-                             </div>   <br />
+                                     <asp:Label ID="LblErroCorreo" runat="server" Text=""  ForeColor="Red" ></asp:Label>
+                               </div>   <br />
                                 <div>
                                 <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Password"
                                     TextMode="Password"></asp:TextBox>
