@@ -1,4 +1,5 @@
 ﻿using MisOfertasFinal.Entidades;
+using MisOfertasFinal.Modelo;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,8 +30,15 @@ namespace MisOfertasFinal.LogicaNegocio
 
                     totalPuntaje = totalPuntaje + item.calificacion;
                 }
-
-                totalPuntaje = totalPuntaje / listadoValoraciones.Count;
+                if (totalPuntaje == 0)
+                {
+                    totalPuntaje = 0;
+                }
+                else
+                {
+                    totalPuntaje = totalPuntaje / listadoValoraciones.Count;
+                }
+                
                 return totalPuntaje;
             }
             
@@ -38,15 +46,20 @@ namespace MisOfertasFinal.LogicaNegocio
 #endregion
 
         #region Insertar_valoracion
-        public void InsertarValoracionOferta(Modelo.Valoracion obValoracion)
+        public void InsertarValoracionOferta(Modelo.Valoracion obValoracion, Usuario us)
         {
+            LnUsuario lnUsuario = new LnUsuario();
             using (Entities obEntitiesOfertas = new Entities())
             {
                 // p_IMAGENBOLETAParameter, p_CALIFICACIONParameter, p_NUMERO_BOLETAParameter, p_ID_OFERTAParameter, p_RUT_USUARIOParameter, p_ID_VALORACIONParameter
                 obEntitiesOfertas.VALORACION_TAPI_INS1(obValoracion.imagen_boleta, obValoracion.calificacion, obValoracion.numero_boleta, obValoracion.id_oferta,
                 obValoracion.rut_usuario, obValoracion.id_valoracion);
+                lnUsuario.ActualizarUsuarioCliente(us);
                 obEntitiesOfertas.SaveChanges();
             }
+            
+            
+            
         }
         #endregion
     }

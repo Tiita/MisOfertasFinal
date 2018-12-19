@@ -101,6 +101,17 @@ namespace MisOfertasFinal.LogicaNegocio
         }
         #endregion
 
+        #region actualizar_datos
+        public void ActualizarUsuarioCliente(Modelo.Usuario usuario)
+        {
+            using (Entities obEntitiesOfertas = new Entities())
+            {  obEntitiesOfertas.USUARIO_TAPI_UPD(usuario.id_tipoUsuario, usuario.direccion_usuario, usuario.correoactivo, usuario.apepa_usuario, usuario.nombre_usuario,
+               usuario.rut_usuario, usuario.correo_usuario, usuario.apema_usuario, usuario.puntos_usuario, usuario.telefono_usuario,usuario.id_comuna, usuario.password_usuario);
+               obEntitiesOfertas.SaveChanges();
+            }
+        }
+        #endregion
+
         public USUARIO BuscarUsuarioMail(string consumidorEmail)
         {
             using (Entities obEntitiesOfertas = new Entities())

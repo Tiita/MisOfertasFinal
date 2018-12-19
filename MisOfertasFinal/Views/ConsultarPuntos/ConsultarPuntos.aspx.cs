@@ -90,7 +90,7 @@ namespace MisOfertasFinal.Views.ConsultarPuntos
             imagen.ScalePercent(percentage * 100);
 
             PdfPTable tablaPdf = new PdfPTable(3);
-            PdfPCell titulo = new PdfPCell(new Phrase("Cupón de Descuento");
+            PdfPCell titulo = new PdfPCell(new Phrase("Cupón de Descuento"));
             titulo.Colspan = 3;
             titulo.HorizontalAlignment = 1;
             titulo.BorderWidthTop = 1; titulo.BorderWidthLeft = 1; titulo.BorderWidthRight = 1; titulo.BorderWidthBottom = 0;

@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Panchito\source\repos\MisOfertasFinal7\MisOfertasFinal\Entidades\ModeloData.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Ivan\Documents\GitHub\MisOfertasFinalnet\MisOfertasFinal\Entidades\ModeloData.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

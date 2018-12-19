@@ -13,7 +13,8 @@ namespace MisOfertasFinal.Entidades
     using System.Data.Entity;
     using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
-
+    using System.Linq;
+    
     public partial class Entities : DbContext
     {
         public Entities()
@@ -212,6 +213,59 @@ namespace MisOfertasFinal.Entidades
                 new ObjectParameter("P_DESCUENTO_OTORGADO", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarTicket", p_FECHA_TERMINOParameter, p_TOPEParameter, p_RUT_USUARIOParameter, p_CODIGOBARRAParameter, p_FECHA_INICIOParameter, p_ID_TICKETParameter, p_DESCUENTO_OTORGADOParameter);
+        }
+    
+        public virtual int USUARIO_TAPI_UPD(Nullable<decimal> p_ID_TIPOUSUARIO, string p_DIRECCION_USUARIO, string p_CORREOACTIVO, string p_APEPA_USUARIO, string p_NOMBRE_USUARIO, string p_RUT_USUARIO, string p_CORREO_USUARIO, string p_APEMA_USUARIO, Nullable<decimal> p_PUNTOS_USUARIO, string p_TELEFONO_USUARIO, Nullable<decimal> p_ID_COMUNA, string p_PASSWORD_USUARIO)
+        {
+            var p_ID_TIPOUSUARIOParameter = p_ID_TIPOUSUARIO.HasValue ?
+                new ObjectParameter("P_ID_TIPOUSUARIO", p_ID_TIPOUSUARIO) :
+                new ObjectParameter("P_ID_TIPOUSUARIO", typeof(decimal));
+    
+            var p_DIRECCION_USUARIOParameter = p_DIRECCION_USUARIO != null ?
+                new ObjectParameter("P_DIRECCION_USUARIO", p_DIRECCION_USUARIO) :
+                new ObjectParameter("P_DIRECCION_USUARIO", typeof(string));
+    
+            var p_CORREOACTIVOParameter = p_CORREOACTIVO != null ?
+                new ObjectParameter("P_CORREOACTIVO", p_CORREOACTIVO) :
+                new ObjectParameter("P_CORREOACTIVO", typeof(string));
+    
+            var p_APEPA_USUARIOParameter = p_APEPA_USUARIO != null ?
+                new ObjectParameter("P_APEPA_USUARIO", p_APEPA_USUARIO) :
+                new ObjectParameter("P_APEPA_USUARIO", typeof(string));
+    
+            var p_NOMBRE_USUARIOParameter = p_NOMBRE_USUARIO != null ?
+                new ObjectParameter("P_NOMBRE_USUARIO", p_NOMBRE_USUARIO) :
+                new ObjectParameter("P_NOMBRE_USUARIO", typeof(string));
+    
+            var p_RUT_USUARIOParameter = p_RUT_USUARIO != null ?
+                new ObjectParameter("P_RUT_USUARIO", p_RUT_USUARIO) :
+                new ObjectParameter("P_RUT_USUARIO", typeof(string));
+    
+            var p_CORREO_USUARIOParameter = p_CORREO_USUARIO != null ?
+                new ObjectParameter("P_CORREO_USUARIO", p_CORREO_USUARIO) :
+                new ObjectParameter("P_CORREO_USUARIO", typeof(string));
+    
+            var p_APEMA_USUARIOParameter = p_APEMA_USUARIO != null ?
+                new ObjectParameter("P_APEMA_USUARIO", p_APEMA_USUARIO) :
+                new ObjectParameter("P_APEMA_USUARIO", typeof(string));
+    
+            var p_PUNTOS_USUARIOParameter = p_PUNTOS_USUARIO.HasValue ?
+                new ObjectParameter("P_PUNTOS_USUARIO", p_PUNTOS_USUARIO) :
+                new ObjectParameter("P_PUNTOS_USUARIO", typeof(decimal));
+    
+            var p_TELEFONO_USUARIOParameter = p_TELEFONO_USUARIO != null ?
+                new ObjectParameter("P_TELEFONO_USUARIO", p_TELEFONO_USUARIO) :
+                new ObjectParameter("P_TELEFONO_USUARIO", typeof(string));
+    
+            var p_ID_COMUNAParameter = p_ID_COMUNA.HasValue ?
+                new ObjectParameter("P_ID_COMUNA", p_ID_COMUNA) :
+                new ObjectParameter("P_ID_COMUNA", typeof(decimal));
+    
+            var p_PASSWORD_USUARIOParameter = p_PASSWORD_USUARIO != null ?
+                new ObjectParameter("P_PASSWORD_USUARIO", p_PASSWORD_USUARIO) :
+                new ObjectParameter("P_PASSWORD_USUARIO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USUARIO_TAPI_UPD", p_ID_TIPOUSUARIOParameter, p_DIRECCION_USUARIOParameter, p_CORREOACTIVOParameter, p_APEPA_USUARIOParameter, p_NOMBRE_USUARIOParameter, p_RUT_USUARIOParameter, p_CORREO_USUARIOParameter, p_APEMA_USUARIOParameter, p_PUNTOS_USUARIOParameter, p_TELEFONO_USUARIOParameter, p_ID_COMUNAParameter, p_PASSWORD_USUARIOParameter);
         }
     }
 }
