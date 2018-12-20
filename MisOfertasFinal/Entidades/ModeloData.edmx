@@ -1171,6 +1171,29 @@
             <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
             <Parameter Name="P_ID_VALORACION" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="InsertarTicket">
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TOPE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CODIGOBARRA" Mode="In" Type="Binary" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ID_TICKET" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCUENTO_OTORGADO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USUARIO_TAPI_UPD">
+            <Parameter Name="P_ID_TIPOUSUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DIRECCION_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREOACTIVO" Mode="In" Type="String" />
+            <Parameter Name="P_APEPA_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_APEMA_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_PUNTOS_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_COMUNA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PASSWORD_USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1346,6 +1369,8 @@
           <FunctionImportMapping FunctionImportName="USUARIO_TAPI_INS" FunctionName="ModelMO.Store.USUARIO_TAPI_INS" />
           <FunctionImportMapping FunctionImportName="VALORACION_TAPI_INS" FunctionName="ModelMO.Store.VALORACION_TAPI_INS" />
           <FunctionImportMapping FunctionImportName="VALORACION_TAPI_INS1" FunctionName="ModelMO.Store.VALORACION_TAPI_INS" />
+          <FunctionImportMapping FunctionImportName="InsertarTicket" FunctionName="ModelMO.Store.TICKETDESCUENTO_TAPI_INS" />
+          <FunctionImportMapping FunctionImportName="USUARIO_TAPI_UPD" FunctionName="ModelMO.Store.USUARIO_TAPI_UPD" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

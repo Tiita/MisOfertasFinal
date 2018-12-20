@@ -55,12 +55,30 @@ namespace MisOfertasFinal.Views.VerOferta
 
         protected void dtlOferta_ItemCommand(object source, DataListCommandEventArgs e)
         {
+            Decimal puntosAcumulados = 0;
             List<Modelo.Ofertas> oferta = (List<Modelo.Ofertas>)Session["Oferta"];
             LnValoracion lnValoracion = new LnValoracion();
             LnUsuario lnUsuario = new LnUsuario();
             var usuario = lnUsuario.BuscarUsuarioMail((string)(Session["consumidorEmail"]));
             if (e.CommandName == "RegistrarValoracion")
             {
+
+                puntosAcumulados = usuario.PUNTOS_USUARIO + 10;
+                Usuario us = new Usuario();
+                {
+                    us.rut_usuario = usuario.RUT_USUARIO;
+                    us.nombre_usuario = usuario.NOMBRE_USUARIO;
+                    us.apema_usuario = usuario.APEMA_USUARIO;
+                    us.apepa_usuario = usuario.APEPA_USUARIO;
+                    us.correo_usuario = usuario.CORREO_USUARIO;
+                    us.direccion_usuario = usuario.DIRECCION_USUARIO;
+                    us.telefono_usuario = usuario.TELEFONO_USUARIO;
+                    us.password_usuario = usuario.PASSWORD_USUARIO;
+                    us.correoactivo = usuario.CORREOACTIVO;
+                    us.puntos_usuario = puntosAcumulados;
+                    us.id_tipoUsuario = usuario.ID_TIPOUSUARIO;
+                    us.id_comuna = usuario.ID_COMUNA;
+                }
                 foreach (var item in oferta)
                 {
                     Valoracion valoracion = new Valoracion();
@@ -72,8 +90,7 @@ namespace MisOfertasFinal.Views.VerOferta
                         valoracion.rut_usuario = usuario.RUT_USUARIO;
                         valoracion.calificacion = Convert.ToDecimal(((DropDownList)e.Item.FindControl("ddlValoracion")).SelectedValue.ToString());
                     }
-
-                    lnValoracion.InsertarValoracionOferta(valoracion);
+                    lnValoracion.InsertarValoracionOferta(valoracion,us);
                 }
 
                 
