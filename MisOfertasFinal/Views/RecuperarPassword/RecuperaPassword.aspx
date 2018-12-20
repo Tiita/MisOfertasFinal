@@ -31,15 +31,19 @@
                 <div class="card-body">
 
                     <div class="text-center mt-4 mb-5">
-                        <h4>¿Olvidaste tu password?</h4>
-                        <p>Ingrese su dirección de correo electrónico y nosotros le enviaremos las instrucciones para 
-                            que pueda recuperar su password.
+                        <h4>¿Olvidaste tu contraseña?</h4>
+                        <p>Ingrese su dirección de correo electrónico y su rut para recuperar su contraseña.
                         </p>
+                  <p>
+                      <asp:Label ID="Label1" runat="server" Text="Ingrese su correo electronico"></asp:Label>
+                        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" placeholder="nombre@ejemplo.com" ></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="VaidadorEmail" runat="server" ErrorMessage="Debe ingresar su correo" ControlToValidate="txtEmail" CssClass="alert-danger" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </p>
+                        <asp:Label ID="Label2" runat="server" Text="Ingrese su rut sin puntos ni guión"></asp:Label>
+                      <asp:TextBox runat="server" ID="txtRut" placeholder="Ejemplo: 123456789" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="ValidadorRut" runat="server" ErrorMessage="Debe ingresar su rut" ControlToValidate="txtRut" CssClass="alert-danger" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="form-group">
-                        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <asp:Button runat="server" ID="btnAceptar" CssClass="btn btn-danger btn-block" Text="Recuperar password" OnClick="btnAceptar_Click" />
+                    <asp:Button runat="server" ID="btnAceptar" CssClass="btn btn-danger btn-block" Text="Recuperar contraseña" OnClick="btnAceptar_Click" />
                     <div class="text-center">
                         <a class="d-block small mt-3" href="../Login/Login.aspx">Login</a>
                     </div>

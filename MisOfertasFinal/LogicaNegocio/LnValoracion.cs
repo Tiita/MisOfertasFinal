@@ -10,23 +10,23 @@ namespace MisOfertasFinal.LogicaNegocio
 
 
         #region Verporcentajefaloracion
-        //public decimal GetValoraciones(decimal idOferta)
-        //{
-        //    decimal totalPuntaje= 0;
-        //    using (Entities Ofertas = new Entities())
-        //    {
-        //        var listadoValoraciones = (from q in Ofertas.VALORACION
-        //                        where q.ID_OFERTA == idOferta 
-        //                        select new Modelo.Valoracion
-        //                        {
-        //                          calificacion = q.CALIFICACION
+        public decimal GetValoraciones(decimal idOferta)
+        {
+            decimal totalPuntaje = 0;
+            using (Entities Ofertas = new Entities())
+            {
+                var listadoValoraciones = (from q in Ofertas.VALORACION
+                                           where q.ID_OFERTA == idOferta
+                                           select new Modelo.Valoracion
+                                           {
+                                               calificacion = q.CALIFICACION
 
-        //                        }).ToList();
+                                           }).ToList();
 
 
 
-        //        foreach (var item in listadoValoraciones)
-        //        {
+                foreach (var item in listadoValoraciones)
+                {
 
                     totalPuntaje = totalPuntaje + item.calificacion;
                 }
@@ -35,7 +35,7 @@ namespace MisOfertasFinal.LogicaNegocio
                 return totalPuntaje;
             }
             
-        //}
+        }
 #endregion
 
         #region Insertar_valoracion

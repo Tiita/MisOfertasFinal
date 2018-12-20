@@ -14,7 +14,7 @@ namespace MisOfertasFinal.Views.RecuperarPassword
 
         }
 
-
+        
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -27,16 +27,21 @@ namespace MisOfertasFinal.Views.RecuperarPassword
                 LogicaNegocio.LnUsuario objLnUsuario = new LogicaNegocio.LnUsuario();
                 Modelo.Usuario objUser = new Modelo.Usuario
                 {
-                    correo_usuario = txtEmail.Text
+                    correo_usuario = txtEmail.Text,
+                    rut_usuario = txtRut.Text
                 };
 
-                List<Modelo.Usuario> lsConsulta= objLnUsuario.GetBuscarUsuarioCorreo(objUser);
+                List<Modelo.Usuario> lsConsulta= objLnUsuario.GetBuscarUsuarioCorreoRut(objUser);
                 string nombre = null;
                 string pass = null;
+                string rut = null;
+                string correo = null;
                 if (lsConsulta.Count > 0)
                 {
                     foreach (var item in lsConsulta) {
                         nombre = item.nombre_usuario;
+                        rut = item.rut_usuario;
+                        correo = item.correo_usuario;
                         pass = item.password_usuario;
                     }
 
@@ -64,8 +69,8 @@ namespace MisOfertasFinal.Views.RecuperarPassword
                     stCuerpoHTML += "esta dirección de correo electrónico. Si no ha realizado esta solicitud, puede ignorar este ";
                     stCuerpoHTML += "correo electrónico y le garantizamos que su cuenta es completamente segura.";
                     stCuerpoHTML += "<br/>";
-                    stCuerpoHTML += "<br/>";
-                    stCuerpoHTML += "Su password es: " + pass.ToString();
+                    stCuerpoHTML += "<br/>";// nombredelvalor = valor & nombredelvalor2 = valor2
+                    stCuerpoHTML += "Ingrese al siguiente link: " + "http://localhost:53739/Views/ActualizadorContrasena/ActualizadorContrasena.aspx?asprt="+rut+"&aspc="+correo;
                     stCuerpoHTML += "</p>";
                     stCuerpoHTML += "<p style='color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0'>Copyright © MIS OFERTAS 2018</p>";
                     stCuerpoHTML += "</div>";
@@ -95,8 +100,8 @@ namespace MisOfertasFinal.Views.RecuperarPassword
 
                     LogicaNegocio.LnRecuperarPassword lnRecuperar = new LogicaNegocio.LnRecuperarPassword();
                     lnRecuperar.setEmailLn(objCorreo);
-                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal('Mensaje!'," +
-                   " 'Se realizó el proceso con éxito', 'success')</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal('Correo enviado!'," +
+                   " 'Hemos enviado un email a su direccion de correo', 'success')</script>");
                 }
                 else
                 {
@@ -107,11 +112,11 @@ namespace MisOfertasFinal.Views.RecuperarPassword
             catch (Exception ex)
             {
 
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal('Error!'," +
+                ClientScript.RegisterStartupScript(this.GetType(), "No se pudo enviar el email", "<script>swal('Error!'," +
                    " '" + ex.Message + "!', 'error')</script>");
             }
 
         }
-                
+
     }
 }

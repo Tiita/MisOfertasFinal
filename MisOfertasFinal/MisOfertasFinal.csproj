@@ -163,6 +163,7 @@
     <Content Include="Maqueta\visual\js\sb-admin.min.js" />
     <Content Include="Maqueta\visual\js\sweetalert.min.js" />
     <Content Include="Pruebas\frmPrueba.aspx" />
+    <Content Include="Views\ActualizadorContrasena\ActualizadorContrasena.aspx" />
     <Content Include="Views\ConsultarPuntos\codigo.png" />
     <Content Include="Views\ConsultarPuntos\ConsultarPuntos.aspx" />
     <Content Include="Views\GenerarTicketDscto\GenerarTicketDscto.aspx" />
@@ -273,6 +274,13 @@
     </Compile>
     <Compile Include="Resources\Template\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActualizadorContrasena\ActualizadorContrasena.aspx.cs">
+      <DependentUpon>ActualizadorContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ActualizadorContrasena\ActualizadorContrasena.aspx.designer.cs">
+      <DependentUpon>ActualizadorContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultarPuntos\ConsultarPuntos.aspx.cs">
       <DependentUpon>ConsultarPuntos.aspx</DependentUpon>

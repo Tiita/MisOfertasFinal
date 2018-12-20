@@ -63,6 +63,32 @@ namespace MisOfertasFinal.LogicaNegocio
 
         }
 
+        public List<Modelo.Usuario> GetBuscarUsuarioCorreoRut(Modelo.Usuario obMoUsuario)
+        {
+            using (Entities obEntitiesOfertas = new Entities())
+            {
+                var usuarios = (from q in obEntitiesOfertas.USUARIO
+                                where q.CORREO_USUARIO == obMoUsuario.correo_usuario && q.RUT_USUARIO== obMoUsuario.rut_usuario
+                                select new Modelo.Usuario
+                                {
+                                    rut_usuario = q.RUT_USUARIO,
+                                    nombre_usuario = q.NOMBRE_USUARIO,
+                                    apepa_usuario = q.APEPA_USUARIO,
+                                    apema_usuario = q.APEMA_USUARIO,
+                                    correo_usuario = q.CORREO_USUARIO,
+                                    direccion_usuario = q.DIRECCION_USUARIO,
+                                    telefono_usuario = q.TELEFONO_USUARIO,
+                                    password_usuario = q.PASSWORD_USUARIO,
+                                    correoactivo = q.CORREOACTIVO,
+                                    puntos_usuario = q.PUNTOS_USUARIO,
+                                    id_tipoUsuario = q.ID_TIPOUSUARIO,
+                                    id_comuna = q.ID_COMUNA
+                                }).ToList();
+                return usuarios;
+            }
+
+        }
+
         public List<Modelo.Usuario> GetBuscarUsuarioCorreo(Modelo.Usuario obMoUsuario)
         {
             using (Entities obEntitiesOfertas = new Entities())
@@ -117,6 +143,16 @@ namespace MisOfertasFinal.LogicaNegocio
             using (Entities obEntitiesOfertas = new Entities())
             {
                 var usu = obEntitiesOfertas.USUARIO.FirstOrDefault(x => x.CORREO_USUARIO == consumidorEmail);
+                return usu;
+            }
+
+        }
+
+        public USUARIO BuscarUsuarioMailRut(string consumidorEmail,string rut)
+        {
+            using (Entities obEntitiesOfertas = new Entities())
+            {
+                var usu = obEntitiesOfertas.USUARIO.FirstOrDefault(x => x.CORREO_USUARIO == consumidorEmail && x.RUT_USUARIO == rut);
                 return usu;
             }
 
