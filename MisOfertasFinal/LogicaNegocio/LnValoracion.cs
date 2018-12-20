@@ -28,12 +28,12 @@ namespace MisOfertasFinal.LogicaNegocio
         //        foreach (var item in listadoValoraciones)
         //        {
 
-            //        totalPuntaje = totalPuntaje + item.calificacion;
-            //    }
+                    totalPuntaje = totalPuntaje + item.calificacion;
+                }
 
-            //    totalPuntaje = totalPuntaje / listadoValoraciones.Count;
-            //    return totalPuntaje;
-            //}
+                totalPuntaje = totalPuntaje / listadoValoraciones.Count;
+                return totalPuntaje;
+            }
             
         //}
 #endregion
