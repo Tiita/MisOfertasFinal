@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using MisOfertasFinal.Modelo;
+using System.Drawing;
+
 namespace MisOfertasFinal.Views.VerOferta
 {
     public partial class VerOferta : System.Web.UI.Page
@@ -77,8 +79,18 @@ namespace MisOfertasFinal.Views.VerOferta
                 
             }
         }
-       
 
+        protected void btnVerImagen_Click(object sender, EventArgs e)
+        {
+            int medida = flSubir.PostedFile.ContentLength;
+            byte[] imgOriginal = new byte[medida];
+            flSubir.PostedFile.InputStream.Read(imgOriginal, 0, medida);
+            Bitmap imgOriginalBinaria = new Bitmap(flSubir.PostedFile.InputStream);
+            string ImageDataURL64 = "data:Image/jpg;base64," + Convert.ToBase64String(imgOriginal);
+            imgMostrar.ImageUrl = ImageDataURL64;
+            
+        }
 
+        
     }
 }

@@ -66,7 +66,7 @@ namespace MisOfertasFinal.LogicaNegocio
 
                 foreach (var item in query)
                 {
-                    item.calificacion = valoracion.GetValoraciones(item.id_oferta);
+                    //item.calificacion = valoracion.GetValoraciones(item.id_oferta);
                 }
                 return query;
             }//fin del using            

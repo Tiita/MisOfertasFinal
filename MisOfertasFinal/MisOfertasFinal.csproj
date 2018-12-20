@@ -101,6 +101,7 @@
       <DependentUpon>ModeloData.edmx</DependentUpon>
       <LastGenOutput>ModeloData.cs</LastGenOutput>
     </Content>
+    <Content Include="Imagenes\descuentos4.jpg" />
     <Content Include="Imagenes\Iconocompleto.png" />
     <Content Include="Imagenes\iconoV2.png" />
     <Content Include="Imagenes\Nohay.png" />
@@ -167,6 +168,7 @@
     <Content Include="Views\GenerarTicketDscto\GenerarTicketDscto.aspx" />
     <Content Include="Views\Index\Index.aspx" />
     <Content Include="Views\Login\Login.aspx" />
+    <Content Include="Views\RecuperarPassword\RecuperaPassword.aspx" />
     <Content Include="Views\RegistrarCuenta\RegistrarCuenta.aspx" />
     <Content Include="Views\VerOferta\VerOferta.aspx" />
     <Content Include="Web.config" />
@@ -231,9 +233,11 @@
     </Compile>
     <Compile Include="LogicaNegocio\LnCategoria.cs" />
     <Compile Include="LogicaNegocio\LnComuna.cs" />
+    <Compile Include="LogicaNegocio\LnGeneral.cs" />
     <Compile Include="LogicaNegocio\LnMarca.cs" />
     <Compile Include="LogicaNegocio\LnOferta.cs" />
     <Compile Include="LogicaNegocio\LnProducto.cs" />
+    <Compile Include="LogicaNegocio\LnRecuperarPassword.cs" />
     <Compile Include="LogicaNegocio\LnRegion.cs" />
     <Compile Include="LogicaNegocio\LnRubro.cs" />
     <Compile Include="LogicaNegocio\LnTicket.cs" />
@@ -241,6 +245,7 @@
     <Compile Include="LogicaNegocio\LnValoracion.cs" />
     <Compile Include="Modelo\Categoria.cs" />
     <Compile Include="Modelo\Comuna.cs" />
+    <Compile Include="Modelo\Correo.cs" />
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Oferta.cs" />
@@ -296,6 +301,13 @@
     </Compile>
     <Compile Include="Views\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecuperarPassword\RecuperaPassword.aspx.cs">
+      <DependentUpon>RecuperaPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RecuperarPassword\RecuperaPassword.aspx.designer.cs">
+      <DependentUpon>RecuperaPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrarCuenta\RegistrarCuenta.aspx.cs">
       <DependentUpon>RegistrarCuenta.aspx</DependentUpon>

@@ -3,14 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cabecera" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenedor" runat="server">
-     
+
     <!-- Sección -->
     <div class="section">
         <!-- Contenedor -->
         <div class="container">
             <!-- Fila -->
             <div class="row">
-                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="1" OnItemCommand="dtlOferta_ItemCommand" >
+                <asp:DataList ID="dtlOferta" DataKeyField="id_producto" runat="server" RepeatColumns="1" OnItemCommand="dtlOferta_ItemCommand">
                     <ItemTemplate>
                         <!--Imagen producto principal lado central-->
                         <div class="col-md-7 col-md-push-2">
@@ -31,20 +31,19 @@
                                     <li>
                                         <asp:Label ID="lblCategoriaProducto" runat="server" Text='<%# Eval("nombre_categoria") %> '></asp:Label></li>
                                 </ul>
-                                <br>
-                                </br>
+                                <br></br>
                                 <h2 class="product-name">
                                     <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
                                 <div>
                                     <p>Valoración oferta: </p>
-                                    <div class="product-rating" id="<%# Eval("nombre_producto") %>">  
-                                           <i class="fa fa-star"></i>
-                                           <i class="fa fa-star"></i>
-                                           <i class="fa fa-star"></i>
-                                           <i class="fa fa-star-o"></i>
-                                           <i class="fa fa-star-o"></i>
+                                    <div class="product-rating" id="<%# Eval("nombre_producto") %>">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
                                     </div>
-                                  <p>  Promedio: <%# Eval("calificacion") %></p>
+                                    <p>Promedio: <%# Eval("calificacion") %></p>
                                 </div>
                                 <div>
                                     <h3 class="product-price">$<asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
@@ -52,22 +51,24 @@
                                     <span class="product-available">En Stock
                                         <asp:Label ID="lblStockProducto" runat="server" Text='<%# Eval("stock_producto") %>'></asp:Label></span>
                                 </div>
-                                
+
                                 <div class="product-options">
                                     <p class="product-name">
-                                    Descripción:
-                                    <asp:Label ID="lblDescripcionProducto" runat="server" Text='<%# Eval("descripcion_producto") %>'></asp:Label></p>
-                                     <br>
-                                     </br>
-                                    <p>Se debe considerar que el precio oferta es respetado dentro de las cantidades permitidas, 
-                                    en caso contrario debe pagar el precio normal del producto.</p>
+                                        Descripción:
+                                    <asp:Label ID="lblDescripcionProducto" runat="server" Text='<%# Eval("descripcion_producto") %>'></asp:Label>
+                                    </p>
+                                    <br></br>
+                                    <p>
+                                        Se debe considerar que el precio oferta es respetado dentro de las cantidades permitidas, 
+                                    en caso contrario debe pagar el precio normal del producto.
+                                    </p>
 
                                     Cantidad mínima a comprar:
                                     <asp:Label ID="lblMinimoOferta" runat="server" Text='<%# Eval("minimo_pro") %>'></asp:Label>
                                     <br />
                                     Cantidad máxima a comprar:
                                     <asp:Label ID="lblMaximoOferta" runat="server" Text='<%# Eval("maximo_pro") %>'></asp:Label>
-                                </div>                                
+                                </div>
                                 <br />
                                 <div class="add-to-cart">
                                     <asp:Button ID="btnVerTiendas" runat="server" CssClass="add-to-cart-btn" Text="VER TIENDAS" />
@@ -81,227 +82,225 @@
                             </div>
                         </div>
                         <!-- /Detalle producto -->
-                        <!-- Product tab -->
-                        <div class="col-md-12">
-                            <div id="product-tab">
-                                <!-- product tab nav -->
-                                <ul class="tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab1">VALORAR OFERTA</a></li>
-                                    <li><a data-toggle="tab" href="#tab3">RESUMEN VALORACIONES</a></li>
-                                </ul>
-                                <!-- /product tab nav -->
-
-                                <!-- product tab content -->
-                                <div class="tab-content">
-                                    <!-- tab1  -->
-                                    <div id="tab1" class="tab-pane fade in active">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p>Danos tu opinión acerca de este producto.</p>
-                                                <!-- Review Form -->
-                                                <div class="col-md-3">
-                                                    <div id="review-form">                                                 
-                                                            <asp:Image Width="150px" Height="150px" ImageUrl="~/Imagenes/Nohay.png" runat="server"></asp:Image>
-                                                            <br>
-                                                            </br>
-                                                            <br>
-                                                            </br>
-                                                            <span>Adjuntar boleta: </span>
-                                                            <br></br>
-                                                            <asp:FileUpload CssClass="form-control" ID="flSubir" accept=".jpg" runat="server" />
-                                                            <br></br>
-                                                            <asp:TextBox runat="server" ID="txtNumeroBoleta" CssClass="form-control" Width="370px"
-                                                                placeholder="Ingrese código de boleta "></asp:TextBox>
-                                                            <br>
-                                                            </br>
-                                                            <div class="input-rating">
-                                                                <span>Realiza tu valoración: </span>
-                                                                <br>
-                                                                </br>
-                                                                <br>
-                                                                </br>
-                                                                <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="false">
-                                                                    <asp:ListItem Text="Califica el producto" />
-                                                                    <asp:ListItem Text="5. Muy bueno" Value=5/>
-                                                                    <asp:ListItem Text="4. Bueno" Value=4 />
-                                                                    <asp:ListItem Text="3. Normal" Value=3/>
-                                                                    <asp:ListItem Text="2. Malo" Value=2/>
-                                                                    <asp:ListItem Text="1. Muy malo" Value=1/>
-                                                                </asp:DropDownList>                                                   
-                                                            </div>
-                                                            <br>
-                                                            </br>
-                                                            <asp:Button ID="btnValorar" runat="server" CssClass="primary-btn" Text="VALORAR OFERTA" CommandName="RegistrarValoracion" />
-                                                         </div>                                         
-                                                </div>
-                                                <!-- /Review Form -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /tab1  -->
-
-                                    <!-- tab3  -->
-                                    <div id="tab3" class="tab-pane fade in">
-                                        <div class="row">
-                                            <!-- Rating -->
-                                            <div class="col-md-3">
-                                                <div id="rating">
-                                                    <div class="rating-avg">
-                                                        <span>4.5</span>
-                                                        <div class="rating-stars">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="rating">
-                                                        <li>
-                                                            <div class="rating-stars">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                            <div class="rating-progress">
-                                                                <div style="width: 80%;"></div>
-                                                            </div>
-                                                            <span class="sum">3</span>
-                                                        </li>
-                                                        <li>
-                                                            <div class="rating-stars">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="rating-progress">
-                                                                <div style="width: 60%;"></div>
-                                                            </div>
-                                                            <span class="sum">2</span>
-                                                        </li>
-                                                        <li>
-                                                            <div class="rating-stars">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="rating-progress">
-                                                                <div></div>
-                                                            </div>
-                                                            <span class="sum">0</span>
-                                                        </li>
-                                                        <li>
-                                                            <div class="rating-stars">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="rating-progress">
-                                                                <div></div>
-                                                            </div>
-                                                            <span class="sum">0</span>
-                                                        </li>
-                                                        <li>
-                                                            <div class="rating-stars">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                            <div class="rating-progress">
-                                                                <div></div>
-                                                            </div>
-                                                            <span class="sum">0</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- /Rating -->
-
-                                            <!-- Reviews -->
-                                            <div class="col-md-6">
-                                                <div id="reviews">
-                                                    <ul class="reviews">
-                                                        <li>
-                                                            <div class="review-heading">
-                                                                <h5 class="name">John</h5>
-                                                                <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                                <div class="review-rating">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o empty"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="review-body">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="review-heading">
-                                                                <h5 class="name">John</h5>
-                                                                <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                                <div class="review-rating">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o empty"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="review-body">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="review-heading">
-                                                                <h5 class="name">John</h5>
-                                                                <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                                <div class="review-rating">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o empty"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="review-body">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="reviews-pagination">
-                                                        <li class="active">1</li>
-                                                        <li><a href="#">2</a></li>
-                                                        <li><a href="#">3</a></li>
-                                                        <li><a href="#">4</a></li>
-                                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- /Reviews -->
-
-
-                                        </div>
-                                    </div>
-                                    <!-- /tab3  -->
-                                </div>
-                                <!-- /product tab content  -->
-                            </div>
-                        </div>
-                        <!-- /product tab -->
                     </ItemTemplate>
                 </asp:DataList>
+
+                <!-- Product tab -->
+                <div class="col-md-12">
+                    <div id="product-tab">
+                        <!-- product tab nav -->
+                        <ul class="tab-nav">
+                            <li class="active"><a data-toggle="tab" href="#tab1">VALORAR OFERTA</a></li>
+                            <li><a data-toggle="tab" href="#tab3">RESUMEN VALORACIONES</a></li>
+                        </ul>
+                        <!-- /product tab nav -->
+
+                        <!-- product tab content -->
+                        <div class="tab-content">
+                            <!-- tab1  -->
+                            <div id="tab1" class="tab-pane fade in active">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Danos tu opinión acerca de este producto.</p>
+                                        <!-- Review Form -->
+                                        <div class="col-md-3">
+                                            <div id="review-form">
+                                                <asp:Image ID="imgMostrar" Width="150px" Height="150px" ImageUrl="~/Imagenes/Nohay.png" runat="server" />
+                                                <br></>
+                                                <br></> 
+                                                <span>Adjuntar boleta: </span>
+                                                <br></>
+                                                <asp:FileUpload CssClass="form-control" ID="flSubir" accept=".jpg" runat="server" />
+                                                <br></>
+                                                <asp:Button ID="btnVerImagen" runat="server" CssClass="primary-btn" Text="VER BOLETA" OnClick="btnVerImagen_Click" />
+                                                <br></>
+                                                <br></>
+                                                <asp:TextBox runat="server" ID="txtNumeroBoleta" CssClass="form-control" Width="370px"
+                                                     placeholder="Ingrese código de boleta "></asp:TextBox>
+                                                <br></>
+                                                <div class="input-rating">
+                                                <span>Realiza tu valoración: </span>
+                                                <br></>
+                                                    <asp:DropDownList ID="ddlValoracion" runat="server" CssClass="form-control" Width="370px" AutoPostBack="false">
+                                                        <asp:ListItem Text="Califica el producto" />
+                                                        <asp:ListItem Text="5. Muy bueno" Value="5" />
+                                                        <asp:ListItem Text="4. Bueno" Value="4" />
+                                                        <asp:ListItem Text="3. Normal" Value="3" />
+                                                        <asp:ListItem Text="2. Malo" Value="2" />
+                                                        <asp:ListItem Text="1. Muy malo" Value="1" />
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <br></>
+                                                <asp:Button ID="btnValorar" runat="server" CssClass="primary-btn" Text="VALORAR OFERTA" CommandName="RegistrarValoracion" />
+                                            </div>
+                                        </div>
+                                        <!-- /Review Form -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab1  -->
+
+                            <!-- tab3  -->
+                            <div id="tab3" class="tab-pane fade in">
+                                <div class="row">
+                                    <!-- Rating -->
+                                    <div class="col-md-3">
+                                        <div id="rating">
+                                            <div class="rating-avg">
+                                                <span>4.5</span>
+                                                <div class="rating-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                            </div>
+                                            <ul class="rating">
+                                                <li>
+                                                    <div class="rating-stars">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="rating-progress">
+                                                        <div style="width: 80%;"></div>
+                                                    </div>
+                                                    <span class="sum">3</span>
+                                                </li>
+                                                <li>
+                                                    <div class="rating-stars">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <div class="rating-progress">
+                                                        <div style="width: 60%;"></div>
+                                                    </div>
+                                                    <span class="sum">2</span>
+                                                </li>
+                                                <li>
+                                                    <div class="rating-stars">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <div class="rating-progress">
+                                                        <div></div>
+                                                    </div>
+                                                    <span class="sum">0</span>
+                                                </li>
+                                                <li>
+                                                    <div class="rating-stars">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <div class="rating-progress">
+                                                        <div></div>
+                                                    </div>
+                                                    <span class="sum">0</span>
+                                                </li>
+                                                <li>
+                                                    <div class="rating-stars">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <div class="rating-progress">
+                                                        <div></div>
+                                                    </div>
+                                                    <span class="sum">0</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /Rating -->
+
+                                    <!-- Reviews -->
+                                    <div class="col-md-6">
+                                        <div id="reviews">
+                                            <ul class="reviews">
+                                                <li>
+                                                    <div class="review-heading">
+                                                        <h5 class="name">John</h5>
+                                                        <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                        <div class="review-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o empty"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="review-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="review-heading">
+                                                        <h5 class="name">John</h5>
+                                                        <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                        <div class="review-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o empty"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="review-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="review-heading">
+                                                        <h5 class="name">John</h5>
+                                                        <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                        <div class="review-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o empty"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="review-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="reviews-pagination">
+                                                <li class="active">1</li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /Reviews -->
+
+
+                                </div>
+                            </div>
+                            <!-- /tab3  -->
+                        </div>
+                        <!-- /product tab content  -->
+                    </div>
+                </div>
+                <!-- /product tab -->
+
                 <!-- /product tab -->
             </div>
             <!-- /Fila -->
@@ -322,7 +321,6 @@
                         <h3 class="title">PRODUCTOS RELACIONADOS</h3>
                     </div>
                 </div>
-
                 <!-- tab -->
                 <asp:DataList ID="dtlProRelacionados" DataKeyField="id_producto" runat="server" RepeatColumns="4" OnItemCommand="dtlProRelacionados_ItemCommand">
                     <ItemTemplate>
