@@ -95,11 +95,7 @@
                                                             <asp:Label ID="lblPrecioViejo" runat="server" Text='<%# Eval("precio_producto") %>'></asp:Label>
                                                         </del></h4>
                                                     <div class="product-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="add-to-cart">

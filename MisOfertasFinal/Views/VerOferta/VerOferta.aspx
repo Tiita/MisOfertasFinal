@@ -37,13 +37,9 @@
                                 <div>
                                     <p>Valoración oferta: </p>
                                     <div class="product-rating" id="<%# Eval("nombre_producto") %>">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
+                                        
                                     </div>
-                                    <p>Promedio: <%# Eval("calificacion") %></p>
+                                    <p>Promedio Valoraciones: <%# Eval("calificacion") %></p>
                                 </div>
                                 <div>
                                     <h3 class="product-price">$<asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
@@ -70,8 +66,8 @@
                                     <asp:Label ID="lblMaximoOferta" runat="server" Text='<%# Eval("maximo_pro") %>'></asp:Label>
                                 </div>
                                 <br />
-                                <div class="add-to-cart">
-                                    <asp:Button ID="btnVerTiendas" runat="server" CssClass="add-to-cart-btn" Text="VER TIENDAS" />
+                                <div>
+                                    <asp:Label ID="lblTienda" runat="server" Text='<%# Eval("nombre_tienda") +" "+ Eval("direccion_tienda").ToString() %>'></asp:Label>
                                 </div>
                                 <ul class="product-links">
                                     <li>Compartir:</li>
