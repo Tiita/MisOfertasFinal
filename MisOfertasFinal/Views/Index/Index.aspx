@@ -89,18 +89,11 @@
                                                             <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> ' />
                                                         </a>
                                                     </h3>
-                                                    <h4 class="product-price">Precio oferta $
+                                                    <h4 class="product-price">Oferta $
                                                         <asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
-                                                        <del class="product-old-price">$
+                                                        <del class="product-old-price">Normal $
                                                             <asp:Label ID="lblPrecioViejo" runat="server" Text='<%# Eval("precio_producto") %>'></asp:Label>
-                                                        </del></h4>
-                                                    <div class="product-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
+                                                        </del></h4>                                                    
                                                 </div>
                                                 <div class="add-to-cart">
                                                     <asp:Button ID="btnVerOfertas" runat="server" CssClass="add-to-cart-btn" CommandName="Seleccionar" Text="VER OFERTAS"  />

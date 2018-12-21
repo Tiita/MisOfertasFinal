@@ -1,12 +1,15 @@
 ﻿using MisOfertasFinal.Entidades;
 using MisOfertasFinal.Modelo;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace MisOfertasFinal.LogicaNegocio
 {
     public class LnValoracion
     {
+
+
+
+
 
 
         #region Verporcentajefaloracion
@@ -49,9 +52,7 @@ namespace MisOfertasFinal.LogicaNegocio
                 obValoracion.rut_usuario, obValoracion.id_valoracion);
                 lnUsuario.ActualizarUsuarioCliente(us);
                 obEntitiesOfertas.SaveChanges();
-            }
-            
-            
+            }           
             
         }
         #endregion

@@ -62,8 +62,7 @@ namespace MisOfertasFinal.Views.Index
         {
             if (!String.IsNullOrEmpty(ddlRubro.SelectedValue))
             {
-                CargarCategorias(int.Parse(ddlRubro.SelectedValue));
-                //CargaOfertas();
+                CargarCategorias(int.Parse(ddlRubro.SelectedValue));                
             }
             else
             {

@@ -61,8 +61,7 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                 List<Modelo.Usuario> lstUsuario = objLnUsuario.GetBuscarUsuario(obMoUsuario);
                 objLnUsuario.InsertarUsuarioCliente(obMoUsuario);
                 Response.Redirect("../Login/Login.aspx");
-            }
-           
+            }           
 
         }        
         
@@ -114,8 +113,6 @@ namespace MisOfertasFinal.Views.RegistrarCuenta
                 valor = "S";
             }
             return valor;
-        }
-
-
+        }       
     }
 }

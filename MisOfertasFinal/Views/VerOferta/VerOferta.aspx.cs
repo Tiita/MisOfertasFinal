@@ -9,6 +9,7 @@ namespace MisOfertasFinal.Views.VerOferta
 {
     public partial class VerOferta : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -24,11 +25,10 @@ namespace MisOfertasFinal.Views.VerOferta
                 List<Modelo.Ofertas> data=(List<Modelo.Ofertas>)Session["Oferta"];
                 dtlOferta.DataSource = data;
                 dtlOferta.DataBind();
-                ObtenerProductosRelacionados();
-                
+                ObtenerProductosRelacionados();                
+
             }
         }
-
        
         public void ObtenerProductosRelacionados()
         {
@@ -39,17 +39,18 @@ namespace MisOfertasFinal.Views.VerOferta
 
         protected void dtlProRelacionados_ItemCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
-            decimal codProducto, codOferta;
+            decimal codProducto, codigoOferta;
             if (e.CommandName == "Seleccionar")
             {
                 dtlProRelacionados.SelectedIndex = e.Item.ItemIndex;
-                codOferta = Convert.ToDecimal(((Label)this.dtlProRelacionados.SelectedItem.FindControl("lblCodigoOferta")).Text);
+                codigoOferta = Convert.ToDecimal(((Label)this.dtlProRelacionados.SelectedItem.FindControl("lblCodigoOferta")).Text);
                 codProducto = Convert.ToDecimal(((Label)this.dtlProRelacionados.SelectedItem.FindControl("lblCodigoProducto")).Text);
 
                 LogicaNegocio.LnOferta objOferta = new LnOferta();
-                List<Modelo.Ofertas> resultado = objOferta.GetOfertaEspecifica(codOferta, codProducto);
+                List<Modelo.Ofertas> resultado = objOferta.GetOfertaEspecifica(codigoOferta, codProducto);
                 Session["Oferta"] = resultado;
                 Response.Redirect("../VerOferta/VerOferta.aspx");
+                
             }
         }
 
@@ -85,29 +86,23 @@ namespace MisOfertasFinal.Views.VerOferta
                     {
                         valoracion.id_oferta = item.id_oferta ;
                         valoracion.id_valoracion = Convert.ToDecimal(1);
-                        valoracion.imagen_boleta = null;//this.dtlOferta.SelectedItem.FindControl("flSubir");
+                        valoracion.imagen_boleta = traerImagen((FileUpload)e.Item.FindControl("flSubir"));
                         valoracion.numero_boleta = Convert.ToDecimal(((TextBox)e.Item.FindControl("txtNumeroBoleta")).Text);
                         valoracion.rut_usuario = usuario.RUT_USUARIO;
                         valoracion.calificacion = Convert.ToDecimal(((DropDownList)e.Item.FindControl("ddlValoracion")).SelectedValue.ToString());
                     }
                     lnValoracion.InsertarValoracionOferta(valoracion,us);
-                }
-
-                
+                }                
             }
         }
-
-        protected void btnVerImagen_Click(object sender, EventArgs e)
-        {
-            int medida = flSubir.PostedFile.ContentLength;
+       
+        public Byte[] traerImagen(FileUpload fImagen) {
+            int medida = fImagen.PostedFile.ContentLength;
             byte[] imgOriginal = new byte[medida];
-            flSubir.PostedFile.InputStream.Read(imgOriginal, 0, medida);
-            Bitmap imgOriginalBinaria = new Bitmap(flSubir.PostedFile.InputStream);
+            fImagen.PostedFile.InputStream.Read(imgOriginal, 0, medida);
+            Bitmap imgOriginalBinaria = new Bitmap(fImagen.PostedFile.InputStream);
             string ImageDataURL64 = "data:Image/jpg;base64," + Convert.ToBase64String(imgOriginal);
-            imgMostrar.ImageUrl = ImageDataURL64;
-            
-        }
-
-        
+            return imgOriginal;
+        }        
     }
 }

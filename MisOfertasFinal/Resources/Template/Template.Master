@@ -112,7 +112,7 @@
                                 <ul class="footer-links">
                                     <li><a href="#"><i class="fa fa-map-marker"></i>Viña del Mar</a></li>
                                     <li><a href="#"><i class="fa fa-phone"></i>+322-55-55-55</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i>misOfertas@email.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i>RetailsMisOfertas@email.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                             <div class="footer">
                                 <h3 class="footer-title">Categorias</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#">Inicio</a></li>
+                                    <li><a href="../../Views/Index/Index.aspx">Inicio</a></li>
                                     <li><a href="/Views/ConsultarPuntos/ConsultarPuntos.aspx">Consultar puntos</a></li>                                    
                                 </ul>
                             </div>

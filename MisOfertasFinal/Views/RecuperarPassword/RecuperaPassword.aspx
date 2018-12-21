@@ -23,18 +23,16 @@
     <script src="../../Maqueta/visual/js/sweetalert.min.js" type="text/javascript"></script>
 </head>
 <body class="bg-dark">
-    <form id="form1" runat="server">
-        
+    <form id="form1" runat="server">        
          <div class="container">
             <div class="card card-login mx-auto mt-5">
                 <div class="card-header">Recuperar password</div>
                 <div class="card-body">
-
                     <div class="text-center mt-4 mb-5">
                         <h4>¿Olvidaste tu contraseña?</h4>
                         <p>Ingrese su dirección de correo electrónico y su rut para recuperar su contraseña.
                         </p>
-                  <p>
+                        <p>
                       <asp:Label ID="Label1" runat="server" Text="Ingrese su correo electronico"></asp:Label>
                         <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" TextMode="Email" placeholder="nombre@ejemplo.com" ></asp:TextBox>
                         <asp:RequiredFieldValidator ID="VaidadorEmail" runat="server" ErrorMessage="Debe ingresar su correo" ControlToValidate="txtEmail" CssClass="alert-danger" ForeColor="Red"></asp:RequiredFieldValidator>
