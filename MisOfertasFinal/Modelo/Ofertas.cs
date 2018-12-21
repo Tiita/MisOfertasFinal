@@ -30,6 +30,8 @@ namespace MisOfertasFinal.Modelo
         public byte[] imagen_boleta { get; set; }
         public decimal numero_boleta { get; set; }
         public string rut_usuario { get; set; }
+        public string direccion_tienda { get; set; }
+        public string nombre_tienda { get; set; }
 
     }
 }

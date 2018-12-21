@@ -1,5 +1,10 @@
 ﻿using MisOfertasFinal.Entidades;
 using MisOfertasFinal.Modelo;
+<<<<<<< HEAD
+=======
+using System;
+using System.Collections.Generic;
+>>>>>>> 801107137797d3a56aa609fc68aee1fbfff99188
 using System.Linq;
 
 namespace MisOfertasFinal.LogicaNegocio
@@ -33,9 +38,14 @@ namespace MisOfertasFinal.LogicaNegocio
 
                     totalPuntaje = totalPuntaje + item.calificacion;
                 }
+                if (totalPuntaje != 0)
+                {
+                    totalPuntaje = totalPuntaje / listadoValoraciones.Count;
+                }
+                
 
-                totalPuntaje = totalPuntaje / listadoValoraciones.Count;
-                return totalPuntaje;
+
+                return Math.Round(totalPuntaje, 1);
             }
             
         }

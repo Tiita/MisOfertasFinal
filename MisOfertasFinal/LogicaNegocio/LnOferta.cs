@@ -1,4 +1,5 @@
 ﻿using MisOfertasFinal.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace MisOfertasFinal.LogicaNegocio
 
         public List<Modelo.Ofertas> getOfertasProductos()
         {
+            LnValoracion valoracion = new LnValoracion();
             using (Entities objOfertas = new Entities())
             {
                 var query = (from ofer in objOfertas.OFERTA
@@ -32,6 +34,11 @@ namespace MisOfertasFinal.LogicaNegocio
                                  fecha_limite = ofer.FECHA_LIMITE,
                                  imagen_producto = prod.IMAGEN_PRODUCTO
                              }).ToList();
+                foreach (var item in query)
+                {
+                    item.calificacion = valoracion.GetValoraciones(item.id_oferta);
+                    item.precio_final = Math.Round(item.precio_final, MidpointRounding.AwayFromZero);
+                }
                 return query;
             }
         }
@@ -45,6 +52,7 @@ namespace MisOfertasFinal.LogicaNegocio
                              join prod in objOfertas.PRODUCTO on ofer.ID_PRODUCTO equals prod.ID_PRODUCTO
                              join mrc in objOfertas.MARCA on prod.ID_MARCA equals mrc.ID_MARCA
                              join cat in objOfertas.CATEGORIA on prod.ID_CATEGORIA equals cat.ID_CATEGORIA
+                             join tien in objOfertas.TIENDA on prod.ID_TIENDA equals tien.ID_TIENDA
                              where prod.ID_PRODUCTO == idProducto & ofer.ID_OFERTA == idOferta
                              orderby cat.ID_CATEGORIA
                              select new Modelo.Ofertas {
@@ -61,12 +69,15 @@ namespace MisOfertasFinal.LogicaNegocio
                                  porcentaje_descuento = ofer.PORCENTAJE_DESCUENTO,
                                  nombre_marca = mrc.NOMBRE_MARCA,
                                  fecha_limite = ofer.FECHA_LIMITE,
-                                 imagen_producto = prod.IMAGEN_PRODUCTO
+                                 imagen_producto = prod.IMAGEN_PRODUCTO,
+                                 direccion_tienda = tien.DIRECCION_TIENDA,
+                                 nombre_tienda = tien.NOMBRE_TIENDA
                              }).ToList();
 
                 foreach (var item in query)
                 {
-                    //item.calificacion = valoracion.GetValoraciones(item.id_oferta);
+                    item.calificacion = valoracion.GetValoraciones(item.id_oferta);
+                    item.precio_final = Math.Round(item.precio_final,MidpointRounding.AwayFromZero);
                 }
                 return query;
             }//fin del using            

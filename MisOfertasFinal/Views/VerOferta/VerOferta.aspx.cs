@@ -22,7 +22,7 @@ namespace MisOfertasFinal.Views.VerOferta
                 if (Session["Oferta"]==null) {
                     Response.Redirect("../Index/Index.aspx");
                 }
-                List<Modelo.Ofertas> data=(List<Modelo.Ofertas>)Session["Oferta"];
+                List<Modelo.Ofertas> data= (List<Modelo.Ofertas>)Session["Oferta"];
                 dtlOferta.DataSource = data;
                 dtlOferta.DataBind();
                 ObtenerProductosRelacionados();                

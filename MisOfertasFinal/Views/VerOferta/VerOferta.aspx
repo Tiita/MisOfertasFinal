@@ -34,9 +34,19 @@
                                 </ul>
                                 <br></br>
                                 <h2 class="product-name">
+<<<<<<< HEAD
                                     <asp:Label ID="lblNombreProducto" runat="server"  Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
                                 <div>        
                                     <p>Calificación : <asp:Label ID="lblCalificacion" runat="server"  Text='<%# Eval("calificacion") %> '></asp:Label></p>                                                                    
+=======
+                                    <asp:Label ID="lblNombreProducto" runat="server" Text='<%# Eval("nombre_producto") %> '></asp:Label></h2>
+                                <div>
+                                    <p>Valoración oferta: </p>
+                                    <div class="product-rating" id="<%# Eval("nombre_producto") %>">
+                                        
+                                    </div>
+                                    <p>Promedio Valoraciones: <%# Eval("calificacion") %></p>
+>>>>>>> 801107137797d3a56aa609fc68aee1fbfff99188
                                 </div>
                                 <div>
                                     <h3 class="product-price">Oferta $<asp:Label ID="lblPrecioFinal" runat="server" Text='<%# Eval("precio_final") %>'></asp:Label>
@@ -62,7 +72,14 @@
                                     Cantidad máxima a comprar:
                                     <asp:Label ID="lblMaximoOferta" runat="server" Text='<%# Eval("maximo_pro") %>'></asp:Label>
                                 </div>
+<<<<<<< HEAD
                                 <br />                                
+=======
+                                <br />
+                                <div>
+                                    <asp:Label ID="lblTienda" runat="server" Text='<%# Eval("nombre_tienda") +" "+ Eval("direccion_tienda").ToString() %>'></asp:Label>
+                                </div>
+>>>>>>> 801107137797d3a56aa609fc68aee1fbfff99188
                                 <ul class="product-links">
                                     <li>Compartir:</li>
                                     <li><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a></li>
